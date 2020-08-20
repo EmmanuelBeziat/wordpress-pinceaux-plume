@@ -3,8 +3,8 @@
  * Displays the search icon and modal
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @subpackage Plume
+ * @since Plume 1.0
  */
 
 ?>

@@ -1,12 +1,12 @@
 <?php
 /**
- * A template partial to output pagination for the Twenty Twenty default theme.
+ * A template partial to output pagination for the Plume default theme.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @subpackage Plume
+ * @since Plume 1.0
  */
 
 /**

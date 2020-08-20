@@ -3,8 +3,8 @@
  * Displays the content when the cover template is used.
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @subpackage Plume
+ * @since Plume 1.0
  */
 
 ?>
@@ -57,7 +57,7 @@
 							/**
 							 * Allow child themes and plugins to filter the display of the categories in the article header.
 							 *
-							 * @since Twenty Twenty 1.0
+							 * @since Plume 1.0
 							 *
 							 * @param bool Whether to show the categories in article header, Default true.
 							 */

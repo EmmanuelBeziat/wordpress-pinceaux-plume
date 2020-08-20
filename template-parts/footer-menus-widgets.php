@@ -4,8 +4,8 @@
  * Visually, this output is presented as part of the footer element.
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @subpackage Plume
+ * @since Plume 1.0
  */
 
 $has_footer_menu = has_nav_menu( 'footer' );
