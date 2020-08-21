@@ -382,6 +382,9 @@ html {
 }
 
 body {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 	background: #e0e0da;
 	color: #222;
 	font: 400 16px/1.5 "Segoe UI", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
