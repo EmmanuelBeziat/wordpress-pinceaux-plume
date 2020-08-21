@@ -947,11 +947,24 @@ input[type="search"]:focus {
 }
 
 /* Search Form ------------------------------- */
-/* .search-modal {
+.search-modal {
+	background: var(--color-modal-overlay);
 	display: none;
+	visibility: hidden;
+	opacity: 0;
+	position: fixed;
+	left: -9999rem;
+	top: 0;
+	transition: opacity .2s linear, left 0s .2s linear;
+	width: 100vw;
+	height: 100vh;
+	z-index: 999;
 }
 
- */
+.search-modal-inner {
+
+}
+
 /* Cover Modals ------------------------------ */
 
 .cover-modal {
@@ -975,6 +988,17 @@ input[type="search"]:focus {
 	cursor: default;
 }
 
+.cover-modal.show-modal {
+	display: block;
+	visibility: visible;
+	cursor: pointer;
+}
+
+.cover-modal.active {
+	left: 0;
+	opacity: 1;
+	transition: opacity .2s linear;
+}
 
 /* Social Icons ------------------------------ */
 
@@ -1012,8 +1036,28 @@ input[type="search"]:focus {
 	display: flex;
 }
 
+.toggle {
+	padding: .5em;
+}
+
+.toggle:hover {
+	text-decoration: none;
+}
+
+.toggle-inner {
+	background: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .toggle-text {
 	color: initial;
+	font-size: .75rem;
+}
+
+.toggle-inner .svg-icon {
+	height: 32px;
 }
 
 
