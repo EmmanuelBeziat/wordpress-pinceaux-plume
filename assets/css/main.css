@@ -1148,7 +1148,7 @@ input[type="search"]:focus {
 }
 
 .menu-item a:hover::before {
-	transform: translate(-.5em,-.1em);
+	transform: translate(-.8em,-.1em);
 	opacity: 1;
 	visibility: visible;
 }
@@ -1161,6 +1161,7 @@ input[type="search"]:focus {
 }
 
 .close-nav-toggle {
+	margin-top: 10px;
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;

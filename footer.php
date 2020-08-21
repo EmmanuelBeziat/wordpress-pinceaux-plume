@@ -26,15 +26,9 @@
 							);
 							?>
 							<a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
-						</p><!-- .footer-copyright -->
+						</p>
 
-						<p class="powered-by-wordpress">
-							<a href="<?php echo esc_url(__('https://wordpress.org/', 'plume')); ?>">
-								<?php _e('Powered by WordPress', 'plume'); ?>
-							</a>
-						</p><!-- .powered-by-wordpress -->
-
-					</div><!-- .footer-credits -->
+					</div>
 
 					<a class="to-the-top" href="#site-header">
 						<span class="to-the-top-long">
@@ -48,12 +42,12 @@
 							/* translators: %s: HTML character for up arrow. */
 							printf(__('Up %s', 'plume'), '<span class="arrow" aria-hidden="true">&uarr;</span>');
 							?>
-						</span><!-- .to-the-top-short -->
-					</a><!-- .to-the-top -->
+						</span>
+					</a
 
-				</div><!-- .container -->
+				</div>
 
-			</footer><!-- #site-footer -->
+			</footer>
 
 		<?php wp_footer(); ?>
 
