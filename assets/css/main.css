@@ -994,6 +994,7 @@ input[type="search"]:focus {
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
 .header-navigation-wrapper {
+	display: flex;
 	transform: translateY(6px);
 }
 
@@ -1006,7 +1007,7 @@ input[type="search"]:focus {
 /* Header Titles ----------------------------- */
 
 .site-title {
-	font-size: 2.8rem;
+	font-size: 1.8rem;
 	font-weight: 700;
 	line-height: 1;
 	margin: 0;
@@ -1022,14 +1023,16 @@ input[type="search"]:focus {
 	color: var(--color-link-hover);
 }
 
-.header-navigation-wrapper {
-	display: flex;
-}
-
 .toggle {
 	padding: .5em .8em;
 	background: none;
+	transition: .25s ease-in-out;
 	font-size: 1rem;
+}
+
+.toggle:focus {
+	outline: none;
+	background: var(--color-link);
 }
 
 .toggle:hover {
@@ -1057,10 +1060,14 @@ input[type="search"]:focus {
 	visibility: visible;
 }
 
-.toggle-icon,
 .toggle-icon .svg-icon {
-	height: 2em;
-	width: 2em;
+	height: 100%;
+	width: 100%;
+}
+
+.toggle-icon {
+	height: 1.5em;
+	width: 1.5em;
 }
 
 
@@ -1101,8 +1108,8 @@ input[type="search"]:focus {
 
 .menu-item a {
 	display: block;
-	font-size: 4rem;
-	line-height: 2em;
+	font-size: 2rem;
+  line-height: 1.5em;
 	font-family: var(--font-title);
 	position: relative;
 	text-decoration: none;
@@ -1168,6 +1175,11 @@ input[type="search"]:focus {
 .close-nav-toggle .toggle-icon {
 	transition: .25s linear;
 	transform-origin: 50% 50%;
+}
+
+
+.close-nav-toggle .toggle-text {
+	font-size: 1.15em;
 }
 
 .close-nav-toggle:hover .toggle-icon {
@@ -1272,9 +1284,9 @@ button.search-untoggle {
 	border: none;
 	border-radius: 0;
 	color: inherit;
-	font-size: 2rem;
+	font-size: 1rem;
 	letter-spacing: -0.0277em;
-	height: 8.4rem;
+	height: 4.5rem;
 	margin: 0 0 0 -2rem;
 	max-width: calc(100% + 2rem);
 	padding: 0 0 0 2rem;
@@ -1666,59 +1678,8 @@ button.search-untoggle {
 
 }
 
-@media (min-width: 1000px) {
-	/* Document Setup ------------------------ */
 
-	/* Helper Classes ------------------------ */
-
-	/* Site Header --------------------------- */
-
-	/* HEADER NAVIGATION */
-
-	/* HEADER TOGGLES */
-
-	/* Menu Modal ---------------------------- */
-
-	/* Sub Page ------------------------------ */
-
-	/* FEATURED MEDIA */
-
-	/* Template: Full Width ------------------ */
-
-	/* Post: Archive ------------------------- */
-
-	/* Post: Single -------------------------- */
-
-	/* Blocks -------------------------------- */
-
-	/* BLOCK: COLUMNS */
-
-	/* BLOCK: GALLERY */
-
-	/* BLOCK: GROUP */
-
-	/* BLOCK: IMAGE */
-
-	/* BLOCK: SEPARATOR */
-
-	/* Entry Content ------------------------- */
-
-	/* ALIGNMENT CLASSES */
-
-	/* ENTRY MEDIA */
-
-	/* Comments ------------------------------ */
-
-	/* Site Pagination ----------------------- */
-
-	/* Site Footer --------------------------- */
-
-	/* FOOTER TOP */
-
-}
-
-
-@media (min-width: 1220px) {
+@media (min-width: 1200px) {
 
 	/* Element Base -------------------------- */
 
@@ -1727,14 +1688,29 @@ button.search-untoggle {
 	/* Helper Classes ------------------------ */
 
 	/* Site Header --------------------------- */
+	.site-title {
+		font-size: 2.8rem;
+	}
 
 	/* PRIMARY MENU */
 
 	/* HEADER TOGGLES */
+	.toggle-icon {
+		width: 2em;
+		height: 2em;
+	}
 
 	/* Menu Modal ---------------------------- */
+	.menu-item a {
+		font-size: 4rem;
+		line-height: 1.5em;
+	}
 
 	/* Search Modal -------------------------- */
+	.search-modal .search-field {
+		font-size: 2rem;
+		height: 8.4rem;
+	}
 
 	/* Sub Page ------------------------------ */
 
@@ -1766,16 +1742,4 @@ button.search-untoggle {
 
 	/* FOOTER WIDGETS */
 
-}
-
-@media (min-width: 1280px) {
-	/* Blocks -------------------------------- */
-
-	/* BLOCK: GALLERY */
-
-	/* BLOCK: SEPARATOR */
-
-	/* Entry Content ------------------------- */
-
-	/* ALIGNMENT CLASSES */
 }
