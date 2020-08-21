@@ -1101,7 +1101,7 @@ input[type="search"]:focus {
 
 .menu-item a {
 	display: block;
-	font-size: 2rem;
+	font-size: 4rem;
 	line-height: 2em;
 	font-family: var(--font-title);
 	position: relative;
@@ -1119,15 +1119,15 @@ input[type="search"]:focus {
 	left: 0;
 	top: 0;
 	transition: .35s ease-in;
-	transform: translate(10px,-12px);
+	transform: translate(.5em,-.1em);
 }
 
 .menu-item a::after {
 	content: "";
 	position: absolute;
 	left: -0.5em;
-	bottom: .5em;
-	height: 20%;
+	bottom: .3em;
+	height: 30%;
 	width: 80%;
 	transform: scaleX(0);
 	background: #21759b;
@@ -1136,7 +1136,7 @@ input[type="search"]:focus {
 }
 
 .menu-item a:hover::before {
-	transform: translate(-40px,-12px);
+	transform: translate(-.5em,-.1em);
 	opacity: 1;
 	visibility: visible;
 }
