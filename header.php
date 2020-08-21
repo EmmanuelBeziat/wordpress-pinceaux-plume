@@ -30,34 +30,8 @@
 			<div class="header-inner section-inner">
 
 				<div class="header-titles-wrapper">
-
-					<?php
-
-					// Check whether the header search is activated in the customizer.
-					$enable_header_search = get_theme_mod('enable_header_search', true);
-
-					if (true === $enable_header_search) {
-
-						?>
-
-						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-							<span class="toggle-inner">
-								<span class="toggle-icon">
-									<?php plume_the_theme_svg('search'); ?>
-								</span>
-								<span class="toggle-text"><?php _e('Search', 'plume'); ?></span>
-							</span>
-						</button>
-
-					<?php } ?>
-
 					<div class="header-titles">
-
-						<?php
-							// Site title or logo.
-							plume_site_logo();
-						?>
-
+						<?php plume_site_logo(); ?>
 					</div>
 
 					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal"  data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
@@ -67,15 +41,11 @@
 							</span>
 							<span class="toggle-text"><?php _e('Menu', 'plume'); ?></span>
 						</span>
-					</button><!-- .nav-toggle -->
-
-				</div><!-- .header-titles-wrapper -->
+					</button>
+				</div>
 
 				<div class="header-navigation-wrapper">
-
-					<?php
-					if (has_nav_menu('primary') || ! has_nav_menu('expanded')) {
-						?>
+					<?php if (has_nav_menu('primary') || ! has_nav_menu('expanded')) { 	?>
 
 							<nav class="primary-menu-wrapper" aria-label="<?php esc_attr_e('Horizontal', 'plume'); ?>" role="navigation">
 
@@ -161,9 +131,9 @@
 					}
 					?>
 
-				</div><!-- .header-navigation-wrapper -->
+				</div>
 
-			</div><!-- .header-inner -->
+			</div>
 
 			<?php
 			// Output the search modal (if it is activated in the customizer).
@@ -172,7 +142,7 @@
 			}
 			?>
 
-		</header><!-- #site-header -->
+		</header>
 
 		<?php
 		// Output the menu modal.
