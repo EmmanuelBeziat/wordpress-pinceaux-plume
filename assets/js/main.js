@@ -282,7 +282,7 @@ class Toggles {
 	}
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-	console.log('Init')
+document.addEventLiDOMContentLoadedstener('DOMContentLoaded', event => {
+	console.log('Init ' + event)
   new Toggles()
 })
