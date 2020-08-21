@@ -460,6 +460,11 @@ plume.toggles = {
 			target = _doc.querySelector(targetString);
 		}
 
+		if (!target) {
+			console.log(target)
+			return
+		}
+
 		// Trigger events on the toggle targets before they are toggled.
 		if (target.classList.contains(activeClass)) {
 			target.dispatchEvent(plume.createEvent('toggle-target-before-active'));
@@ -599,7 +604,6 @@ plume.toggles = {
 }; // plume.toggles
 
 document.addEventListener('DOMContentLoaded', () => {
-	console.log('init')
 	plume.toggles.init();              // Handle toggles.
 	plume.coverModals.init();          // Handle cover modals.
 	plume.modalMenu.init();            // Modal Menu.
