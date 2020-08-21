@@ -1,5 +1,20 @@
 'use strict'
 
+function toggleAttribute(element, attribute, trueVal, falseVal) {
+	if (trueVal === undefined) {
+		trueVal = true
+	}
+	if (falseVal === undefined) {
+		falseVal = false
+	}
+	if (element.getAttribute(attribute) !== trueVal) {
+		element.setAttribute(attribute, trueVal)
+	}
+	else {
+		element.setAttribute(attribute, falseVal)
+	}
+}
+
 function menuToggle(target, duration) {
 	var initialParentHeight, finalParentHeight, menu, menuItems, transitionListener,
 		initialPositions = [],
@@ -99,6 +114,7 @@ class Toggles {
   clickedEl = false
 
   constructor () {
+		console.log('Toggles init')
     // Do the toggle.
 		this.toggle()
 
@@ -146,7 +162,7 @@ class Toggles {
 		timeOutTime = 0
 
 		if (target.classList.contains('cover-modal')) {
-			timeOutTime = 10;
+			timeOutTime = 10
 		}
 
 		setTimeout(() => {
@@ -175,10 +191,10 @@ class Toggles {
 			}
 
 			// Toggle aria-expanded on the toggle.
-			plumeToggleAttribute(toggle, 'aria-expanded', 'true', 'false')
+			toggleAttribute(toggle, 'aria-expanded', 'true', 'false')
 
 			if (this.clickedEl && -1 !== toggle.getAttribute('class').indexOf('close-')) {
-				plumeToggleAttribute(this.clickedEl, 'aria-expanded', 'true', 'false')
+				toggleAttribute(this.clickedEl, 'aria-expanded', 'true', 'false')
 			}
 
 			// Toggle body class.
@@ -267,5 +283,6 @@ class Toggles {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+	console.log('Init')
   new Toggles()
 })
