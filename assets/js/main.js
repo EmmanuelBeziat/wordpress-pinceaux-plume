@@ -461,7 +461,7 @@ plume.toggles = {
 		}
 
 		// Trigger events on the toggle targets before they are toggled.
-		if (target.length && target.classList.contains(activeClass)) {
+		if (target && target.classList.contains(activeClass)) {
 			target.dispatchEvent(plume.createEvent('toggle-target-before-active'));
 		} else {
 			target.dispatchEvent(plume.createEvent('toggle-target-before-inactive'));
