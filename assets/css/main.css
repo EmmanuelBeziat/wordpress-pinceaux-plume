@@ -358,8 +358,9 @@ template {
   --color-text: #222;
   --color-link: #d35066;
 	--color-link-hover: #7c2635;
-
 	--color-modal-overlay: rgba(0, 0, 0, .25);
+
+	--font-title: 'Amatic SC';
 }
 
 *, *::before, *::after {
@@ -497,7 +498,7 @@ h4,
 h5,
 h6,
 .faux-heading {
-  font-family: 'Amatic SC';
+  font-family: var(--font-title);
 	font-weight: 700;
 	line-height: 1.25;
 	margin: 3.5rem 0 2rem;
@@ -992,6 +993,9 @@ input[type="search"]:focus {
 
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
+.header-navigation-wrapper {
+	transform: translateY(6px);
+}
 
 .header-inner {
 	display: flex;
@@ -1092,27 +1096,80 @@ input[type="search"]:focus {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	counter-reset: menu-item;
 }
 
 .menu-item a {
 	display: block;
 	font-size: 2rem;
+	line-height: 2em;
+	font-family: var(--font-title);
+	position: relative;
+	text-decoration: none;
+}
+
+.menu-item a::before {
+	content: counter(menu-item);
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	color: var(--color-text);
+	font-size: .5em;
+	left: 0;
+	top: 0;
+	transition: .35s ease-in;
+	transform: translate(35px, -50%);
+}
+
+.menu-item a::after {
+	content: "";
+	counter-increment: menu-item;
+	position: absolute;
+	left: -1em;
+	bottom: 0;
+	height: 50%;
+	width: 50%;
+	transform: scaleX(0);
+	background: #21759b;
+	transition: .35s ease-out;
+}
+
+.menu-item a:hover::before {
+	transform: translate(-10px, 50px);
+	opacity: 1;
+	visibility: visible;
+}
+
+.menu-item a:hover::after {
+	transform: scaleX(1);
+	opacity: 1;
+	visibility: visible;
 }
 
 .close-nav-toggle {
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	align-items: center;
 }
 
 .close-nav-toggle .toggle-text {
 	margin-right: 1em;
-	transition: .25s ease-in-out;
+	transition: .35s ease-in-out;
 	opacity: 0;
 	visibility: hidden;
 	transform: translateX(50%);
+	font-family: var(--font-title);
+}
+
+.close-nav-toggle .toggle-icon {
+	transition: .25s linear;
+	transform-origin: 50% 50%;
+}
+
+.close-nav-toggle:hover .toggle-icon {
+	transform: scale(1.1);
 }
 
 .close-nav-toggle:hover .toggle-text {
