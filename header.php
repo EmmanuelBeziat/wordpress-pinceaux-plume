@@ -49,7 +49,9 @@
 
 					<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field">
 						<span class="toggle-inner">
-							<?php plume_the_theme_svg('search'); ?>
+							<span class="toggle-icon">
+								<?php plume_the_theme_svg('search'); ?>
+							</span>
 							<span class="toggle-text">Recherche</span>
 						</span>
 					</button>
