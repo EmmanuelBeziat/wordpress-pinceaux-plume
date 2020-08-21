@@ -598,26 +598,8 @@ plume.toggles = {
 
 }; // plume.toggles
 
-/**
- * Is the DOM ready?
- *
- * This implementation is coming from https://gomakethings.com/a-native-javascript-equivalent-of-jquerys-ready-method/
- *
- * @param {Function} fn Callback function to run.
- */
-function plumeDomReady(fn) {
-	if (typeof fn !== 'function') {
-		return;
-	}
-
-	if (document.readyState === 'interactive' || document.readyState === 'complete') {
-		return fn();
-	}
-
-	document.addEventListener('DOMContentLoaded', fn, false);
-}
-
-plumeDomReady(function() {
+document.addEventListener('DOMContentLoaded', () => {
+	console.log('init')
 	plume.toggles.init();              // Handle toggles.
 	plume.coverModals.init();          // Handle cover modals.
 	plume.modalMenu.init();            // Modal Menu.
