@@ -292,49 +292,6 @@ plume.coverModals = {
 }; // plume.coverModals
 
 /*	-----------------------------------------------------------------------------------------------
-	Intrinsic Ratio Embeds
---------------------------------------------------------------------------------------------------- */
-
-plume.intrinsicRatioVideos = {
-
-	init: function() {
-		this.makeFit();
-
-		window.addEventListener('resize', function() {
-			this.makeFit();
-		}.bind(this));
-	},
-
-	makeFit: function() {
-		document.querySelectorAll('iframe, object, video').forEach(function(video) {
-			var ratio, iTargetWidth,
-				container = video.parentNode;
-
-			// Skip videos we want to ignore.
-			if (video.classList.contains('intrinsic-ignore') || video.parentNode.classList.contains('intrinsic-ignore')) {
-				return true;
-			}
-
-			if (! video.dataset.origwidth) {
-				// Get the video element proportions.
-				video.setAttribute('data-origwidth', video.width);
-				video.setAttribute('data-origheight', video.height);
-			}
-
-			iTargetWidth = container.offsetWidth;
-
-			// Get ratio from proportions.
-			ratio = iTargetWidth / video.dataset.origwidth;
-
-			// Scale based on ratio, thus retaining proportions.
-			video.style.width = iTargetWidth + 'px';
-			video.style.height = (video.dataset.origheight * ratio) + 'px';
-		});
-	}
-
-}; // plume.instrinsicRatioVideos
-
-/*	-----------------------------------------------------------------------------------------------
 	Modal Menu
 --------------------------------------------------------------------------------------------------- */
 plume.modalMenu = {
@@ -664,7 +621,6 @@ function plumeDomReady(fn) {
 plumeDomReady(function() {
 	plume.toggles.init();              // Handle toggles.
 	plume.coverModals.init();          // Handle cover modals.
-	plume.intrinsicRatioVideos.init(); // Retain aspect ratio of videos on window resize.
 	plume.modalMenu.init();            // Modal Menu.
 	plume.primaryMenu.init();          // Primary Menu.
 	plume.touchEnabled.init();         // Add class to body if device is touch-enabled.
