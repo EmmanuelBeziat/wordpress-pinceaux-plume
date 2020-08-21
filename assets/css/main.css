@@ -1031,8 +1031,7 @@ input[type="search"]:focus {
 }
 
 .toggle:focus {
-	outline: none;
-	background: var(--color-link);
+	outline: 1px dotted var(--color-text);
 }
 
 .toggle:hover {
@@ -1127,6 +1126,9 @@ input[type="search"]:focus {
 	top: 0;
 	transition: .35s ease-in;
 	transform: translate(.5em,-.1em);
+}
+.menu-item:nth-child(-n+9) a::before {
+	content: '0'counter(menu-item);
 }
 
 .menu-item a::after {
