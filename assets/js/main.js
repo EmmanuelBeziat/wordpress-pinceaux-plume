@@ -1,12 +1,14 @@
 'use strict'
 
-function toggleAttribute(element, attribute, trueVal, falseVal) {
+const toggleAttribute = (element, attribute, trueVal, falseVal) => {
 	if (trueVal === undefined) {
 		trueVal = true
 	}
+
 	if (falseVal === undefined) {
 		falseVal = false
 	}
+
 	if (element.getAttribute(attribute) !== trueVal) {
 		element.setAttribute(attribute, trueVal)
 	}
@@ -15,106 +17,121 @@ function toggleAttribute(element, attribute, trueVal, falseVal) {
 	}
 }
 
-function menuToggle(target, duration) {
-	var initialParentHeight, finalParentHeight, menu, menuItems, transitionListener,
-		initialPositions = [],
-		finalPositions = [];
+const menuToggle = (target, duration) => {
+	let initialParentHeight
+	let finalParentHeight
+	let menu
+	let menuItems
+	let transitionListener
+	const initialPositions = []
+	const finalPositions = []
 
 	if (!target) {
-		return;
+		return
 	}
 
-	menu = target.closest('.menu-wrapper');
+	menu = target.closest('.menu-wrapper')
 
 	// Step 1: look at the initial positions of every menu item.
-	menuItems = menu.querySelectorAll('.menu-item');
+	menuItems = menu.querySelectorAll('.menu-item')
 
-	menuItems.forEach(function(menuItem, index) {
-		initialPositions[index] = { x: menuItem.offsetLeft, y: menuItem.offsetTop };
-	});
-	initialParentHeight = target.parentElement.offsetHeight;
+	menuItems.forEach((menuItem, index) => {
+		initialPositions[index] = {
+			x: menuItem.offsetLeft,
+			y: menuItem.offsetTop
+		}
+	})
+	initialParentHeight = target.parentElement.offsetHeight
 
-	target.classList.add('toggling-target');
+	target.classList.add('toggling-target')
 
 	// Step 2: toggle target menu item and look at the final positions of every menu item.
-	target.classList.toggle('active');
+	target.classList.toggle('active')
 
-	menuItems.forEach(function(menuItem, index) {
-		finalPositions[index] = { x: menuItem.offsetLeft, y: menuItem.offsetTop };
-	});
-	finalParentHeight = target.parentElement.offsetHeight;
+	menuItems.forEach((menuItem, index) => {
+		finalPositions[index] = {
+			x: menuItem.offsetLeft,
+			y: menuItem.offsetTop
+		}
+	})
+	finalParentHeight = target.parentElement.offsetHeight
 
 	// Step 3: close target menu item again.
 	// The whole process happens without giving the browser a chance to render, so it's invisible.
-	target.classList.toggle('active');
+	target.classList.toggle('active')
 
 	/*
 	 * Step 4: prepare animation.
 	 * Position all the items with absolute offsets, at the same starting position.
 	 * Shouldn't result in any visual changes if done right.
 	 */
-	menu.classList.add('is-toggling');
-	target.classList.toggle('active');
-	menuItems.forEach(function(menuItem, index) {
-		var initialPosition = initialPositions[index];
+	menu.classList.add('is-toggling')
+	target.classList.toggle('active')
+	menuItems.forEach((menuItem, index) => {
+		const initialPosition = initialPositions[index]
+
 		if (initialPosition.y === 0 && menuItem.parentElement === target) {
-			initialPosition.y = initialParentHeight;
+			initialPosition.y = initialParentHeight
 		}
-		menuItem.style.transform = 'translate(' + initialPosition.x + 'px, ' + initialPosition.y + 'px)';
-	});
+
+		menuItem.style.transform = `translate(${initialPosition.x}px, ${initialPosition.y}px)`
+	})
 
 	/*
 	 * The double rAF is unfortunately needed, since we're toggling CSS classes, and
 	 * the only way to ensure layout completion here across browsers is to wait twice.
 	 * This just delays the start of the animation by 2 frames and is thus not an issue.
 	 */
-	requestAnimationFrame(function() {
-		requestAnimationFrame(function() {
+	requestAnimationFrame(() => {
+		requestAnimationFrame(() => {
 			/*
 			 * Step 5: start animation by moving everything to final position.
 			 * All the layout work has already happened, while we were preparing for the animation.
 			 * The animation now runs entirely in CSS, using cheap CSS properties (opacity and transform)
 			 * that don't trigger the layout or paint stages.
 			 */
-			menu.classList.add('is-animating');
-			menuItems.forEach(function(menuItem, index) {
-				var finalPosition = finalPositions[index];
+			menu.classList.add('is-animating')
+			menuItems.forEach((menuItem, index) => {
+				const finalPosition = finalPositions[index]
 				if (finalPosition.y === 0 && menuItem.parentElement === target) {
-					finalPosition.y = finalParentHeight;
+					finalPosition.y = finalParentHeight
 				}
+
 				if (duration !== undefined) {
-					menuItem.style.transitionDuration = duration + 'ms';
+					menuItem.style.transitionDuration = duration + 'ms'
 				}
-				menuItem.style.transform = 'translate(' + finalPosition.x + 'px, ' + finalPosition.y + 'px)';
-			});
+				menuItem.style.transform = `translate(${initialPosition.x}px, ${initialPosition.y}px)`
+			})
+
 			if (duration !== undefined) {
-				target.style.transitionDuration = duration + 'ms';
+				target.style.transitionDuration = duration + 'ms'
 			}
-		});
+		})
 
 		// Step 6: finish toggling.
 		// Remove all transient classes when the animation ends.
-		transitionListener = function() {
-			menu.classList.remove('is-animating');
-			menu.classList.remove('is-toggling');
-			target.classList.remove('toggling-target');
-			menuItems.forEach(function(menuItem) {
-				menuItem.style.transform = '';
-				menuItem.style.transitionDuration = '';
-			});
-			target.style.transitionDuration = '';
-			target.removeEventListener('transitionend', transitionListener);
-		};
+		transitionListener = () => {
+			menu.classList.remove('is-animating')
+			menu.classList.remove('is-toggling')
+			target.classList.remove('toggling-target')
 
-		target.addEventListener('transitionend', transitionListener);
-	});
+			menuItems.forEach(menuItem => {
+				menuItem.style.transform = ''
+				menuItem.style.transitionDuration = ''
+			})
+
+			target.style.transitionDuration = ''
+			target.removeEventListener('transitionend', transitionListener)
+		}
+
+		target.addEventListener('transitionend', transitionListener)
+	})
 }
 
 class Toggles {
   clickedEl = false
 
   constructor () {
-		console.log('Toggles init')
     // Do the toggle.
 		this.toggle()
 
@@ -144,7 +161,7 @@ class Toggles {
 			target = toggle.nextSibling
     }
     else {
-			target = document.querySelector(targetString);
+			target = document.querySelector(targetString)
 		}
 
 		// Trigger events on the toggle targets before they are toggled.
@@ -221,7 +238,7 @@ class Toggles {
       else {
 				target.dispatchEvent(new Event('toggle-target-after-inactive'))
 			}
-		}, timeOutTime);
+		}, timeOutTime)
 	}
 
 	// Do the toggle.
@@ -282,9 +299,6 @@ class Toggles {
 	}
 }
 
-document.addEventListener('DOMContentLoaded', event => {
-	console.log('Init ' + event)
+document.addEventListener('DOMContentLoaded', () => {
   new Toggles()
 })
-
-console.log('load')

@@ -358,6 +358,8 @@ template {
   --color-text: #222;
   --color-link: #d35066;
 	--color-link-hover: #7c2635;
+
+	--color-modal-overlay: rgba(0, 0, 0, .25);
 }
 
 *, *::before, *::after {
@@ -945,8 +947,32 @@ input[type="search"]:focus {
 }
 
 /* Search Form ------------------------------- */
-.search-modal {
+/* .search-modal {
 	display: none;
+}
+
+ */
+/* Cover Modals ------------------------------ */
+
+.cover-modal {
+	display: none;
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+}
+
+.cover-modal::-webkit-scrollbar {
+	display: none !important;
+}
+
+.cover-modal.show-modal,
+.cover-modal.active {
+	display: block;
+	cursor: pointer;
+}
+
+.cover-modal.active > *,
+.cover-modal.show-modal > * {
+	cursor: default;
 }
 
 
