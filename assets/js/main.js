@@ -267,6 +267,7 @@ plume.coverModals = {
 
 	// Untoggle a modal.
 	untoggleModal: function(modal) {
+		console.log(modal)
 		var modalTargetClass,
 			modalToggle = false;
 
