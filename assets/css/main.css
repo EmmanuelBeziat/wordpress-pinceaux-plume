@@ -1047,7 +1047,7 @@ input[type="search"]:focus {
 	transform: translateY(-100%);
 }
 
-.toggle:hover .toggle-tex {
+.toggle:hover .toggle-text {
 	transform: translateY(0);
 	opacity: 1;
 	visibility: visible;
