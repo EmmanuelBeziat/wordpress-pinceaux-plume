@@ -144,9 +144,6 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/classes/class-plume-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
 
-// Handle Customizer settings.
-require get_template_directory() . '/classes/class-plume-customize.php';
-
 // Require Separator Control class.
 require get_template_directory() . '/classes/class-plume-separator-control.php';
 

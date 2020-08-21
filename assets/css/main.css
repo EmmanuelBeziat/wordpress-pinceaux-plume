@@ -357,7 +357,7 @@ template {
   --colo-bg: #fff;
   --color-text: #222;
   --color-link: #d35066;
-  --color-link-hover: #7c2635;
+	--color-link-hover: #7c2635;
 }
 
 *, *::before, *::after {
@@ -379,11 +379,9 @@ html {
 }
 
 body {
-	background: #f5efe0;
-	box-sizing: border-box;
-	color: #000;
-	font-size: 400 16px/1.5 "Segoe UI", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
-	letter-spacing: -0.015em;
+	background: #e0e0da;
+	color: #222;
+	font: 400 16px/1.5 "Segoe UI", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Base Transitions -------------------------- */
@@ -581,7 +579,7 @@ hr.styled-separator::after {
 }
 
 a {
-	color: #cd2653;
+	color: var(--color-link);
 	text-decoration: underline;
 }
 
@@ -663,7 +661,7 @@ dd + dt {
 /* Quotes ------------------------------------ */
 
 blockquote {
-	border-color: #cd2653;
+	border-color: var(--color-link);
 	border-style: solid;
 
 	/*rtl:ignore*/
@@ -842,7 +840,7 @@ input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background: #cd2653;
+	background: var(--color-link);
 	border: none;
 	border-radius: 0;
 	color: #fff;
@@ -981,6 +979,63 @@ input[type="search"]:focus {
 
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
+
+.header {
+	background: #fff;
+	position: relative;
+}
+
+.header-inner {
+	max-width: 168rem;
+	padding: 3.15rem 0;
+	z-index: 100;
+}
+
+/* Header Titles ----------------------------- */
+
+.header-titles-wrapper {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	padding: 0 4rem;
+	text-align: center;
+}
+
+body:not(.enable-search-modal) .header-titles-wrapper {
+	justify-content: flex-start;
+	padding-left: 0;
+	text-align: left;
+}
+
+.site-title {
+	margin: 0;
+	font-size: 2.1rem;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.site-title a {
+	color: inherit;
+	display: block;
+	text-decoration: none;
+	position: relative;
+}
+
+.site-title a::before {
+	content: attr(data-title);
+	left: 0;
+	top: 0;
+	opacity: 0;
+	position: absolute;
+	transform: scale(.5);
+	transform-origin: 50 50%;
+}
+
+.site-title a:hover,
+.site-title a:focus {
+	color: var(--color-link-hover);
+}
+
 
 /* -------------------------------------------------------------------------- */
 

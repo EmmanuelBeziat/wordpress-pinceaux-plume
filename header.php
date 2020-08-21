@@ -26,10 +26,7 @@
 
 	<body <?php body_class(); ?>>
 
-		<?php wp_body_open(); ?>
-
-		<header id="site-header" class="header-footer-group" role="banner">
-
+		<header id="site-header" class="header header-footer-group" role="banner">
 			<div class="header-inner section-inner">
 
 				<div class="header-titles-wrapper">
@@ -50,7 +47,7 @@
 								</span>
 								<span class="toggle-text"><?php _e('Search', 'plume'); ?></span>
 							</span>
-						</button><!-- .search-toggle -->
+						</button>
 
 					<?php } ?>
 
@@ -59,12 +56,9 @@
 						<?php
 							// Site title or logo.
 							plume_site_logo();
-
-							// Site description.
-							plume_site_description();
 						?>
 
-					</div><!-- .header-titles -->
+					</div>
 
 					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal"  data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 						<span class="toggle-inner">
