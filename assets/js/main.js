@@ -441,7 +441,6 @@ plume.toggles = {
 	},
 
 	performToggle: function(element, instantly) {
-		debugger
 		var target, timeOutTime, classToToggle,
 			self = this,
 			_doc = document,
