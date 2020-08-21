@@ -26,7 +26,7 @@ if ($comments) {
 		$comments_number = absint(get_comments_number());
 		?>
 
-		<div class="comments-header section-inner small max-percentage">
+		<div class="comments-header container small max-percentage">
 
 			<h2 class="comment-reply-title">
 			<?php
@@ -55,7 +55,7 @@ if ($comments) {
 
 		</div><!-- .comments-header -->
 
-		<div class="comments-inner section-inner thin max-percentage">
+		<div class="comments-inner container thin max-percentage">
 
 			<?php
 			wp_list_comments(
@@ -108,7 +108,7 @@ if (comments_open() || pings_open()) {
 
 	comment_form(
 		array(
-			'class_form'         => 'section-inner thin max-percentage',
+			'class_form'         => 'container thin max-percentage',
 			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'  => '</h2>',
 		)

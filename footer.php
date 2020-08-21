@@ -14,7 +14,7 @@
 ?>
 			<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
-				<div class="section-inner">
+				<div class="container">
 
 					<div class="footer-credits">
 
@@ -51,7 +51,7 @@
 						</span><!-- .to-the-top-short -->
 					</a><!-- .to-the-top -->
 
-				</div><!-- .section-inner -->
+				</div><!-- .container -->
 
 			</footer><!-- #site-footer -->
 

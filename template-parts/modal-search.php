@@ -12,7 +12,7 @@
 
 	<div class="search-modal-inner modal-inner">
 
-		<div class="section-inner">
+		<div class="container">
 
 			<?php
 			get_search_form(
@@ -27,7 +27,7 @@
 				<?php plume_the_theme_svg( 'cross' ); ?>
 			</button><!-- .search-toggle -->
 
-		</div><!-- .section-inner -->
+		</div><!-- .container -->
 
 	</div><!-- .search-modal-inner -->
 

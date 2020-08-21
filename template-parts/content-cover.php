@@ -50,7 +50,7 @@
 				<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
 
 					<header class="entry-header has-text-align-center">
-						<div class="entry-header-inner section-inner medium">
+						<div class="entry-header-inner container medium">
 
 							<?php
 
@@ -104,7 +104,7 @@
 								if ( has_excerpt() ) {
 									?>
 
-									<div class="intro-text section-inner max-percentage<?php echo esc_attr( $intro_text_width ); ?>">
+									<div class="intro-text container max-percentage<?php echo esc_attr( $intro_text_width ); ?>">
 										<?php the_excerpt(); ?>
 									</div>
 
@@ -169,7 +169,7 @@
 	if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
-		<div class="comments-wrapper section-inner">
+		<div class="comments-wrapper container">
 
 			<?php comments_template(); ?>
 

@@ -59,14 +59,14 @@
 
 		<header class="archive-header has-text-align-center header-footer-group">
 
-			<div class="archive-header-inner section-inner medium">
+			<div class="archive-header-inner container medium">
 
 				<?php if ($archive_title) { ?>
 					<h1 class="archive-title"><?php echo wp_kses_post($archive_title); ?></h1>
 				<?php } ?>
 
 				<?php if ($archive_subtitle) { ?>
-					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post(wpautop($archive_subtitle)); ?></div>
+					<div class="archive-subtitle container thin max-percentage intro-text"><?php echo wp_kses_post(wpautop($archive_subtitle)); ?></div>
 				<?php } ?>
 
 			</div><!-- .archive-header-inner -->
@@ -83,7 +83,7 @@
 		while (have_posts()) {
 			$i++;
 			if ($i > 1) {
-				echo '<hr class="post-separator styled-separator is-style-wide section-inner" aria-hidden="true" />';
+				echo '<hr class="post-separator styled-separator is-style-wide container" aria-hidden="true" />';
 			}
 			the_post();
 
@@ -93,7 +93,7 @@
 	} elseif (is_search()) {
 		?>
 
-		<div class="no-search-results-form section-inner thin">
+		<div class="no-search-results-form container thin">
 
 			<?php
 			get_search_form(

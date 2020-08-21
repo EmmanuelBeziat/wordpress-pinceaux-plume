@@ -41,7 +41,7 @@
 
 	</div><!-- .post-inner -->
 
-	<div class="section-inner">
+	<div class="container">
 		<?php
 		wp_link_pages(
 			array(
@@ -64,7 +64,7 @@
 		}
 		?>
 
-	</div><!-- .section-inner -->
+	</div><!-- .container -->
 
 	<?php
 
@@ -81,7 +81,7 @@
 	if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
 		?>
 
-		<div class="comments-wrapper section-inner">
+		<div class="comments-wrapper container">
 
 			<?php comments_template(); ?>
 

@@ -12,7 +12,7 @@ get_header();
 
 <main id="site-content" role="main">
 
-	<div class="section-inner thin error404-content">
+	<div class="container thin error404-content">
 
 		<h1 class="entry-title"><?php _e('Page Not Found', 'plume'); ?></h1>
 
@@ -26,7 +26,7 @@ get_header();
 		);
 		?>
 
-	</div><!-- .section-inner -->
+	</div><!-- .container -->
 
 </main><!-- #site-content -->
 

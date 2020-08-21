@@ -27,7 +27,7 @@
 	<body <?php body_class(); ?>>
 
 		<header id="site-header" class="header header-footer-group" role="banner">
-			<div class="header-inner section-inner">
+			<div class="header-inner container">
 
 				<div class="header-titles-wrapper">
 					<div class="header-titles">

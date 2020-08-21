@@ -20,7 +20,7 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 
 	<div class="footer-nav-widgets-wrapper header-footer-group">
 
-		<div class="footer-inner section-inner">
+		<div class="footer-inner container">
 
 			<?php
 

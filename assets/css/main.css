@@ -937,6 +937,13 @@ input[type="search"]:focus {
 	width: 100vw;
 }
 
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 120rem;
+	width: calc(100% - 4rem);
+}
+
 /* Search Form ------------------------------- */
 
 .search-form {
@@ -1060,7 +1067,7 @@ body:not(.enable-search-modal) .header-titles-wrapper {
 	transition: transform 0.15s linear, box-shadow 0.15s linear;
 }
 
-.search-modal-inner .section-inner {
+.search-modal-inner .container {
 	display: flex;
 	justify-content: space-between;
 	max-width: 168rem;
@@ -2011,7 +2018,7 @@ div.comment:first-of-type {
 		padding: 8rem 0;
 	}
 
-	.section-inner {
+	.container {
 		width: calc(100% - 8rem);
 	}
 
@@ -2962,7 +2969,7 @@ div.comment:first-of-type {
 		transition: background-color 0.3s ease-out;
 	}
 
-	.menu-wrapper.section-inner {
+	.menu-wrapper.container {
 		width: calc(100% - 8rem);
 	}
 
