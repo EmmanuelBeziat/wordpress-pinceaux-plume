@@ -269,7 +269,7 @@ plume.coverModals = {
 	untoggleModal: function(modal) {
 		console.log(modal)
 		var modalTargetClass,
-			modalToggle = false;
+		modalToggle = false;
 
 		// If the modal has specified the string (ID or class) used by toggles to target it, untoggle the toggles with that target string.
 		// The modal-target-string must match the string toggles use to target the modal.
