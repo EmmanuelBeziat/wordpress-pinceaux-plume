@@ -1,4 +1,5 @@
 {
+	"rebase": false,
 	"level": {
 		"1": {
 			"specialComments": "false"
