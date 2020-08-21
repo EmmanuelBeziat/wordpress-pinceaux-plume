@@ -184,7 +184,7 @@ function plume_register_scripts() {
 	}
 
 	wp_enqueue_script('plume-js', get_template_directory_uri() . '/assets/js/main.min.js', array(), $theme_version, false);
-	wp_script_add_data('plume-js', 'async', true);
+	wp_script_add_data('plume-js', 'defer', true);
 
 }
 

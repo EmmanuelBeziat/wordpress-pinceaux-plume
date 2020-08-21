@@ -286,3 +286,5 @@ document.addEventListener('DOMContentLoaded', event => {
 	console.log('Init ' + event)
   new Toggles()
 })
+
+console.log('load')
