@@ -1044,7 +1044,7 @@ input[type="search"]:focus {
 	opacity: 0;
 	visibility: hidden;
 	transition: .25s ease-in-out;
-	transform: translateY(-100%);
+	transform: translateY(-50%);
 }
 
 .toggle:hover .toggle-text {
@@ -1075,16 +1075,15 @@ input[type="search"]:focus {
 	top: 0;
 	height: 100vh;
 	width: 100vw;
-	transform: translateY(-100%);
+	transform: translateY(-50%);
 	transition: opacity 0.25s ease-in, transform 0s 0.25s;
 	z-index: 99;
 	visibility: hidden;
 }
 .menu-modal.active {
-	left: 0;
 	opacity: 1;
-	right: 0;
 	visibility: visible;
+	transform: translateY(0);
 	transition: opacity 0.25s ease-out, transform 0s 0.25s;
 }
 
@@ -1113,7 +1112,7 @@ input[type="search"]:focus {
 	transition: .25s ease-in-out;
 	opacity: 0;
 	visibility: hidden;
-	transform: translateX(100%);
+	transform: translateX(50%);
 }
 
 .close-nav-toggle:hover .toggle-text {

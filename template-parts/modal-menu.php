@@ -17,7 +17,7 @@
 
 				<button class="toggle close-nav-toggle fill-children-current-color" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" data-set-focus=".menu-modal">
 					<span class="toggle-text">Fermer</span>
-					<?php plume_the_theme_svg( 'cross' ); ?>
+					<span class="toggle-icon"><?php plume_the_theme_svg('cross'); ?></span>
 				</button><!-- .nav-toggle -->
 
 				<?php
