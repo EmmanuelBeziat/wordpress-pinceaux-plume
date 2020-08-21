@@ -59,10 +59,6 @@
 				</div>
 			</div>
 
-			<?php get_template_part('template-parts/modal-search'); ?>
-
+			<?php get_template_part('template-parts/modal-search') ?>
+			<?php get_template_part('template-parts/modal-menu') ?>
 		</header>
-
-		<?php
-		// Output the menu modal.
-		get_template_part('template-parts/modal-menu');
