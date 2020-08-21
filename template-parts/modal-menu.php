@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="menu-modal cover-modal header-footer-group">
+<div class="menu-modal cover-modal" data-modal-target-string=".menu-modal">
 	<div class="menu-modal-inner modal-inner">
 		<div class="menu-wrapper container">
 

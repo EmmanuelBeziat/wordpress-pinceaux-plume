@@ -8,7 +8,7 @@
  */
 
 ?>
-<div class="search-modal cover-modal">
+<div class="search-modal cover-modal" data-modal-target-string=".search-modal">
 
 	<div class="search-modal-inner modal-inner">
 		<div class="container">
