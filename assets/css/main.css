@@ -945,6 +945,9 @@ input[type="search"]:focus {
 }
 
 /* Search Form ------------------------------- */
+.search-modal {
+	display: none;
+}
 
 
 /* Social Icons ------------------------------ */
@@ -954,6 +957,11 @@ input[type="search"]:focus {
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
 
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 
 /* Header Titles ----------------------------- */
 
@@ -961,12 +969,12 @@ input[type="search"]:focus {
 	font-size: 2.8rem;
 	font-weight: 700;
 	line-height: 1;
+	margin: 0;
 }
 
 .site-title a {
 	display: block;
 	text-decoration: none;
-	position: relative;
 }
 
 .site-title a:hover,
@@ -979,7 +987,9 @@ input[type="search"]:focus {
 
 /*	5. Menu Modal
 /* -------------------------------------------------------------------------- */
-
+.menu-modal {
+	display: none;
+}
 
 /* -------------------------------------------------------------------------- */
 
