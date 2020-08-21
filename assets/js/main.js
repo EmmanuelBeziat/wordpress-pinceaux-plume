@@ -441,6 +441,7 @@ plume.toggles = {
 	},
 
 	performToggle: function(element, instantly) {
+		debugger
 		var target, timeOutTime, classToToggle,
 			self = this,
 			_doc = document,
@@ -458,11 +459,6 @@ plume.toggles = {
 			target = toggle.nextSibling;
 		} else {
 			target = _doc.querySelector(targetString);
-		}
-
-		if (!target) {
-			console.log(target)
-			return
 		}
 
 		// Trigger events on the toggle targets before they are toggled.
