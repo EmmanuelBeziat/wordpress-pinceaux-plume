@@ -1008,6 +1008,14 @@ input[type="search"]:focus {
 	color: var(--color-link-hover);
 }
 
+.header-navigation-wrapper {
+	display: flex;
+}
+
+.toggle-text {
+	color: initial;
+}
+
 
 /* -------------------------------------------------------------------------- */
 

@@ -82,8 +82,8 @@ const menuToggle = (target, duration) => {
 	 * the only way to ensure layout completion here across browsers is to wait twice.
 	 * This just delays the start of the animation by 2 frames and is thus not an issue.
 	 */
-	requestAnimationFrame(() => {
-		requestAnimationFrame(() => {
+	requestAnimationFrame(function () {
+		requestAnimationFrame(function () {
 			/*
 			 * Step 5: start animation by moving everything to final position.
 			 * All the layout work has already happened, while we were preparing for the animation.
@@ -126,6 +126,204 @@ const menuToggle = (target, duration) => {
 
 		target.addEventListener('transitionend', transitionListener)
 	})
+}
+
+class CoverModals {
+
+	constructor () {
+		if (document.querySelector('.cover-modal')) {
+			// Handle cover modals when they're toggled.
+			this.onToggle()
+
+			// When toggled, untoggle if visitor clicks on the wrapping element of the modal.
+			this.outsideUntoggle()
+
+			// Close on escape key press.
+			this.closeOnEscape()
+
+			// Hide and show modals before and after their animations have played out.
+			this.hideAndShowModals()
+		}
+	}
+
+	// Handle cover modals when they're toggled.
+	onToggle () {
+		document.querySelectorAll('.cover-modal').forEach(element => {
+			element.addEventListener('toggled', event => {
+				const modal = event.target
+				const body = document.body
+
+				if (modal.classList.contains('active')) {
+					body.classList.add('showing-modal')
+				}
+				else {
+					body.classList.remove('showing-modal')
+					body.classList.add('hiding-modal')
+
+					// Remove the hiding class after a delay, when animations have been run.
+					setTimeout(() => {
+						body.classList.remove('hiding-modal')
+					}, 500)
+				}
+			})
+		})
+	}
+
+	// Close modal on outside click.
+	outsideUntoggle () {
+		document.addEventListener('click', function (event) {
+			const target = event.target
+			const modal = document.querySelector('.cover-modal.active')
+
+			// if target onclick is <a> with # within the href attribute
+			if (event.target.tagName.toLowerCase() === 'a' && event.target.hash.includes('#') && modal !== null) {
+				// untoggle the modal
+				this.untoggleModal(modal)
+				// wait 550 and scroll to the anchor
+				setTimeout(() => {
+					const anchor = document.getElementById(event.target.hash.slice(1))
+					anchor.scrollIntoView()
+				}, 550)
+			}
+
+			if (target === modal) {
+				this.untoggleModal(target)
+			}
+		}.bind(this))
+	}
+
+	// Close modal on escape key press.
+	closeOnEscape () {
+		document.addEventListener('keydown', function(event) {
+			if (event.keyCode === 27) {
+				event.preventDefault()
+				document.querySelectorAll('.cover-modal.active').forEach(function(element) {
+					this.untoggleModal(element)
+				}.bind(this))
+			}
+		}.bind(this))
+	}
+
+	// Hide and show modals before and after their animations have played out.
+	hideAndShowModals () {
+		const modals = document.querySelectorAll('.cover-modal')
+		const htmlStyle = document.documentElement.style
+		const adminBar = document.querySelector('#wpadminbar')
+
+		function getAdminBarHeight (negativeValue) {
+			let height
+			const currentScroll = window.pageYOffset
+
+			if (adminBar) {
+				height = currentScroll + adminBar.getBoundingClientRect().height
+
+				return negativeValue ? -height : height
+			}
+
+			return currentScroll === 0 ? 0 : -currentScroll
+		}
+
+		function htmlStyles() {
+			var overflow = window.innerHeight > document.documentElement.getBoundingClientRect().height
+
+			return {
+				'overflow-y': overflow ? 'hidden' : 'scroll',
+				position: 'fixed',
+				width: '100%',
+				top: getAdminBarHeight(true) + 'px',
+				left: 0
+			}
+		}
+
+		// Show the modal.
+		modals.forEach(function(modal) {
+			modal.addEventListener('toggle-target-before-inactive', function(event) {
+				const styles = htmlStyles()
+				const offsetY = window.pageYOffset
+				const paddingTop = (Math.abs(getAdminBarHeight()) - offsetY) + 'px'
+				const mQuery = window.matchMedia('(max-width: 600px)')
+
+				if (event.target !== modal) {
+					return
+				}
+
+				Object.keys(styles).forEach(styleKey => {
+					htmlStyle.setProperty(styleKey, styles[styleKey])
+				})
+
+				window.twentytwenty.scrolled = parseInt(styles.top, 10)
+
+				if (adminBar) {
+					document.body.style.setProperty('padding-top', paddingTop)
+
+					if (mQuery.matches) {
+						if (offsetY >= getAdminBarHeight()) {
+							modal.style.setProperty('top', 0)
+						}
+						else {
+							modal.style.setProperty('top', (getAdminBarHeight() - offsetY) + 'px')
+						}
+					}
+				}
+
+				modal.classList.add('show-modal')
+			})
+
+			// Hide the modal after a delay, so animations have time to play out.
+			modal.addEventListener('toggle-target-after-inactive', event => {
+				if (event.target !== modal) {
+					return
+				}
+
+				setTimeout(() => {
+					var clickedEl = twentytwenty.toggles.clickedEl
+
+					modal.classList.remove('show-modal')
+
+					Object.keys(htmlStyles()).forEach(styleKey => {
+						htmlStyle.removeProperty(styleKey)
+					})
+
+					if (adminBar) {
+						document.body.style.removeProperty('padding-top')
+						modal.style.removeProperty('top')
+					}
+
+					if (clickedEl !== false) {
+						clickedEl.focus()
+						clickedEl = false
+					}
+
+					window.scrollTo(0, Math.abs(window.twentytwenty.scrolled + getAdminBarHeight()))
+
+					window.twentytwenty.scrolled = 0
+				}, 500)
+			})
+		})
+	}
+
+	// Untoggle a modal.
+	untoggleModal (modal) {
+		let modalTargetClass
+		let	modalToggle = false
+
+		// If the modal has specified the string (ID or class) used by toggles to target it, untoggle the toggles with that target string.
+		// The modal-target-string must match the string toggles use to target the modal.
+		if (modal.dataset.modalTargetString) {
+			modalTargetClass = modal.dataset.modalTargetString
+
+			modalToggle = document.querySelector('*[data-toggle-target="' + modalTargetClass + '"]')
+		}
+
+		// If a modal toggle exists, trigger it so all of the toggle options are included.
+		if (modalToggle) {
+			modalToggle.click()
+		}
+		// If one doesn't exist, just hide the modal.
+		else {
+			modal.classList.remove('active')
+		}
+	}
 }
 
 class Toggles {
@@ -300,5 +498,6 @@ class Toggles {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  new Toggles()
+	new Toggles()
+	new CoverModals()
 })
