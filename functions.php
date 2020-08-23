@@ -373,5 +373,20 @@ function plume_custom_rss ($qv) {
 }
 add_filter('request', 'plume_custom_rss');
 
+
+function plume_posts_columns ($defaults){
+	$defaults['riv_post_thumbs'] = __('Thumbs');
+	return $defaults;
+}
+
+function plume_posts_custom_columns ($column_name, $id){
+	if($column_name === 'riv_post_thumbs') {
+		echo the_post_thumbnail('featured-thumbnail');
+	}
+}
+
+add_filter('manage_posts_columns', 'plume_posts_columns', 5);
+add_action('manage_posts_custom_column', 'plume_posts_custom_columns', 5, 2);
+
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
