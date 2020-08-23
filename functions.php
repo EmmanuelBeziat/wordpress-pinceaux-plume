@@ -319,5 +319,13 @@ function plume_read_more_tag($html) {
 
 add_filter('the_content_more_link', 'plume_read_more_tag');
 
+/**
+ * Remove posts from admin
+ */
+function post_remove () {
+  remove_menu_page('edit.php');
+}
+add_action('admin_menu', 'post_remove');
+
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
