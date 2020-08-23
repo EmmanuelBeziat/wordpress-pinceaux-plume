@@ -62,6 +62,8 @@ function plume_theme_support() {
 
 	// Add custom image size used in Cover Template.
 	add_image_size('plume-fullscreen', 1980, 9999);
+	// show featured images in dashboard
+	add_image_size('plume-admin-post-featured-image', 120, 120, false);
 
 	// Custom logo.
 	$logo_width  = 120;
@@ -373,20 +375,33 @@ function plume_custom_rss ($qv) {
 }
 add_filter('request', 'plume_custom_rss');
 
-
-function plume_posts_columns ($defaults){
-	$defaults['riv_post_thumbs'] = __('Thumbs');
-	return $defaults;
+// Add the column
+function plume_add_post_admin_thumbnail_column ($plume_columns){
+	$plume_columns['plume_thumb'] = __('Featured Image');
+	return $plume_columns;
 }
 
-function plume_posts_custom_columns ($column_name, $id){
-	if($column_name === 'riv_post_thumbs') {
-		echo the_post_thumbnail('featured-thumbnail');
+// Add the posts and pages columns filter. They both use the same function.
+add_filter('manage_posts_columns', 'plume_add_post_admin_thumbnail_column', 2);
+add_filter('manage_pages_columns', 'plume_add_post_admin_thumbnail_column', 2);
+
+// Get featured-thumbnail size post thumbnail and display it
+function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
+	switch ($plume_columns){
+		case 'plume_thumb':
+		if (function_exists('the_post_thumbnail')) {
+			echo the_post_thumbnail('plume-admin-post-featured-image');
+		}
+		else {
+			echo 'Le theme ne supporte pas les images mises en avant.';
+		}
+		break;
 	}
 }
 
-add_filter('manage_posts_columns', 'plume_posts_columns', 5);
-add_action('manage_posts_custom_column', 'plume_posts_custom_columns', 5, 2);
+// Manage Post and Page Admin Panel Columns
+add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
+add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
