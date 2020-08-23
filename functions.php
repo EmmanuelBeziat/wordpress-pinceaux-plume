@@ -349,7 +349,7 @@ function plume_create_post_types () {
 		'labels' => [
 			'name' => 'Catégorie',
 			'singular_name' => 'Catégorie',
-			'all_items' => 'Toutes les catégories'
+			'all_items' => 'Toutes les catégories',
 			'search_items' => 'Rechercher une catégorie',
 			'add_new_item' => 'Ajouter une catégorie',
 			'edit_item' => 'Modifier la catégorie',
