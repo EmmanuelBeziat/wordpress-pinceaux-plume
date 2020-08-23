@@ -353,7 +353,7 @@ function plume_create_post_types () {
 			'search_items' => 'Rechercher une catégorie',
 			'add_new_item' => 'Ajouter une catégorie',
 			'edit_item' => 'Modifier la catégorie',
-			'update_item' => 'Mettre à jour la catégorie'
+			'update_item' => 'Mettre à jour la catégorie',
 			'parent_item' => 'Catégorie parente',
 			'not_found' => 'Catégorie introuvable',
 			'popular_items' => 'Catégories récurrentes',
