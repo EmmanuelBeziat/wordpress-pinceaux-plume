@@ -322,10 +322,55 @@ add_filter('the_content_more_link', 'plume_read_more_tag');
 /**
  * Remove posts from admin
  */
-function post_remove () {
+function plume_post_remove () {
   remove_menu_page('edit.php');
 }
-add_action('admin_menu', 'post_remove');
+add_action('admin_menu', 'plume_post_remove');
+
+function plume_create_post_types () {
+	register_post_type('paintings', [
+		'labels' => [
+			'name' => 'Tableaux',
+			'singular_name' => 'Tableau',
+			'all_items' => 'Tous les tableaux',
+			'add_new_items' => 'Ajouter un tableau',
+			'edit_item' => 'Modifier le tableau',
+			'view_item' => 'Voir le tableau',
+			'search_items' => 'Rechercher un tableau'
+		],
+		'taxonomies' => ['paintings_category'],
+		'supports' => ['title', 'editor', 'thumbnail', 'revisions' => false, 'comments'],
+		'description' => 'Permet d’ajouter des tableaux'
+		'public' => true,
+		'menu_icon' => 'dashicons-format-gallery'
+	]);
+
+	register_taxonomy('paintings_category', 'paintings', [
+		'labels' => [
+			'name' => 'Catégorie',
+			'singular_name' => 'Catégorie',
+			'all_items' => 'Toutes les catégories'
+			'search_items' => 'Rechercher une catégorie',
+			'add_new_item' => 'Ajouter une catégorie',
+			'edit_item' => 'Modifier la catégorie',
+			'update_item' => 'Mettre à jour la catégorie'
+			'parent_item' => 'Catégorie parente',
+			'not_found' => 'Catégorie introuvable',
+			'popular_items' => 'Catégories récurrentes',
+			'new_item_name' => 'Nom de la nouvelle catégorie'
+		],
+		'hierarchical' => false
+	]);
+}
+add_action('init', 'plume_create_post_types');
+
+function plume_custom_rss ($qv) {
+	if (isset($qv['feed']) && !isset($qv['post_type'])) {
+		qv['post_type'] = array('paintings');
+	}
+	return $qv;
+}
+add_filter('request', 'plume_custom_rss');
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
