@@ -360,7 +360,7 @@ function plume_create_post_types () {
 			'popular_items' => 'Catégories récurrentes',
 			'new_item_name' => 'Nom de la nouvelle catégorie'
 		],
-		'hierarchical' => false
+		'hierarchical' => true
 	]);
 }
 add_action('init', 'plume_create_post_types');
