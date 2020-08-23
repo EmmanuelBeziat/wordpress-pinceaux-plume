@@ -156,6 +156,8 @@ require get_template_directory() . '/classes/class-plume-walker-page.php';
 // Custom script loader class.
 require get_template_directory() . '/classes/class-plume-script-loader.php';
 
+// Custom CSS.
+require get_template_directory() . '/inc/custom-css.php';
 
 /**
  * Register and Enqueue Styles.
