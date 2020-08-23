@@ -366,7 +366,7 @@ add_action('init', 'plume_create_post_types');
 
 function plume_custom_rss ($qv) {
 	if (isset($qv['feed']) && !isset($qv['post_type'])) {
-		qv['post_type'] = array('paintings');
+		$qv['post_type'] = ['paintings'];
 	}
 	return $qv;
 }
