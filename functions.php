@@ -63,7 +63,7 @@ function plume_theme_support() {
 	// Add custom image size used in Cover Template.
 	add_image_size('plume-fullscreen', 1980, 9999);
 	// show featured images in dashboard
-	add_image_size('plume-admin-post-featured-image', 120, 120, ['center', 'center']);
+	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);
 
 	// Custom logo.
 	$logo_width  = 120;
