@@ -340,7 +340,7 @@ function plume_create_post_types () {
 		],
 		'taxonomies' => ['paintings_category'],
 		'supports' => ['title', 'editor', 'thumbnail', 'revisions' => false, 'comments'],
-		'description' => 'Permet d’ajouter des tableaux'
+		'description' => 'Permet d’ajouter des tableaux',
 		'public' => true,
 		'menu_icon' => 'dashicons-format-gallery'
 	]);
