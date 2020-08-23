@@ -157,7 +157,7 @@ require get_template_directory() . '/classes/class-plume-walker-page.php';
 require get_template_directory() . '/classes/class-plume-script-loader.php';
 
 // Custom CSS.
-require get_template_directory() . '/inc/custom-css.php';
+// require get_template_directory() . '/inc/custom-css.php';
 
 /**
  * Register and Enqueue Styles.
@@ -269,7 +269,7 @@ function plume_block_editor_styles() {
 	wp_enqueue_style('plume-block-editor-styles', get_theme_file_uri('/assets/css/editor-style-block.css'), array(), wp_get_theme()->get('Version'), 'all');
 
 	// Add inline style from the Customizer.
-	wp_add_inline_style('plume-block-editor-styles', plume_get_customizer_css('block-editor'));
+	// wp_add_inline_style('plume-block-editor-styles', plume_get_customizer_css('block-editor'));
 
 	// Enqueue the editor script.
 	wp_enqueue_script('plume-block-editor-script', get_theme_file_uri('/assets/js/editor-script-block.js'), array('wp-blocks', 'wp-dom'), wp_get_theme()->get('Version'), true);
@@ -293,7 +293,7 @@ add_action('init', 'plume_classic_editor_styles');
  * @param array $mce_init TinyMCE styles.
  * @return array TinyMCE styles.
  */
-function plume_add_classic_editor_customizer_styles($mce_init) {
+/* function plume_add_classic_editor_customizer_styles($mce_init) {
 
 	$styles = plume_get_customizer_css('classic-editor');
 
@@ -306,8 +306,7 @@ function plume_add_classic_editor_customizer_styles($mce_init) {
 	return $mce_init;
 
 }
-add_filter('tiny_mce_before_init', 'plume_add_classic_editor_customizer_styles');
-
+add_filter('tiny_mce_before_init', 'plume_add_classic_editor_customizer_styles'); */
 
 /**
  * Overwrite default more tag with styling and screen reader markup.
