@@ -63,7 +63,7 @@ function plume_theme_support() {
 	// Add custom image size used in Cover Template.
 	add_image_size('plume-fullscreen', 1980, 9999);
 	// show featured images in dashboard
-	add_image_size('plume-admin-post-featured-image', 120, 120, false);
+	add_image_size('plume-admin-post-featured-image', 120, 120, true);
 
 	// Custom logo.
 	$logo_width  = 120;
@@ -400,8 +400,8 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 }
 
 // Manage Post and Page Admin Panel Columns
-add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
-add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
+add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 1, 2);
+add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 1, 2);
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
