@@ -1377,10 +1377,14 @@ button.search-untoggle {
 	opacity: 0;
 	background: rgba(0, 0, 0, .5);
 	color: var(--color-bg);
-	font-size: 1.5rem;
 	display: flex;
 	justify-items: center;
 	align-content: center;
+}
+
+.hp-paint__caption h2 {
+	font-size: 2.5rem;
+	margin: 0;
 }
 
 .hp-paint:hover {
@@ -1390,7 +1394,7 @@ button.search-untoggle {
 }
 
 .hp-paint:hover img {
-	filter: blur(5px) grayscale(50%);
+	filter: blur(4px);
 	transition: .25s ease-in;
 }
 
