@@ -1355,6 +1355,9 @@ button.search-untoggle {
 	position: relative;
 	overflow: hidden;
 	color: inherit;
+}
+
+.hp-paint__image {
 	transition: .35s ease-out;
 }
 
@@ -1378,8 +1381,8 @@ button.search-untoggle {
 	background: rgba(0, 0, 0, .5);
 	color: var(--color-bg);
 	display: flex;
-	justify-items: center;
-	align-content: center;
+	justify-content: center;
+	align-items: center;
 }
 
 .hp-paint__caption h2 {
@@ -1388,20 +1391,24 @@ button.search-untoggle {
 }
 
 .hp-paint:hover {
-	transform: scale(1.05);
-	transition: .25s ease-in;
+	transition: .15s ease-in;
 	box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+}
+
+.hp-paint:hover .hp-paint__image {
+	transform: scale(1.05);
+	transition: .15s ease-in;
 }
 
 .hp-paint:hover img {
 	filter: blur(4px);
-	transition: .25s ease-in;
+	transition: .15s ease-in;
 }
 
 .hp-paint:hover .hp-paint__caption {
 	opacity: 1;
 	visibility: visible;
-	transition: .25s ease-in;
+	transition: .15s ease-in;
 }
 
 
