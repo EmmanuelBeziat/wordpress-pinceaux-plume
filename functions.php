@@ -35,7 +35,7 @@ function plume_theme_support() {
 	add_image_size('plume-fullscreen', 1980, 9999);
 
 	// show featured images in dashboard
-	add_image_size('plume-painting-home', 480, 480);
+	add_image_size('plume-painting-home', 480, 480, ['center', 'center']);
 
 	// show featured images in dashboard
 	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);

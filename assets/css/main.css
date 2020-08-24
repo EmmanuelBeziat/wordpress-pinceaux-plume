@@ -1345,7 +1345,36 @@ button.search-untoggle {
 
 /*	10. Blocks
 /* -------------------------------------------------------------------------- */
+.hp-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 10px;
+}
 
+.hp-grid-item {
+	color: inherit;
+}
+
+.paint-item {
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.paint-item img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.paint-item figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 1rem;
+}
 
 
 /* -------------------------------------------------------------------------- */
