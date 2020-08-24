@@ -57,19 +57,19 @@
 	}
 
 	if ($archive_title || $archive_subtitle) : ?>
-		<header class="archive-header has-text-align-center header-footer-group">
-			<div class="archive-header-inner container medium">
+	<header class="archive-header has-text-align-center header-footer-group">
+		<div class="archive-header-inner container medium">
 
-				<?php if ($archive_title) : ?>
-					<h1 class="archive-title"><?php echo wp_kses_post($archive_title); ?></h1>
-				<?php endif ?>
+			<?php if ($archive_title) : ?>
+				<h1 class="archive-title"><?php echo wp_kses_post($archive_title); ?></h1>
+			<?php endif ?>
 
-				<?php if ($archive_subtitle) : ?>
-					<div class="archive-subtitle container thin max-percentage intro-text"><?php echo wp_kses_post(wpautop($archive_subtitle)); ?></div>
-				<?php endif ?>
+			<?php if ($archive_subtitle) : ?>
+				<div class="archive-subtitle container thin max-percentage intro-text"><?php echo wp_kses_post(wpautop($archive_subtitle)); ?></div>
+			<?php endif ?>
 
-			</div>
-		</header>
+		</div>
+	</header>
 	<?php endif;
 
 	$loop = new WP_Query([
@@ -86,9 +86,9 @@
 	</section>
 
 	<?php elseif (is_search()) : ?>
-		<div class="no-search-results-form container thin">
-			<?php get_search_form(['label' => 'Rechercher encore']); ?>
-		</div>
+	<div class="no-search-results-form container thin">
+		<?php get_search_form(['label' => 'Rechercher encore']); ?>
+	</div>
 	<?php endif; ?>
 
 	<?php get_template_part('template-parts/pagination'); ?>
