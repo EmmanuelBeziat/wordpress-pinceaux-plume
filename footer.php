@@ -12,12 +12,10 @@
  */
 
 ?>
-			<footer id="site-footer" role="contentinfo" class="header-footer-group">
-
+			<footer id="site-footer" role="contentinfo" class="footer">
 				<div class="container">
 
 					<div class="footer-credits">
-
 						<p class="footer-copyright">&copy;
 							<?php
 							echo date_i18n(
@@ -27,7 +25,6 @@
 							?>
 							<a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
 						</p>
-
 					</div>
 
 					<a class="to-the-top" href="#site-header">
@@ -43,10 +40,8 @@
 							printf(__('Up %s', 'plume'), '<span class="arrow" aria-hidden="true">&uarr;</span>');
 							?>
 						</span>
-					</a
-
+					</a>
 				</div>
-
 			</footer>
 
 		<?php wp_footer(); ?>

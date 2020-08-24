@@ -27,16 +27,13 @@ if ( ! function_exists( 'plume_generate_css' ) ) {
 		 * Bail early if we have no $selector elements or properties and $value.
 		 */
 		if ( ! $value || ! $selector ) {
-
 			return;
 		}
 
 		$return = sprintf( '%s { %s: %s; }', $selector, $style, $prefix . $value . $suffix );
 
 		if ( $echo ) {
-
 			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;)
-
 		}
 
 		return $return;

@@ -10,21 +10,6 @@
  */
 
 /**
- * Table of Contents:
- * Theme Support
- * Required Files
- * Register Styles
- * Register Scripts
- * Register Menus
- * Custom Logo
- * WP Body Open
- * Register Sidebars
- * Enqueue Block Editor Assets
- * Enqueue Classic Editor Styles
- * Block Editor Settings
- */
-
-/**
  * Sets up theme defaults and registers support for various WordPress features.
  *
  * Note that this function is hooked into the after_setup_theme hook, which
@@ -35,20 +20,6 @@ function plume_theme_support() {
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support('automatic-feed-links');
-
-	// Custom background color.
-	add_theme_support(
-		'custom-background',
-		array(
-			'default-color' => 'f5efe0',
-		)
-	);
-
-	// Set content-width.
-	global $content_width;
-	if (! isset($content_width)) {
-		$content_width = 580;
-	}
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
@@ -62,27 +33,12 @@ function plume_theme_support() {
 
 	// Add custom image size used in Cover Template.
 	add_image_size('plume-fullscreen', 1980, 9999);
+
+	// show featured images in dashboard
+	add_image_size('plume-painting-home', 640, 640);
+
 	// show featured images in dashboard
 	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);
-
-	// Custom logo.
-	$logo_width  = 120;
-	$logo_height = 90;
-
-	// If the retina setting is active, double the recommended width and height.
-	if (get_theme_mod('retina_logo', false)) {
-		$logo_width  = floor($logo_width * 2);
-		$logo_height = floor($logo_height * 2);
-	}
-
-	add_theme_support(
-		'custom-logo', [
-			'height'      => $logo_height,
-			'width'       => $logo_width,
-			'flex-height' => true,
-			'flex-width'  => true,
-    ]
-	);
 
 	/*
 	 * Let WordPress manage the document title.
@@ -112,16 +68,6 @@ function plume_theme_support() {
 	// Add support for responsive embeds.
 	add_theme_support('responsive-embeds');
 
-	/*
-	 * Adds starter content to highlight the theme on fresh sites.
-	 * This is done conditionally to avoid loading the starter content on every
-	 * page load, as it is a one-off operation only needed once in the customizer.
-	 */
-	if (is_customize_preview()) {
-		require get_template_directory() . '/inc/starter-content.php';
-		add_theme_support('starter-content', plume_get_starter_content());
-	}
-
 	// Add theme support for selective refresh for widgets.
 	add_theme_support('customize-selective-refresh-widgets');
 
@@ -133,7 +79,6 @@ function plume_theme_support() {
 	add_filter('script_loader_tag', array($loader, 'filter_script_loader_tag'), 10, 2);
 
 }
-
 add_action('after_setup_theme', 'plume_theme_support');
 
 /**
@@ -141,21 +86,11 @@ add_action('after_setup_theme', 'plume_theme_support');
  * Include required files.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-// Handle SVG icons.
 require get_template_directory() . '/classes/class-plume-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
-
-// Require Separator Control class.
 require get_template_directory() . '/classes/class-plume-separator-control.php';
-
-// Custom comment walker.
 require get_template_directory() . '/classes/class-plume-walker-comment.php';
-
-// Custom page walker.
 require get_template_directory() . '/classes/class-plume-walker-page.php';
-
-// Custom script loader class.
 require get_template_directory() . '/classes/class-plume-script-loader.php';
 
 // Custom CSS.
@@ -169,8 +104,6 @@ function plume_register_styles() {
 	$theme_version = wp_get_theme()->get('Version');
 
   wp_enqueue_style('plume-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), $theme_version);
-
-	// Add print CSS.
 	wp_enqueue_style('plume-print-style', get_template_directory_uri() . '/assets/css/print.min.css', null, $theme_version, 'print');
 }
 
@@ -183,13 +116,12 @@ function plume_register_scripts() {
 
 	$theme_version = wp_get_theme()->get('Version');
 
-	if ((! is_admin()) && is_singular() && comments_open() && get_option('thread_comments')) {
+	if ((!is_admin()) && is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
 
 	wp_enqueue_script('plume-js', get_template_directory_uri() . '/assets/js/main.min.js', array(), $theme_version, false);
 	wp_script_add_data('plume-js', 'defer', true);
-
 }
 
 add_action('wp_enqueue_scripts', 'plume_register_scripts');
@@ -199,13 +131,10 @@ add_action('wp_enqueue_scripts', 'plume_register_scripts');
  */
 function plume_menus() {
 
-	$locations = array(
-		'primary'  => __('Desktop Horizontal Menu', 'plume'),
-		'expanded' => __('Desktop Expanded Menu', 'plume'),
-		'mobile'   => __('Mobile Menu', 'plume'),
-		'footer'   => __('Footer Menu', 'plume'),
-		'social'   => __('Social Menu', 'plume'),
-	);
+	$locations = [
+		'primary'  => __('Menu principal', 'plume'),
+		'footer'   => __('Menu pied de page', 'plume'),
+	];
 
 	register_nav_menus($locations);
 }
@@ -261,7 +190,7 @@ function plume_sidebar_registration() {
 	);
 
 }
-add_action('widgets_init', 'plume_sidebar_registration');
+// add_action('widgets_init', 'plume_sidebar_registration');
 
 /**
  * Enqueue supplemental block editor styles.

@@ -20,7 +20,6 @@
 <main id="site-content" role="main">
 
 	<?php
-
 	$archive_title    = '';
 	$archive_subtitle = '';
 
@@ -44,70 +43,51 @@
 				),
 				number_format_i18n($wp_query->found_posts)
 			);
-		} else {
+		}
+		else {
 			$archive_subtitle = __('We could not find any results for your search. You can give it another try through the search form below.', 'plume');
 		}
-	} elseif (is_archive() && ! have_posts()) {
+	}
+	elseif (is_archive() && !have_posts()) {
 		$archive_title = __('Nothing Found', 'plume');
-	} elseif (! is_home()) {
+	}
+	elseif (!is_home()) {
 		$archive_title    = get_the_archive_title();
 		$archive_subtitle = get_the_archive_description();
 	}
 
-	if ($archive_title || $archive_subtitle) {
-		?>
-
+	if ($archive_title || $archive_subtitle) : ?>
 		<header class="archive-header has-text-align-center header-footer-group">
-
 			<div class="archive-header-inner container medium">
 
-				<?php if ($archive_title) { ?>
+				<?php if ($archive_title) : ?>
 					<h1 class="archive-title"><?php echo wp_kses_post($archive_title); ?></h1>
-				<?php } ?>
+				<?php endif ?>
 
-				<?php if ($archive_subtitle) { ?>
+				<?php if ($archive_subtitle) : ?>
 					<div class="archive-subtitle container thin max-percentage intro-text"><?php echo wp_kses_post(wpautop($archive_subtitle)); ?></div>
-				<?php } ?>
+				<?php endif ?>
 
-			</div><!-- .archive-header-inner -->
+			</div>
+		</header>
+	<?php endif;
 
-		</header><!-- .archive-header -->
+	$loop = new WP_Query([
+		'post_type' => 'paintings',
+		'posts_per_page' => -1
+	]);
 
-		<?php
-	}
+	if ($loop->have_posts()) :
+		while ($loop->have_posts()) : $loop->the_post();
+			get_template_part('template-parts/content', $loop->get_post_type());
+		endwhile;
+		wp_reset_query();
 
-	if (have_posts()) {
-
-		$i = 0;
-
-		while (have_posts()) {
-			$i++;
-			if ($i > 1) {
-				echo '<hr class="post-separator styled-separator is-style-wide container" aria-hidden="true" />';
-			}
-			the_post();
-
-			get_template_part('template-parts/content', get_post_type());
-
-		}
-	} elseif (is_search()) {
-		?>
-
+	elseif (is_search()) : ?>
 		<div class="no-search-results-form container thin">
-
-			<?php
-			get_search_form(
-				array(
-					'label' => __('search again', 'plume'),
-				)
-			);
-			?>
-
-		</div><!-- .no-search-results -->
-
-		<?php
-	}
-	?>
+			<?php get_search_form(['label' => 'Rechercher encore']); ?>
+		</div>
+	<?php endif; ?>
 
 	<?php get_template_part('template-parts/pagination'); ?>
 
