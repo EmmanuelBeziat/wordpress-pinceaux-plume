@@ -1351,32 +1351,28 @@ button.search-untoggle {
 	gap: 10px;
 }
 
-.hp-grid-item {
-	color: inherit;
-	transition: .25s ease-in-out;
-}
-
-.paint-item {
-	margin: 0;
+.hp-paint {
 	position: relative;
 	overflow: hidden;
+	color: inherit;
+	transition: .35s ease-out;
 }
 
-.paint-item img {
+.hp-paint__image img {
 	display: block;
 	width: 100%;
 	height: auto;
-	transition: .25s ease-in-out;
+	transition: .35s ease-out;
 }
 
-.paint-item figcaption {
+.hp-paint__caption {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	padding: 1rem;
-	transition: .25s ease-in-out;
+	transition: .35s ease-out;
 	visibility: hidden;
 	opacity: 0;
 	background: rgba(0, 0, 0, .5);
@@ -1387,18 +1383,21 @@ button.search-untoggle {
 	align-content: center;
 }
 
-.hp-grid-item:hover {
+.hp-paint:hover {
 	transform: scale(1.05);
+	transition: .25s ease-in;
 	box-shadow: 0 0 5px rgba(0, 0, 0, .25);
 }
 
-.hp-grid-item:hover img {
-	transform: scale(1.1);
+.hp-paint:hover img {
+	filter: blur(5px) grayscale(50%);
+	transition: .25s ease-in;
 }
 
-.hp-grid-item:hover figcaption {
+.hp-paint:hover .hp-paint__caption {
 	opacity: 1;
 	visibility: visible;
+	transition: .25s ease-in;
 }
 
 
