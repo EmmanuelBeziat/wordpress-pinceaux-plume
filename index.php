@@ -77,12 +77,16 @@
 		'posts_per_page' => -1
 	]); ?>
 
-	<section class="hp-grid">
-	<?php if ($loop->have_posts()) :
-		while ($loop->have_posts()) : $loop->the_post();
-			get_template_part('template-parts/painting', $loop->get_post_type());
-		endwhile;
-		wp_reset_query(); ?>
+	<section class="hp-paints section">
+		<div class="container">
+			<div class="hp-grid">
+				<?php if ($loop->have_posts()) :
+					while ($loop->have_posts()) : $loop->the_post();
+						get_template_part('template-parts/painting', $loop->get_post_type());
+					endwhile;
+					wp_reset_query(); ?>
+			</div>
+		</div>
 	</section>
 
 	<?php elseif (is_search()) : ?>
