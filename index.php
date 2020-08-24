@@ -75,15 +75,17 @@
 	$loop = new WP_Query([
 		'post_type' => 'paintings',
 		'posts_per_page' => -1
-	]);
+	]); ?>
 
-	if ($loop->have_posts()) :
+	<section class="hp-grid">
+	<?php if ($loop->have_posts()) :
 		while ($loop->have_posts()) : $loop->the_post();
 			get_template_part('template-parts/painting', $loop->get_post_type());
 		endwhile;
-		wp_reset_query();
+		wp_reset_query(); ?>
+	</section>
 
-	elseif (is_search()) : ?>
+	<?php elseif (is_search()) : ?>
 		<div class="no-search-results-form container thin">
 			<?php get_search_form(['label' => 'Rechercher encore']); ?>
 		</div>

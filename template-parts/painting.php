@@ -10,12 +10,13 @@
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-  <?php echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home'); ?>
-
+<a href="<?php echo get_permalink(the_ID()) ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
+  <figure class="paint-item">
+    <?php echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home'); ?>
+    <figcaption><?php echo get_the_title() ?></figcaption>
+  </figure>
   <?php
-  echo get_the_title();
   // Single bottom post meta.
   // plume_the_post_meta(get_the_ID(), 'single-bottom');
   ?>
-</article>
+</a>
