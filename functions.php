@@ -31,9 +31,6 @@ function plume_theme_support() {
 	// Set post thumbnail size.
 	set_post_thumbnail_size(1200, 9999);
 
-	// Add custom image size used in Cover Template.
-	add_image_size('plume-fullscreen', 1980, 9999);
-
 	// show featured images in dashboard
 	add_image_size('plume-painting-home', 480, 480, ['center', 'center']);
 

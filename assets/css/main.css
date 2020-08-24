@@ -1353,6 +1353,7 @@ button.search-untoggle {
 
 .hp-grid-item {
 	color: inherit;
+	transition: .25s ease-in-out;
 }
 
 .paint-item {
@@ -1365,6 +1366,7 @@ button.search-untoggle {
 	display: block;
 	width: 100%;
 	height: auto;
+	transition: .25s ease-in-out;
 }
 
 .paint-item figcaption {
@@ -1374,6 +1376,29 @@ button.search-untoggle {
 	right: 0;
 	bottom: 0;
 	padding: 1rem;
+	transition: .25s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+	background: rgba(0, 0, 0, .5);
+	color: var(--color-bg);
+	font-size: 1.5rem;
+	display: flex;
+	justify-items: center;
+	align-content: center;
+}
+
+.hp-grid-item:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+}
+
+.hp-grid-item:hover img {
+	transform: scale(1.1);
+}
+
+.hp-grid-item:hover figcaption {
+	opacity: 1;
+	visibility: visible;
 }
 
 
