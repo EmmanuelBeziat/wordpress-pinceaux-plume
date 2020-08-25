@@ -16,6 +16,7 @@
   </div>
   <div class="hp-paint__caption">
     <h2 class="hp-paint__title"><?php echo get_the_title() ?></h2>
+    <?php echo the_excerpt() ?>
   </div>
   <?php
   // Single bottom post meta.
