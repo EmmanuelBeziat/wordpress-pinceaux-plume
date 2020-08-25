@@ -27,7 +27,7 @@
 						</p>
 					</div>
 
-					<a class="to-the-top" href="#site-header">
+					<a class="to-the-top screen-reader-text" href="#site-header">
 						<span class="to-the-top-long">
 							<?php
 							/* translators: %s: HTML character for up arrow. */
