@@ -10,7 +10,7 @@
 
 ?>
 
-<a href="<?php echo get_permalink(the_ID()) ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
+<a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
   <div class="hp-paint__image">
     <?php echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home'); ?>
   </div>
