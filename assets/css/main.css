@@ -1527,6 +1527,10 @@ button.search-untoggle {
 	padding:	1rem 0;
 }
 
+.footer-copyright {
+	margin: 0;
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*	17. Media Queries
