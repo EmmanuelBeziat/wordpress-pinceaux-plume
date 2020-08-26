@@ -12,14 +12,12 @@ get_header();
 
 <main id="site-content" class="main">
 
-	<div class="container thin error404-content">
+	<div class="container error404-content">
 		<h1 class="entry-title">Page introuvable</h1>
 
 		<div class="intro-text"><p>La page que vous recherchez n’existe pas. Elle a peut-être été supprimée ou déplacée.</p></div>
 
-		<div class="container thin">
-			<?php	get_search_form(['label' => 'Page introuvable']);	?>
-		</div>
+		<?php	get_search_form(['label' => 'Page introuvable']);	?>
 	</div>
 
 </main>
