@@ -70,6 +70,17 @@
 					</div>
 				</div>
 
+				<div class="header-credits">
+					<p class="header-copyright no-margin">&copy;
+						<?php
+						echo date_i18n(
+							/* translators: Copyright date format, see https://www.php.net/date */
+							_x('Y', 'copyright date format', 'plume')
+						);
+						?> <?php echo bloginfo('name'); ?>
+					</p>
+				</div>
+
 				<?php // get_template_part('template-parts/modal-search') ?>
 				<?php // get_template_part('template-parts/modal-menu') ?>
 			</header>
