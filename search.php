@@ -20,15 +20,15 @@
 <main id="site-content" class="main">
 
 	<section class="hp-paints section section-search">
-		<?php if (have_posts()) : ?>
 		<header class="section-header">
 			<h1 class="section-header-title page-title">Résultats de recherche pour : <span class="search-query"><?php echo get_search_query() ?></span></h1>
 		</header>
 
+		<?php if (have_posts()) : ?>
 		<div class="hp-grid">
-				<?php while (have_posts()) : the_post();
-					get_template_part('template-parts/painting', get_post_type());
-				endwhile; ?>
+			<?php while (have_posts()) : the_post();
+				get_template_part('template-parts/painting', get_post_type());
+			endwhile; ?>
 		</div>
 		<?php else : ?>
 		<div class="no-search-results-form container thin">
