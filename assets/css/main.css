@@ -1087,6 +1087,32 @@ input[type="search"]:focus {
 	width: 1.5em;
 }
 
+.header-search {
+	margin-top: 4rem;
+}
+
+.header-search .search-form {
+	display: flex;
+	border-bottom: 2px solid var(--color-modal-overlay);
+}
+
+.header-search .search-form label {
+	flex: 1;
+	margin: 0;
+	font-size: 1.5rem;
+}
+
+.header-search .search-form input {
+	border: 0;
+	padding: 1em;
+	font-size: 1.25rem;
+}
+
+.header-search .search-submit {
+	background: none;
+	padding: .5rem 1.5rem;
+	line-height: 1;
+}
 
 /* -------------------------------------------------------------------------- */
 

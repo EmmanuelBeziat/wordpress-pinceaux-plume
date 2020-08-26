@@ -63,22 +63,22 @@
 						</button>
 						*/ ?>
 
-						<div class="header-search">
-							<?php get_search_form(['label' => 'Recherche…']);	?>
-						</div>
-
 					</div>
-				</div>
 
-				<div class="header-credits">
-					<p class="header-copyright no-margin">&copy;
-						<?php
-						echo date_i18n(
-							/* translators: Copyright date format, see https://www.php.net/date */
-							_x('Y', 'copyright date format', 'plume')
-						);
-						?> <?php echo bloginfo('name'); ?>
-					</p>
+					<div class="header-search">
+						<?php get_search_form(['label' => 'Recherche…']);	?>
+					</div>
+
+					<div class="header-credits">
+						<p class="header-copyright no-margin">&copy;
+							<?php
+							echo date_i18n(
+								/* translators: Copyright date format, see https://www.php.net/date */
+								_x('Y', 'copyright date format', 'plume')
+							);
+							?> <?php echo bloginfo('name'); ?>
+						</p>
+					</div>
 				</div>
 
 				<?php // get_template_part('template-parts/modal-search') ?>
