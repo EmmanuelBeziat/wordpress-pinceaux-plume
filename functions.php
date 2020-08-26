@@ -334,8 +334,8 @@ add_action('admin_menu', 'plume_remove_comments_menu');
 // Removes from post and pages
 
 function remove_comment_support() {
-	remove_post_type_support( 'post', 'comments' );
-	remove_post_type_support( 'page', 'comments' );
+	remove_post_type_support('post', 'comments');
+	remove_post_type_support('page', 'comments');
 }
 add_action('init', 'remove_comment_support', 100);
 // Removes from admin bar
