@@ -89,6 +89,7 @@ require get_template_directory() . '/classes/class-plume-separator-control.php';
 require get_template_directory() . '/classes/class-plume-walker-comment.php';
 require get_template_directory() . '/classes/class-plume-walker-page.php';
 require get_template_directory() . '/classes/class-plume-script-loader.php';
+require get_template_directory() . '/inc/options-page.php'
 
 // Custom CSS.
 // require get_template_directory() . '/inc/custom-css.php';
@@ -324,6 +325,12 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 		break;
 	}
 }
+
+// Create options page
+function plume_theme_options () {
+	add_theme_page('theme-options', 'Options', 'manage_options', 'plume-theme-options', 'plume_theme_options', null);
+}
+add_action('admin_menu', 'plume_theme_options');
 
 // Manage Post and Page Admin Panel Columns
 add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);

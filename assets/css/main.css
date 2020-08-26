@@ -382,9 +382,6 @@ html {
 }
 
 body {
-	min-height: 100vh;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
 	background: #e0e0da;
 	color: #222;
 	font: 400 16px/1.5 "Segoe UI", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
@@ -907,6 +904,13 @@ input[type="search"]:focus {
 	outline-offset: -4px;
 }
 
+.site {
+	min-height: 100vh;
+	overflow-x: hidden;
+	display: grid;
+	grid-template-columns: 20rem auto;
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*	3. Helper Classes
@@ -996,6 +1000,10 @@ input[type="search"]:focus {
 
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
+.header {
+	padding: 0 1rem;
+}
+
 .header-navigation-wrapper {
 	display: flex;
 	transform: translateY(6px);
