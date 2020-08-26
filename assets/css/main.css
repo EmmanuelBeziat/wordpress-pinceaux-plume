@@ -908,7 +908,7 @@ input[type="search"]:focus {
 	min-height: 100vh;
 	overflow-x: hidden;
 	display: grid;
-	grid-template-columns: 30rem auto;
+	grid-template-columns: 40vw auto;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1001,8 +1001,9 @@ input[type="search"]:focus {
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
 .header {
-	padding: 0 4rem;
 	background: url('../img/paintbrushes.jpg') no-repeat 50% 50% / cover;
+	display: flex;
+	max-width: 50rem;
 }
 
 .header-navigation-wrapper {
@@ -1013,6 +1014,7 @@ input[type="search"]:focus {
 .header-inner {
 	background: #fff;
 	padding: 1rem;
+	margin: 2rem auto auto;
 }
 
 /* Header Titles ----------------------------- */
@@ -1354,6 +1356,10 @@ button.search-untoggle {
 
 /*	10. Blocks
 /* -------------------------------------------------------------------------- */
+.hp-paints {
+	padding: 2rem 0;
+}
+
 .hp-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
