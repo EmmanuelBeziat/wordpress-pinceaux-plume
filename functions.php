@@ -326,6 +326,27 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 	}
 }
 
+// Removes from admin menu
+function plume_remove_comments_menu () {
+	remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'plume_remove_comments_menu ' );
+// Removes from post and pages
+
+function remove_comment_support() {
+	remove_post_type_support( 'post', 'comments' );
+	remove_post_type_support( 'page', 'comments' );
+}
+add_action('init', 'remove_comment_support', 100);
+// Removes from admin bar
+
+function plume_admin_bar_render() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+}
+add_action('wp_before_admin_bar_render', 'plume_admin_bar_render');
+
+
 // Create options page
 function plume_add_options () {
 	add_theme_page('theme-options', 'Options', 'manage_options', 'plume-theme-options', 'plume_theme_options', null);
