@@ -20,23 +20,23 @@
 <main id="site-content" class="main">
 
 	<section class="hp-paints section section-search">
-		<header class="section-header">
-			<h1 class="section-header-title page-title">Résultats de recherche pour : <span class="search-query"><?php echo get_search_query() ?></span></h1>
-		</header>
+		<div class="container">
+			<header class="section-header">
+				<h1 class="heading-size-3 section-header-title page-title">Résultats de recherche pour : « <span class="search-query"><?php echo get_search_query() ?> »</span></h1>
+			</header>
 
-		<?php if (have_posts()) : ?>
-		<div class="hp-grid">
-			<?php while (have_posts()) : the_post();
-				get_template_part('template-parts/painting', get_post_type());
-			endwhile; ?>
-		</div>
-		<?php else : ?>
-		<div class="no-search-results-form container thin">
-			<p>Aucun résultat. Vous pouvez effectuer une nouvelle recherche.</p>
-		</div>
-		<?php endif; ?>
+			<?php if (have_posts()) : ?>
+			<div class="hp-grid">
+				<?php while (have_posts()) : the_post();
+					get_template_part('template-parts/painting', get_post_type());
+				endwhile; ?>
+			</div>
+			<?php else : ?>
+			<div class="no-search-results-form">
+				<p>Aucun résultat. Vous pouvez effectuer une nouvelle recherche.</p>
+			</div>
+			<?php endif; ?>
 
-		<div class="container thin">
 			<?php get_search_form(['label' => 'Rechercher encore']); ?>
 		</div>
 	</section>
