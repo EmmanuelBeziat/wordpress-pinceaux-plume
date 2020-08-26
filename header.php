@@ -27,7 +27,7 @@
 	<body <?php body_class(); ?>>
 		<div class="site">
 			<header id="site-header" class="header" role="banner">
-				<div class="header-inner container">
+				<div class="header-inner">
 
 					<div class="header-titles">
 						<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php echo get_bloginfo('name') ?></a></h1>

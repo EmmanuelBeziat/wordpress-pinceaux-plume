@@ -908,7 +908,7 @@ input[type="search"]:focus {
 	min-height: 100vh;
 	overflow-x: hidden;
 	display: grid;
-	grid-template-columns: 20rem auto;
+	grid-template-columns: 30rem auto;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1001,7 +1001,8 @@ input[type="search"]:focus {
 /*	4.	Site Header
 /* -------------------------------------------------------------------------- */
 .header {
-	padding: 0 1rem;
+	padding: 0 4rem;
+	background: url('../img/paintbrushes.jpg') no-repeat 50% 50% / cover;
 }
 
 .header-navigation-wrapper {
@@ -1010,9 +1011,8 @@ input[type="search"]:focus {
 }
 
 .header-inner {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	background: #fff;
+	padding: 1rem;
 }
 
 /* Header Titles ----------------------------- */
@@ -1021,6 +1021,7 @@ input[type="search"]:focus {
 	font-size: 1.8rem;
 	font-weight: 700;
 	line-height: 1;
+	text-align: center;
 	margin: 0;
 }
 
@@ -1532,6 +1533,7 @@ button.search-untoggle {
 /*	16. Site Footer
 /* -------------------------------------------------------------------------- */
 .footer {
+	display: none;
 	text-align: center;
 	padding:	1rem 0;
 }
