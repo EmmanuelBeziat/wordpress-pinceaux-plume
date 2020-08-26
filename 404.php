@@ -13,7 +13,7 @@ get_header();
 <main id="site-content" class="main">
 
 	<div class="container error404-content">
-		<h1 class="entry-title">Page introuvable</h1>
+		<h1 class="heading-size-3 entry-title">Page introuvable</h1>
 
 		<div class="intro-text"><p>La page que vous recherchez n’existe pas. Elle a peut-être été supprimée ou déplacée.</p></div>
 
