@@ -908,7 +908,11 @@ input[type="search"]:focus {
 	min-height: 100vh;
 	overflow-x: hidden;
 	display: grid;
-	grid-template-columns: 40vw auto;
+	grid-template-columns: minmax(25rem, 40vw) auto;
+}
+
+.main {
+	box-shadow: 0 0 20px rgba(0, 0, 0, .25);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1003,7 +1007,6 @@ input[type="search"]:focus {
 .header {
 	background: url('../img/paintbrushes.jpg') no-repeat 50% 50% / cover;
 	display: flex;
-	max-width: 50rem;
 }
 
 .header-navigation-wrapper {
@@ -1013,8 +1016,9 @@ input[type="search"]:focus {
 
 .header-inner {
 	background: #fff;
-	padding: 1rem;
+	padding: 2.5rem;
 	margin: 2rem auto auto;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .15);
 }
 
 /* Header Titles ----------------------------- */
@@ -1363,7 +1367,7 @@ button.search-untoggle {
 .hp-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	gap: 10px;
+	gap: 4px;
 }
 
 .hp-paint {
