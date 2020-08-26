@@ -327,10 +327,10 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 }
 
 // Create options page
-function plume_theme_options () {
+function plume_add_options () {
 	add_theme_page('theme-options', 'Options', 'manage_options', 'plume-theme-options', 'plume_theme_options', null);
 }
-add_action('admin_menu', 'plume_theme_options');
+add_action('admin_menu', 'plume_add_options');
 
 // Manage Post and Page Admin Panel Columns
 add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
