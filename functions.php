@@ -89,7 +89,7 @@ require get_template_directory() . '/classes/class-plume-separator-control.php';
 require get_template_directory() . '/classes/class-plume-walker-comment.php';
 require get_template_directory() . '/classes/class-plume-walker-page.php';
 require get_template_directory() . '/classes/class-plume-script-loader.php';
-require get_template_directory() . '/inc/options-page.php'
+require get_template_directory() . '/inc/options-page.php';
 
 // Custom CSS.
 // require get_template_directory() . '/inc/custom-css.php';
