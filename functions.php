@@ -330,7 +330,7 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 function plume_remove_comments_menu () {
 	remove_menu_page('edit-comments.php');
 }
-add_action('admin_menu', 'plume_remove_comments_menu ' );
+add_action('admin_menu', 'plume_remove_comments_menu');
 // Removes from post and pages
 
 function remove_comment_support() {
