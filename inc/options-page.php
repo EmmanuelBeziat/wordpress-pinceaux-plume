@@ -8,7 +8,7 @@ function plume_theme_options () {
 
   <form action="options.php" method="post">
   <?php
-    settings_fields('plume-theme-options-grp')
+    settings_fields('plume-theme-options-grp');
     do_settings_sections('plume-theme-options');
     submit_button();
   ?>
@@ -38,5 +38,5 @@ function header_background_display () {
   ?>
   <input type="file" name="header_background">
   <?php
-  echo get_option('header_background')
+  echo get_option('header_background');
 }
