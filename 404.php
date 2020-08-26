@@ -26,11 +26,9 @@ get_header();
 		);
 		?>
 
-	</div><!-- .container -->
+	</div>
 
-</main><!-- #site-content -->
-
-<?php get_template_part('template-parts/footer-menus-widgets'); ?>
+</main>
 
 <?php
 get_footer();
