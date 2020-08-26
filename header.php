@@ -34,7 +34,7 @@
 					</div>
 
 					<div class="header-navigation-wrapper">
-						<?php if (has_nav_menu('primary')) : ?>
+						<?php /*if (has_nav_menu('primary')) : ?>
 
 						<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" data-set-focus=".menu-modal .search-field">
 							<span class="toggle-inner">
@@ -45,7 +45,7 @@
 							</span>
 						</button>
 
-						<?php endif ?>
+						<?php endif*/ ?>
 
 						<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field">
 							<span class="toggle-inner">
