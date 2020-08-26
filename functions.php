@@ -353,22 +353,6 @@ function plume_add_options () {
 }
 add_action('admin_menu', 'plume_add_options'); */
 
-if (function_exists('acf_add_options_page')) {
-	acf_add_options_page([
-		'page_title' 	=> 'Options générales',
-		'menu_title'	=> 'Options du thème',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	]);
-
-	acf_add_options_sub_page([
-		'page_title' 	=> 'Options de l’en-tête',
-		'menu_title'	=> 'En-tête',
-		'parent_slug'	=> 'theme-general-settings'
-	]);
-}
-
 // Manage Post and Page Admin Panel Columns
 add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
 add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
