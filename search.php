@@ -19,25 +19,26 @@
 
 <main id="site-content" class="main">
 
-	<?php
-	$loop = new WP_Query([
-		'post_type' => 'paintings',
-		'posts_per_page' => -1
-	]); ?>
+	<section class="hp-paints section section-search">
+		<?php if (have_posts()) : ?>
+		<header class="section-header">
+			<h1 class="section-header-title page-title">Résultats de recherche pour : <span class="search-query"><?php echo get_search_query() ?></span></h1>
+		</header>
 
-	<section class="hp-paints section">
-		<?php if ($loop->have_posts()) : ?>
 		<div class="hp-grid">
-				<?php while ($loop->have_posts()) : $loop->the_post();
-					get_template_part('template-parts/painting', $loop->get_post_type());
-				endwhile;
-				wp_reset_query(); ?>
+				<?php while (have_posts()) : the_post();
+					get_template_part('template-parts/painting', get_post_type());
+				endwhile; ?>
 		</div>
-		<?php elseif (is_search()) : ?>
+		<?php else : ?>
+		<div class="no-search-results-form container thin">
+			<p>Aucun résultat. Vous pouvez effectuer une nouvelle recherche.</p>
+		</div>
+		<?php endif; ?>
+
 		<div class="no-search-results-form container thin">
 			<?php get_search_form(['label' => 'Rechercher encore']); ?>
 		</div>
-		<?php endif; ?>
 	</section>
 
 </main>
