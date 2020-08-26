@@ -29,7 +29,7 @@
 		<?php if ($loop->have_posts()) : ?>
 		<div class="hp-grid">
 				<?php while ($loop->have_posts()) : $loop->the_post();
-					get_template_part('template-parts/painting', $loop->get_post_type());
+					get_template_part('template-parts/content', $loop->get_post_type());
 				endwhile;
 				wp_reset_query(); ?>
 		</div>

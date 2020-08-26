@@ -10,22 +10,16 @@
 get_header();
 ?>
 
-<main id="site-content" role="main">
+<main id="site-content" class="main">
 
 	<div class="container thin error404-content">
+		<h1 class="entry-title">Page introuvable</h1>
 
-		<h1 class="entry-title"><?php _e('Page Not Found', 'plume'); ?></h1>
+		<div class="intro-text"><p>La page que vous recherchez n’existe pas. Elle a peut-être été supprimée ou déplacée.</p></div>
 
-		<div class="intro-text"><p><?php _e('The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place.', 'plume'); ?></p></div>
-
-		<?php
-		get_search_form(
-			array(
-				'label' => __('404 not found', 'plume'),
-			)
-		);
-		?>
-
+		<div class="container thin">
+			<?php	get_search_form(['label' => 'Page introuvable']);	?>
+		</div>
 	</div>
 
 </main>

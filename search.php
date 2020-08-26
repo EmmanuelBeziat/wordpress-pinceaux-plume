@@ -36,7 +36,7 @@
 		</div>
 		<?php endif; ?>
 
-		<div class="no-search-results-form container thin">
+		<div class="container thin">
 			<?php get_search_form(['label' => 'Rechercher encore']); ?>
 		</div>
 	</section>
