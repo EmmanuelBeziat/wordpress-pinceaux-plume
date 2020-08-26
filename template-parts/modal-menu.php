@@ -91,7 +91,7 @@
 									'match_menu_classes' => true,
 									'show_toggles'       => true,
 									'title_li'           => false,
-									'walker'             => new TwentyTwenty_Walker_Page(),
+									'walker'             => new Plume_Walker_Page(),
 								)
 							);
 
