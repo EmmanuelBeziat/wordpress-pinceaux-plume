@@ -961,13 +961,19 @@ input[type="search"]:focus {
 /* Search Form ------------------------------- */
 .search-form {
 	display: flex;
+	margin: 1rem 0;
 }
 
 .search-form > label {
 	flex: 1;
 }
 
+.search-form > input {
+	border: 0;
+}
+
 .search-form .search-submit {
+	padding: .5em 1.5em;
 	flex-shrink: 0;
 }
 
