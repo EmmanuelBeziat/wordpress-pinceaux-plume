@@ -1023,6 +1023,10 @@ input[type="search"]:focus {
 
 /* Header Titles ----------------------------- */
 
+.header-titles {
+	margin-bottom: 2rem;
+}
+
 .site-title {
 	font-size: 1.8rem;
 	font-weight: 700;
