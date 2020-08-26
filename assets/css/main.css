@@ -1019,6 +1019,7 @@ input[type="search"]:focus {
 	padding: 2.5rem;
 	margin: 2rem auto auto;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+	max-width: 25rem;
 }
 
 /* Header Titles ----------------------------- */
@@ -1116,6 +1117,12 @@ input[type="search"]:focus {
 	background: none;
 	padding: .5rem 1.5rem;
 	line-height: 1;
+}
+
+.header-credits {
+	margin-top: 2rem;
+	text-align: center;
+	font-size: .85rem;
 }
 
 /* -------------------------------------------------------------------------- */
