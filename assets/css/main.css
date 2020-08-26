@@ -1368,12 +1368,19 @@ button.search-untoggle {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	gap: 4px;
+	opacity: 0;
+	transition: .15s ease-in;
+}
+
+.hp-grid.is-loaded {
+	opacity: 1;
 }
 
 .hp-paint {
 	position: relative;
 	overflow: hidden;
 	color: inherit;
+	background: var(--color-modal-overlay);
 }
 
 .hp-paint__image {

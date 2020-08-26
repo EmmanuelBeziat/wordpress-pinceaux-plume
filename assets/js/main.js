@@ -598,12 +598,31 @@ plume.toggles = {
 
 }; // plume.toggles
 
+plume.lazyGrid = {
+	init: function () {
+		const grid = document.querySelector('.hp-grid')
+		if (!grid) return
+
+		const gridItems = grid.querySelectorAll('.hp-paint')
+		if (!gridItems || !gridItems.length) return
+
+		let delay = 150
+		gridItems.forEach(item => {
+			setTimeout(() => {
+				item.classList.add('is-loaded')
+			}, delay)
+			delay += 100
+		})
+	}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	plume.toggles.init();              // Handle toggles.
 	plume.coverModals.init();          // Handle cover modals.
 	plume.modalMenu.init();            // Modal Menu.
 	plume.primaryMenu.init();          // Primary Menu.
 	plume.touchEnabled.init();         // Add class to body if device is touch-enabled.
+	plume.lazyGrid.init();
 });
 
 /*	-----------------------------------------------------------------------------------------------
