@@ -24,7 +24,7 @@ function theme_section_description (){
 
 function options_callback () {
   $options = get_option('header_background');
-  echo '<input name="first_field_option" id="first_field_option" type="checkbox" value="1" class="code" ' . checked(1, $options, false) . ' /> Check for enabling custom help text.';
+  echo '<input name="first_field_option" id="first_field_option" type="checkbox" value="1" class="code" ' . checked(1, $options, false) . '> Check for enabling custom help text.';
 }
 
 function test_theme_settings () {
