@@ -9,7 +9,8 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
     'default' => '',
     'transport' => 'postMessage'
     // 'sanitize_callback' => saniti
-  ])
+  ]);
+
   $manager->add_control(new WP_Customize_Image_Control($manager, 'header_background', [
     'section' => 'plume_apparence',
     'label' => 'Image de fond'
