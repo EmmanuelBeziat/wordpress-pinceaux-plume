@@ -22,6 +22,12 @@
 
 		<?php wp_head(); ?>
 
+		<style>
+			:root {
+				--image-background: url(<?= get_theme_mod('header_background') ?>);
+			}
+		</style>
+
 	</head>
 
 	<body <?php body_class(); ?>>
