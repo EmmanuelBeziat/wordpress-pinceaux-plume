@@ -6,8 +6,7 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
   ]);
 
   $manager->add_setting('header_background', [
-    'default' => '',
-    'transport' => 'postMessage'
+    'default' => ''
     // 'sanitize_callback' => saniti
   ]);
 
@@ -17,6 +16,6 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
   ]));
 });
 
-add_action('customize_preview_init', function () {
+/* add_action('customize_preview_init', function () {
   wp_enqueue_script('customize', get_template_directory_uri() . '/assets/js/customize.js', ['jquery', 'customize-preview'], '1.0', true);
-});
+}); */
