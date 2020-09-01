@@ -23,11 +23,12 @@
 		<?php wp_head(); ?>
 
 		<style>
-			:root {
-				--image-background: url(<?= get_theme_mod('header_background') ?>);
+			<?php if (get_theme_mod('header_background')) : ?>
+			.header {
+				background-image: url(<?= get_theme_mod('header_background') ?>);
 			}
+			<?php endif ?>
 		</style>
-
 	</head>
 
 	<body <?php body_class(); ?>>
