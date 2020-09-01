@@ -23,11 +23,7 @@
 		<?php wp_head(); ?>
 
 		<style>
-			<?php if (get_theme_mod('header_background')) : ?>
-			.header {
-				background-image: url(<?= get_theme_mod('header_background') ?>);
-			}
-			<?php endif ?>
+			<?php if (get_theme_mod('header_background')) : ?> .header { background-image: url(<?= get_theme_mod('header_background') ?>) } <?php endif ?>
 		</style>
 	</head>
 
