@@ -12,7 +12,7 @@
 
 <a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
   <div class="hp-paint__image">
-    <?= var_dump(get_field('picture')) ?>
+    <img src="<?= get_field('picture')['sizes']['plume_painting_home'] ?>" alt="<?= get_field('picture')['alt'] ?>">
   </div>
   <div class="hp-paint__caption">
     <h2 class="hp-paint__title"><?= get_the_title() ?></h2>
