@@ -914,6 +914,8 @@ input[type="search"]:focus {
 
 .main {
 	box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+	max-height: 100vh;
+	overflow-y: auto;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1151,6 +1153,7 @@ input[type="search"]:focus {
 .paintings {
 	background-position: 50% 0;
 	background-size: auto 400px;
+	background-repeat: no-repeat;
 }
 
 .paintings .post-container {
@@ -1164,6 +1167,15 @@ input[type="search"]:focus {
 
 .paintings .post-title {
 	margin-top: 0;
+}
+
+.paintings figure {
+	margin: 1rem 0;
+	max-width: 40vw;
+}
+
+.paintings figure img {
+	max-width: 100%;
 }
 
 /* -------------------------------------------------------------------------- */
