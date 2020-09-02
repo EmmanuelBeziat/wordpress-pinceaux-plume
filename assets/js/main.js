@@ -1,13 +1,13 @@
 'use strict'
 
 class LazyGrid {
-	constructor (options) {
-		this.options = options
+	constructor ({ grid = '.hp-grid', gridItems = '.hp-paint', loadedClass = 'is-loaded' }) {
+		this.loadedClass = loadedClass
 
-		const grid = document.querySelector(this.options.grid)
+		this.grid = document.querySelector(grid)
 		if (!grid) return
 
-		const gridItems = grid.querySelectorAll(this.options.gridItems)
+		this.gridItems = grid.querySelectorAll(gridItems)
 		if (!gridItems || !gridItems.length) return
 
 		this.setAppearance(gridItems)
@@ -23,9 +23,5 @@ class LazyGrid {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	new LazyGrid({
-		grid: '.hp-grid',
-		gridItems: '.hp-paint',
-		loadedClass: 'is-loaded'
-	})
+	new LazyGrid()
 })
