@@ -24,13 +24,12 @@
   <div class="hp-paint__caption">
     <h2 class="hp-paint__title"><?= get_the_title() ?></h2>
 
-    <?php var_dump(get_field('dimensions')) ?>
     <?php if (get_field('paint-type')) : ?>
       <span class="hp-paint__type"><?= get_field('paint-type') ?></span>
     <?php endif ?>
 
     <?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
-      <span class="hp-paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?></span>
+      <span class="hp-paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
     <?php endif ?>
 
     <?php if (get_field('description')) : ?>
