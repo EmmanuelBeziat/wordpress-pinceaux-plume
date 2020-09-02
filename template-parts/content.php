@@ -14,30 +14,24 @@
 ?>
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-	<header class="post-header entry-header">
+	<header class="post-header" style="background-image: url(<?= get_field('picture')['sizes']['plume-painting-single-background'] ?>)">
 		<div class="container">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ) ?>
+			<h1 class="post-title"><?php the_title() ?></h1>
+			<?php if (get_field('paint-type')) : ?>
+				<span class="paint__type"><?= get_field('paint-type') ?></span>
+			<?php endif ?>
+
+			<?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
+				<span class="paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
+			<?php endif ?>
 		</div>
 	</header>
 	<div class="container post-inner">
 		<figure class="post-picture">
-			<?php
-			if (get_field('picture')) : ?>
-				<img src="<?= get_field('picture')['sizes']['plume-painting-home'] ?>" alt="<?= get_field('picture')['alt'] ?>">
-			<?php elseif (has_post_thumbnail()) :
-				echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home');
-			endif ?>
+			<?php if (get_field('picture')) : ?>
+				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
+			<?php endif ?>
 		</figure>
-
-		<?php debug(get_field('picture')['sizes']) ?>
-
-		<?php if (get_field('paint-type')) : ?>
-      <span class="hp-paint__type"><?= get_field('paint-type') ?></span>
-    <?php endif ?>
-
-    <?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
-      <span class="hp-paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
-    <?php endif ?>
 
     <?php if (get_field('content')) : ?>
     <div class="post-content">

@@ -12,12 +12,9 @@
 
 <a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
   <div class="hp-paint__image">
-  <?php
-    if (get_field('picture')) : ?>
+    <?php if (get_field('picture')) : ?>
       <img src="<?= get_field('picture')['sizes']['plume-painting-home'] ?>" alt="<?= get_field('picture')['alt'] ?>">
-    <?php elseif (has_post_thumbnail()) :
-      echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home');
-    else : ?>
+    <?php else : ?>
       <img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" alt>
     <?php endif ?>
   </div>

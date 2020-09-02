@@ -17,17 +17,13 @@ if (post_password_required()) {
 	return;
 }
 
-if ($comments) {
-	?>
+if ($comments) {	?>
 
 	<div class="comments" id="comments">
 
-		<?php
-		$comments_number = absint(get_comments_number());
-		?>
+		<?php $comments_number = absint(get_comments_number()); ?>
 
-		<div class="comments-header container small max-percentage">
-
+		<div class="comments-header container">
 			<h2 class="comment-reply-title">
 			<?php
 			if (! have_comments()) {
@@ -51,11 +47,11 @@ if ($comments) {
 			}
 
 			?>
-			</h2><!-- .comments-title -->
+			</h2>
 
-		</div><!-- .comments-header -->
+		</div>
 
-		<div class="comments-inner container thin max-percentage">
+		<div class="comments-inner container">
 
 			<?php
 			wp_list_comments(
@@ -93,9 +89,9 @@ if ($comments) {
 			}
 			?>
 
-		</div><!-- .comments-inner -->
+		</div>
 
-	</div><!-- comments -->
+	</div>
 
 	<?php
 }
@@ -106,27 +102,20 @@ if (comments_open() || pings_open()) {
 		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
 	}
 
-	comment_form(
-		array(
-			'class_form'         => 'container thin max-percentage',
-			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-			'title_reply_after'  => '</h2>',
-		)
-	);
+	comment_form([
+		'class_form' => 'container',
+		'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title heading-size-5">',
+		'title_reply_after' => '</h2>',
+	]);
 
-} elseif (is_single()) {
-
+}
+elseif (is_single()) {
 	if ($comments) {
 		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
 	}
-
 	?>
-
 	<div class="comment-respond" id="respond">
-
 		<p class="comments-closed"><?php _e('Comments are closed.', 'plume'); ?></p>
-
-	</div><!-- #respond -->
-
+	</div>
 	<?php
 }

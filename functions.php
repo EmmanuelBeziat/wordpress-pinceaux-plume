@@ -31,10 +31,9 @@ function plume_theme_support() {
 	// Set post thumbnail size.
 	set_post_thumbnail_size(1200, 9999);
 
-	// show featured images in dashboard
 	add_image_size('plume-painting-home', 480, 480, ['center', 'center']);
-
-	// show featured images in dashboard
+	add_image_size('plume-painting-single', 800, 1200);
+	add_image_size('plume-painting-single-background', 1200, 480, ['center', 'center']);
 	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);
 
 	/*
