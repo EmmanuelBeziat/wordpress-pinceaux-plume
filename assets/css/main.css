@@ -548,7 +548,7 @@ hr.styled-separator {
 	background: linear-gradient(to left, currentColor calc(50% - 16px), transparent calc(50% - 16px), transparent calc(50% + 16px), currentColor calc(50% + 16px));
 	background-color: transparent !important;
 	border: none;
-	height: 0.1rem;
+	height: 1px;
 	overflow: visible;
 	position: relative;
 }
@@ -1501,6 +1501,10 @@ button.search-untoggle {
 /* Comments Pagination ---------------------------- */
 
 /* Comment Respond ---------------------------- */
+
+.comment-respond .container {
+	width: auto;
+}
 
 
 /* Reply Respond ---------------------------- */
