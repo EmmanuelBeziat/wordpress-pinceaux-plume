@@ -85,7 +85,6 @@ add_action('after_setup_theme', 'plume_theme_support');
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/classes/class-plume-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
-require get_template_directory() . '/classes/class-plume-separator-control.php';
 // require get_template_directory() . '/classes/class-plume-walker-comment.php';
 // require get_template_directory() . '/classes/class-plume-walker-page.php';
 require get_template_directory() . '/classes/class-plume-script-loader.php';
