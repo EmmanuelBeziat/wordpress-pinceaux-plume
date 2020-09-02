@@ -318,11 +318,8 @@ add_filter('manage_pages_columns', 'plume_add_post_admin_thumbnail_column', 2);
 function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 	switch ($plume_columns){
 		case 'plume_thumb':
-		if (function_exists('the_post_thumbnail')) {
-			echo the_post_thumbnail('plume-admin-post-featured-image');
-		}
-		else {
-			echo 'Le theme ne supporte pas les images mises en avant.';
+		if (isset(get_field('picture', $plume_id))) {
+			echo get_field('picture', $plume_id);
 		}
 		break;
 	}
