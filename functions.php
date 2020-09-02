@@ -251,14 +251,6 @@ function plume_read_more_tag($html) {
 
 add_filter('the_content_more_link', 'plume_read_more_tag');
 
-/**
- * Remove posts from admin
- */
-function plume_post_remove () {
-  remove_menu_page('edit.php');
-}
-add_action('admin_menu', 'plume_post_remove');
-
 function plume_create_post_types () {
 	register_post_type('paintings', [
 		'labels' => [
@@ -326,10 +318,12 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 }
 
 // Removes from admin menu
-function plume_remove_comments_menu () {
+function plume_remove_admin_menu () {
 	remove_menu_page('edit-comments.php');
+	remove_menu_page('edit.php');
+	remove_menu_page('edit.php?post_type=page');
 }
-add_action('admin_menu', 'plume_remove_comments_menu');
+add_action('admin_menu', 'plume_remove_admin_menu');
 // Removes from post and pages
 
 function remove_comment_support() {
@@ -340,17 +334,11 @@ add_action('init', 'remove_comment_support', 100);
 // Removes from admin bar
 
 function plume_admin_bar_render() {
-    global $wp_admin_bar;
-    $wp_admin_bar->remove_menu('comments');
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu('comments');
 }
 add_action('wp_before_admin_bar_render', 'plume_admin_bar_render');
 
-/*
-// Create options page
-function plume_add_options () {
-	add_theme_page('theme-options', 'Options', 'manage_options', 'plume-theme-options', 'plume_theme_options', null);
-}
-add_action('admin_menu', 'plume_add_options'); */
 
 // Manage Post and Page Admin Panel Columns
 add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
