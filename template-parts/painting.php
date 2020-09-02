@@ -12,7 +12,7 @@
 
 <a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
   <div class="hp-paint__image">
-    <?= get_field('picture') ?>
+    <?= var_dump(get_field('picture')) ?>
   </div>
   <div class="hp-paint__caption">
     <h2 class="hp-paint__title"><?= get_the_title() ?></h2>
