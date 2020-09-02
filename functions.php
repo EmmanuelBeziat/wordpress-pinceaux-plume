@@ -346,8 +346,6 @@ add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 
-function debug (value) { ?>
-
-<pre style="margin: 1rem 0; padding: 1rem;background: #e4e4e4;border:1px solid: #ccc;"><code><?php var_dump(value); ?></code></pre>
-
+function debug ($value) { ?>
+<pre style="margin: 1rem 0; padding: 1rem;background: #e4e4e4;border:1px solid: #ccc;"><code><?php var_dump($value); ?></code></pre>
 <?php }
