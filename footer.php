@@ -17,13 +17,12 @@
 
 					<div class="footer-credits">
 						<p class="footer-copyright">&copy;
-							<?php
-							echo date_i18n(
+							<?= date_i18n(
 								/* translators: Copyright date format, see https://www.php.net/date */
 								_x('Y', 'copyright date format', 'plume')
 							);
 							?>
-							<a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+							<a href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
 						</p>
 					</div>
 

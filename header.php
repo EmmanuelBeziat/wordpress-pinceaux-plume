@@ -33,11 +33,11 @@
 				<div class="header-inner">
 
 					<div class="header-titles">
-						<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php echo get_bloginfo('name') ?></a></h1>
+						<h1 class="site-title"><a href="<?= esc_url(home_url('/')); ?>" rel="home"><?= get_bloginfo('name') ?></a></h1>
 					</div>
 
 					<div class="header-desc">
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum earum voluptatum dolore, ad, ipsa recusandae autem rerum tempore maxime minus, nesciunt unde ullam ipsam cumque voluptatem in non placeat nihil.</p>
+						<p><?= get_bloginfo('description') ?></p>
 					</div>
 
 					<div class="header-navigation-wrapper">
@@ -74,12 +74,11 @@
 
 					<div class="header-credits">
 						<p class="header-copyright no-margin">&copy;
-							<?php
-							echo date_i18n(
+							<?= date_i18n(
 								/* translators: Copyright date format, see https://www.php.net/date */
 								_x('Y', 'copyright date format', 'plume')
 							);
-							?> <?php echo bloginfo('name'); ?>
+							?> <?= bloginfo('name'); ?>
 						</p>
 					</div>
 				</div>
