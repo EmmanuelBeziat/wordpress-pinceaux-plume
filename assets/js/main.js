@@ -2,10 +2,12 @@
 
 class LazyGrid {
 	constructor (options) {
-		const grid = document.querySelector(options.grid)
+		this.options = options
+
+		const grid = document.querySelector(this.options.grid)
 		if (!grid) return
 
-		const gridItems = grid.querySelectorAll(options.gridItems)
+		const gridItems = grid.querySelectorAll(this.options.gridItems)
 		if (!gridItems || !gridItems.length) return
 
 		this.setAppearance(gridItems)
@@ -14,7 +16,7 @@ class LazyGrid {
 	setAppearance (items) {
 		let delay = 150
 		items.forEach(item => {
-			setTimeout(() => item.classList.add(options.loadedClass), delay)
+			setTimeout(() => item.classList.add(this.options.loadedClass), delay)
 			delay += 100
 		})
 	}
