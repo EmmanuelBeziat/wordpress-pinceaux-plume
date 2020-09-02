@@ -12,11 +12,13 @@
 
 <a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
   <div class="hp-paint__image">
-    <?php echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home'); ?>
+    <?= get_field('picture') ?>
   </div>
   <div class="hp-paint__caption">
-    <h2 class="hp-paint__title"><?php echo get_the_title() ?></h2>
-    <?php echo the_excerpt() ?>
+    <h2 class="hp-paint__title"><?= get_the_title() ?></h2>
+    <?= get_field('paint-type') ?>, <?= get_field('dimensions') ?>
+    <hr>
+    <?php get_field('description') ?>
   </div>
   <?php
   // Single bottom post meta.
