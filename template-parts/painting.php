@@ -15,7 +15,7 @@
   <?php
     if (get_field('picture')) : ?>
       <img src="<?= get_field('picture')['sizes']['plume-painting-home'] ?>" alt="<?= get_field('picture')['alt'] ?>">
-    <?php else if (has_post_thumbnail()) :
+    <?php elseif (has_post_thumbnail()) :
       echo get_the_post_thumbnail(get_the_ID(), 'plume-painting-home');
     else : ?>
       <img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" alt>
