@@ -318,7 +318,7 @@ add_filter('manage_pages_columns', 'plume_add_post_admin_thumbnail_column', 2);
 function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 	switch ($plume_columns){
 		case 'plume_thumb':
-		if (isset(get_field('picture', $plume_id))) {
+		if (get_field('picture', $plume_id !== null)) {
 			echo get_field('picture', $plume_id);
 		}
 		break;
