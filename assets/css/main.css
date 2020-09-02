@@ -1477,6 +1477,19 @@ button.search-untoggle {
 	margin: 0;
 }
 
+.hp-paint__caption hr {
+	margin: 1rem 0;
+	width: 50%;
+	max-width: 80px;
+	border-color: var(--color-bg);
+}
+
+.hp-paint__date {
+	font-size: 1.6rem;
+	display: block;
+	font-family: var(--font-title);
+}
+
 .hp-paint:hover {
 	transition: .15s ease-in;
 	box-shadow: 0 0 5px rgba(0, 0, 0, .25);

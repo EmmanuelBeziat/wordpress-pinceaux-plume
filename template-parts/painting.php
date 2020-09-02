@@ -24,8 +24,10 @@
   <div class="hp-paint__caption">
     <h2 class="hp-paint__title"><?= get_the_title() ?></h2>
     <?php if (get_field('date')) : ?>
-      <span class="hp-paint__date heading-size-6"><?= get_field('date') ?></span>
+      <span class="hp-paint__date"><?= get_field('date') ?></span>
     <?php endif ?>
+
+    <hr>
 
     <?php if (get_field('paint-type')) : ?>
       <span class="hp-paint__type"><?= get_field('paint-type') ?></span>
