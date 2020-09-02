@@ -16,16 +16,12 @@ get_header();
 
 	<?php
 
-	if (have_posts()) {
-
-		while (have_posts()) {
-			the_post();
-			echo the_title();
-		}
-	}
-
-	?>
+	if (have_posts()) :
+		while (have_posts()) : the_post();
+			get_template_part('template-parts/content');
+		endwhile;
+	endif; ?>
 
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer() ?>

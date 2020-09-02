@@ -85,12 +85,10 @@ add_action('after_setup_theme', 'plume_theme_support');
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/classes/class-plume-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
-// require get_template_directory() . '/classes/class-plume-customize.php';
 require get_template_directory() . '/classes/class-plume-separator-control.php';
-require get_template_directory() . '/classes/class-plume-walker-comment.php';
-require get_template_directory() . '/classes/class-plume-walker-page.php';
+// require get_template_directory() . '/classes/class-plume-walker-comment.php';
+// require get_template_directory() . '/classes/class-plume-walker-page.php';
 require get_template_directory() . '/classes/class-plume-script-loader.php';
-require get_template_directory() . '/inc/options-page.php';
 require get_template_directory() . '/inc/customize.php';
 
 // Custom CSS.
@@ -310,7 +308,8 @@ add_filter('manage_pages_columns', 'plume_add_post_admin_thumbnail_column', 2);
 function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 	switch ($plume_columns){
 		case 'plume_thumb':
-		if (get_field('picture', $plume_id !== null)) {
+		if (get_field('picture', $plume_id)) {
+			var_dump(get_field('picture', $plume_id));
 			echo get_field('picture', $plume_id);
 		}
 		break;
@@ -346,3 +345,9 @@ add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
+
+function debug (value) { ?>
+
+<pre style="margin: 1rem 0; padding: 1rem;background: #e4e4e4;border:1px solid: #ccc;"><code><?php var_dump(value); ?></code></pre>
+
+<?php }
