@@ -51,11 +51,11 @@ if ( $next_post || $prev_post ) {
 			}
 			?>
 
-		</div><!-- .pagination-single-inner -->
+		</div>
 
 		<hr class="styled-separator is-style-wide" aria-hidden="true" />
 
-	</nav><!-- .pagination-single -->
+	</nav>
 
 	<?php
 }

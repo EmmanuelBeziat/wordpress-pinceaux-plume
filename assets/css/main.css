@@ -1156,11 +1156,6 @@ input[type="search"]:focus {
 	background-repeat: no-repeat;
 }
 
-.paintings .post-container {
-	background: #fff;
-	padding: 4rem 2rem;
-}
-
 .paintings .post-header {
 	text-align: center;
 }

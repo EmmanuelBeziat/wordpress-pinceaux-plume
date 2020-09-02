@@ -14,8 +14,8 @@
 ?>
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>" style="background-image: url(<?= get_field('picture')['sizes']['plume-painting-single-background'] ?>)">
-	<div class="post-container container">
-		<header class="post-header">
+	<header class="post-header">
+		<div class="container">
 			<h1 class="post-title"><?php the_title() ?></h1>
 			<?php if (get_field('paint-type')) : ?>
 				<span class="paint__type"><?= get_field('paint-type') ?></span>
@@ -24,23 +24,23 @@
 			<?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
 				<span class="paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
 			<?php endif ?>
-		</header>
-
-		<div class="container post-inner">
-			<figure class="post-picture">
-				<?php if (get_field('picture')) : ?>
-					<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
-				<?php endif ?>
-			</figure>
-
-			<hr class="styled-separator is-style-wide" aria-hidden="true">
-
-	    <?php if (get_field('content')) : ?>
-	    <div class="post-content">
-	      <?= get_field('content') ?>
-	    </div>
-	    <?php endif ?>
 		</div>
+	</header>
+
+	<div class="container post-inner">
+		<figure class="post-picture">
+			<?php if (get_field('picture')) : ?>
+				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
+			<?php endif ?>
+		</figure>
+
+		<hr class="styled-separator is-style-wide" aria-hidden="true">
+
+		<?php if (get_field('content')) : ?>
+		<div class="post-content">
+			<?= get_field('content') ?>
+		</div>
+		<?php endif ?>
 	</div>
 
 
@@ -61,11 +61,13 @@
 	</div>
 
 	<?php
+	if (is_single()) : ?>
+		<div class="container">
+			<?php get_template_part('template-parts/navigation'); ?>
+		</div>
+	<?php endif ?>
 
-	if (is_single()) {
-		get_template_part('template-parts/navigation');
-	}
-
+	<?php
 	/**
 	 *  Output comments wrapper if it's a post, or if comments are open,
 	 * or if there's a comment number – and check for password.

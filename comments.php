@@ -23,7 +23,7 @@ if ($comments) {	?>
 
 		<?php $comments_number = absint(get_comments_number()); ?>
 
-		<div class="comments-header container">
+		<div class="comments-header">
 			<h2 class="comment-reply-title">
 			<?php
 			if (! have_comments()) {
@@ -51,7 +51,7 @@ if ($comments) {	?>
 
 		</div>
 
-		<div class="comments-inner container">
+		<div class="comments-inner">
 
 			<?php
 			wp_list_comments(
