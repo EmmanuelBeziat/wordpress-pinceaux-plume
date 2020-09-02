@@ -1148,11 +1148,18 @@ input[type="search"]:focus {
 	font-size: .85rem;
 }
 
+.paintings {
+	background-position: 50% 0;
+	background-size: auto 400px;
+}
+
+.paintings .post-container {
+	background: #fff;
+	padding: 4rem 2rem;
+}
+
 .paintings .post-header {
 	text-align: center;
-	background-position: 50% 0;
-	background-size: cover;
-	padding: 2rem 0 4rem;
 }
 
 .paintings .post-title {

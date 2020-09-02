@@ -13,9 +13,9 @@
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-	<header class="post-header" style="background-image: url(<?= get_field('picture')['sizes']['plume-painting-single-background'] ?>)">
-		<div class="container">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" style="background-image: url(<?= get_field('picture')['sizes']['plume-painting-single-background'] ?>)">
+	<div class="post-container container">
+		<header class="post-header">
 			<h1 class="post-title"><?php the_title() ?></h1>
 			<?php if (get_field('paint-type')) : ?>
 				<span class="paint__type"><?= get_field('paint-type') ?></span>
@@ -24,20 +24,23 @@
 			<?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
 				<span class="paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
 			<?php endif ?>
-		</div>
-	</header>
-	<div class="container post-inner">
-		<figure class="post-picture">
-			<?php if (get_field('picture')) : ?>
-				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
-			<?php endif ?>
-		</figure>
+		</header>
 
-    <?php if (get_field('content')) : ?>
-    <div class="post-content">
-      <?= get_field('content') ?>
-    </div>
-    <?php endif ?>
+		<div class="container post-inner">
+			<figure class="post-picture">
+				<?php if (get_field('picture')) : ?>
+					<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
+				<?php endif ?>
+			</figure>
+
+			<hr class="styled-separator is-style-wide" aria-hidden="true">
+
+	    <?php if (get_field('content')) : ?>
+	    <div class="post-content">
+	      <?= get_field('content') ?>
+	    </div>
+	    <?php endif ?>
+		</div>
 	</div>
 
 
