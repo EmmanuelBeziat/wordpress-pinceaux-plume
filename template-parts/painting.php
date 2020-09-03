@@ -18,6 +18,7 @@
       <img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" alt>
     <?php endif ?>
   </div>
+
   <div class="hp-paint__caption">
     <h2 class="hp-paint__title"><?= get_the_title() ?></h2>
     <?php if (get_field('date')) : ?>

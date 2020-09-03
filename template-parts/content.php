@@ -17,6 +17,10 @@
 	<header class="post-header">
 		<div class="container">
 			<h1 class="post-title"><?php the_title() ?></h1>
+			<?php if (get_field('date')) : ?>
+				<span class="post-date"><?= get_field('date') ?></span>
+			<?php endif ?>
+
 			<?php if (get_field('paint-type')) : ?>
 				<span class="paint__type"><?= get_field('paint-type') ?></span>
 			<?php endif ?>

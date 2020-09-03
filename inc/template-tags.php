@@ -100,11 +100,7 @@ function plume_edit_post_link($link, $post_id, $text) {
 	}
 
 	$text = sprintf(
-		wp_kses(
-			/* translators: %s: Post title. Only visible to screen readers. */
-			__('Modifier <span class="screen-reader-text">%s</span>', 'plume'), ['span' => ['class' => []]]
-		),
-		get_the_title($post_id)
+		wp_kses(__('Modifier « %s »', 'plume'), ['span' => ['class' => []]]),	get_the_title($post_id)
 	);
 
 	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><a href="' . esc_url($edit_url) . '"><span class="meta-icon">' . plume_get_theme_svg('edit') . '</span><span class="meta-text">' . $text . '</span></a></div>';

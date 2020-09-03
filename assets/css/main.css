@@ -1150,35 +1150,6 @@ input[type="search"]:focus {
 	font-size: .85rem;
 }
 
-.paintings {
-	background-position: 50% 0;
-	background-size: auto 400px;
-	background-repeat: no-repeat;
-}
-
-.paintings .post-header {
-	text-align: center;
-	background: var(--color-link);
-	color: var(--color-bg);
-	padding: 4rem 0 16rem;
-}
-
-.paintings .post-title {
-	margin: 0 0 2rem;
-}
-
-.paintings .post-inner {
-	margin-top: -8rem;
-}
-
-.paintings figure {
-	margin: 0 0 4rem;
-}
-
-.paintings figure img {
-	max-width: 100%;
-}
-
 /* -------------------------------------------------------------------------- */
 
 /*	5. Menu Modal
@@ -1488,6 +1459,64 @@ button.search-untoggle {
 	margin-right: auto;
 	max-width: 58rem;
 	width: calc(100% - 4rem);
+}
+
+/* Entry Meta -------------------------------- */
+
+.post-meta-wrapper {
+	margin-top: 1rem;
+}
+
+.post-meta-wrapper .button {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	background: var(--color-bg);
+}
+
+.post-meta-wrapper .meta-icon {
+	display: flex;
+	margin-right: .25em;
+}
+
+.post-meta-wrapper .meta-icon svg {
+	fill: #fff;
+}
+
+.paintings {
+	background-position: 50% 0;
+	background-size: auto 400px;
+	background-repeat: no-repeat;
+}
+
+.paintings .post-header {
+	text-align: center;
+	background: var(--color-link);
+	color: var(--color-bg);
+	padding: 4rem 0 16rem;
+}
+
+.paintings .post-title {
+	margin: 0 0 2rem;
+}
+
+.paintings .post-inner {
+	margin-top: -8rem;
+}
+
+.paintings figure {
+	margin: 0 0 4rem;
+}
+
+.paintings figure img {
+	max-width: 100%;
+}
+
+.post-date {
+	font-size: 1.6rem;
+	line-height: 1;
+	display: block;
+	font-family: var(--font-title);
 }
 
 

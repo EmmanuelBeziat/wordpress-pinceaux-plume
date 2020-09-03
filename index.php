@@ -33,6 +33,7 @@
 				endwhile;
 				wp_reset_query(); ?>
 		</div>
+
 		<?php elseif (is_search()) : ?>
 		<div class="no-search-results-form container thin">
 			<?php get_search_form(['label' => 'Rechercher encore']); ?>

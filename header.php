@@ -42,30 +42,6 @@
 
 					<div class="header-navigation-wrapper">
 
-						<?php /*if (has_nav_menu('primary')) : ?>
-
-						<button class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" data-set-focus=".menu-modal .search-field">
-							<span class="toggle-inner">
-								<span class="toggle-icon">
-									<?php plume_the_theme_svg('ellipsis'); ?>
-								</span>
-								<span class="toggle-text">Menu</span>
-							</span>
-						</button>
-
-						<?php endif*/ ?>
-
-						<?php /*
-						<button class="toggle search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field">
-							<span class="toggle-inner">
-								<span class="toggle-icon">
-									<?php plume_the_theme_svg('search'); ?>
-								</span>
-								<span class="toggle-text">Recherche</span>
-							</span>
-						</button>
-						*/ ?>
-
 					</div>
 
 					<div class="header-search">

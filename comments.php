@@ -19,6 +19,8 @@ if (post_password_required()) {
 
 if ($comments) {	?>
 
+	<hr class="styled-separator is-style-wide" aria-hidden="true" />
+
 	<div class="comments" id="comments">
 
 		<?php $comments_number = absint(get_comments_number()); ?>
