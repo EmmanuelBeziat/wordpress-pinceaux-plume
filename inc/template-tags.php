@@ -103,7 +103,7 @@ function plume_edit_post_link($link, $post_id, $text) {
 		wp_kses(__('Modifier « %s »', 'plume'), ['span' => ['class' => []]]),	get_the_title($post_id)
 	);
 
-	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><a href="' . esc_url($edit_url) . '"><span class="meta-icon">' . plume_get_theme_svg('edit') . '</span><span class="meta-text">' . $text . '</span></a></div>';
+	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><a class="button" href="' . esc_url($edit_url) . '"><span class="meta-icon">' . plume_get_theme_svg('edit') . '</span><span class="meta-text">' . $text . '</span></a></div>';
 }
 
 add_filter('edit_post_link', 'plume_edit_post_link', 10, 3);
