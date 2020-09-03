@@ -102,7 +102,7 @@ function plume_edit_post_link($link, $post_id, $text) {
 	$text = sprintf(
 		wp_kses(
 			/* translators: %s: Post title. Only visible to screen readers. */
-			__('Modifier <span class="screen-reader-text">%s</span>', 'plume'), ['span' => ['class' => []]
+			__('Modifier <span class="screen-reader-text">%s</span>', 'plume'), ['span' => ['class' => []]]
 		),
 		get_the_title($post_id)
 	);
