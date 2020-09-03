@@ -501,7 +501,7 @@ h6,
 .faux-heading {
   font-family: var(--font-title);
 	font-weight: 700;
-	line-height: 1.25;
+	line-height: 1;
 	margin: 3.5rem 0 2rem;
 }
 
@@ -1160,19 +1160,19 @@ input[type="search"]:focus {
 	text-align: center;
 	background: var(--color-link);
 	color: var(--color-bg);
-	padding-bottom: 8rem;
+	padding: 4rem 0 16rem;
 }
 
 .paintings .post-title {
-	margin-top: 0;
+	margin: 0 0 2rem;
 }
 
 .paintings .post-inner {
-	margin-top: -4rem;
+	margin-top: -8rem;
 }
 
 .paintings figure {
-	margin: 2rem 0;
+	margin: 0 0 4rem;
 }
 
 .paintings figure img {
@@ -1398,6 +1398,7 @@ button.search-untoggle {
 
 .hp-paint__date {
 	font-size: 1.6rem;
+	line-height: 1;
 	display: block;
 	font-family: var(--font-title);
 }

@@ -95,25 +95,19 @@ function plume_edit_post_link($link, $post_id, $text) {
 
 	$edit_url = get_edit_post_link($post_id);
 
-	if (! $edit_url) {
+	if (!$edit_url) {
 		return;
 	}
 
 	$text = sprintf(
 		wp_kses(
 			/* translators: %s: Post title. Only visible to screen readers. */
-			__('Edit <span class="screen-reader-text">%s</span>', 'plume'),
-			array(
-				'span' => array(
-					'class' => array(),
-				),
-			)
+			__('Modifier <span class="screen-reader-text">%s</span>', 'plume'), ['span' => ['class' => []]
 		),
 		get_the_title($post_id)
 	);
 
-	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><ul class="post-meta"><li class="post-edit meta-wrapper"><span class="meta-icon">' . plume_get_theme_svg('edit') . '</span><span class="meta-text"><a href="' . esc_url($edit_url) . '">' . $text . '</a></span></li></ul><!-- .post-meta --></div><!-- .post-meta-wrapper -->';
-
+	return '<div class="post-meta-wrapper post-meta-edit-link-wrapper"><a href="' . esc_url($edit_url) . '"><span class="meta-icon">' . plume_get_theme_svg('edit') . '</span><span class="meta-text">' . $text . '</span></a></div>';
 }
 
 add_filter('edit_post_link', 'plume_edit_post_link', 10, 3);

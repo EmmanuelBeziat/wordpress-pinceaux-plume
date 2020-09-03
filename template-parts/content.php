@@ -24,6 +24,8 @@
 			<?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
 				<span class="paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
 			<?php endif ?>
+
+			<?php edit_post_link() ?>
 		</div>
 	</header>
 
@@ -52,7 +54,6 @@
 				'link_after'  => '</span>',
 			)
 		);
-		edit_post_link();
 
 		// Single bottom post meta.
 		plume_the_post_meta(get_the_ID(), 'single-bottom');	?>
