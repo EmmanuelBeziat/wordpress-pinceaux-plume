@@ -13,7 +13,7 @@
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" style="background-image: url(<?= get_field('picture')['sizes']['plume-painting-single-background'] ?>)">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 	<header class="post-header">
 		<div class="container">
 			<h1 class="post-title"><?php the_title() ?></h1>
@@ -33,8 +33,6 @@
 				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
 			<?php endif ?>
 		</figure>
-
-		<hr class="styled-separator is-style-wide" aria-hidden="true">
 
 		<?php if (get_field('content')) : ?>
 		<div class="post-content">

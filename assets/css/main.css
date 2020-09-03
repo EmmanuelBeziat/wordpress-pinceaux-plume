@@ -1158,15 +1158,21 @@ input[type="search"]:focus {
 
 .paintings .post-header {
 	text-align: center;
+	background: var(--color-link);
+	color: var(--color-bg);
+	padding-bottom: 8rem;
 }
 
 .paintings .post-title {
 	margin-top: 0;
 }
 
+.paintings .post-inner {
+	margin-top: -4rem;
+}
+
 .paintings figure {
-	margin: 1rem 0;
-	max-width: 40vw;
+	margin: 2rem 0;
 }
 
 .paintings figure img {
