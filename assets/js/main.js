@@ -7,7 +7,7 @@ class LazyGrid {
 		this.grid = document.querySelector(grid)
 		if (!this.grid) return
 
-		this.gridItems = grid.querySelectorAll(gridItems)
+		this.gridItems = this.grid.querySelectorAll(gridItems)
 		if (!this.gridItems || !this.gridItems.length) return
 
 		this.setAppearance(this.gridItems)
