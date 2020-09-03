@@ -1,8 +1,7 @@
 'use strict'
 
 class LazyGrid {
-	constructor ({ grid = '.hp-grid', gridItems = '.hp-paint', loadedClass = 'is-loaded' }) {
-		console.log(grid, gridItems, loadedClass)
+	constructor (grid = '.hp-grid', gridItems = '.hp-paint', loadedClass = 'is-loaded') {
 		this.loadedClass = loadedClass
 
 		this.grid = document.querySelector(grid)
