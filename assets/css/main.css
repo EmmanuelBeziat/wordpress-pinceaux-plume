@@ -1472,15 +1472,30 @@ button.search-untoggle {
 	align-items: center;
 	text-decoration: none;
 	background: var(--color-bg);
+	color: var(--color-link);
+	font-weight: 600;
+	font-size: 1rem;
+	transition: .25s ease-in-out;
 }
 
-.post-meta-wrapper .meta-icon {
+.post-meta-wrapper .button:hover,
+.post-meta-wrapper .button:focus {
+	color: var(--color-link-hover);
+}
+
+.post-meta-wrapper .button .meta-icon {
 	display: flex;
 	margin-right: .25em;
 }
 
-.post-meta-wrapper .meta-icon svg {
-	fill: #fff;
+.post-meta-wrapper .button .meta-icon svg {
+	fill: var(--color-link);
+	transition: .25s ease-in-out;
+}
+
+.post-meta-wrapper .button:hover .meta-icon svg,
+.post-meta-wrapper .button:focus .meta-icon svg {
+	fill: var(--color-link-hover);
 }
 
 .paintings {
@@ -1493,7 +1508,7 @@ button.search-untoggle {
 	text-align: center;
 	background: var(--color-link);
 	color: var(--color-bg);
-	padding: 4rem 0 16rem;
+	padding: 4rem 0 10rem;
 }
 
 .paintings .post-title {
@@ -1501,7 +1516,7 @@ button.search-untoggle {
 }
 
 .paintings .post-inner {
-	margin-top: -8rem;
+	margin-top: -6rem;
 }
 
 .paintings figure {
