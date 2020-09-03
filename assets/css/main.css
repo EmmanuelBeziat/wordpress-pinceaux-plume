@@ -1490,7 +1490,6 @@ button.search-untoggle {
 
 .post-meta-wrapper .button .meta-icon svg {
 	fill: var(--color-link);
-	transition: .25s ease-in-out;
 }
 
 .post-meta-wrapper .button:hover .meta-icon svg,
