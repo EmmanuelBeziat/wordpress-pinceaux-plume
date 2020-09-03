@@ -2,6 +2,7 @@
 
 class LazyGrid {
 	constructor ({ grid = '.hp-grid', gridItems = '.hp-paint', loadedClass = 'is-loaded' }) {
+		console.log(grid, gridItems, loadedClass)
 		this.loadedClass = loadedClass
 
 		this.grid = document.querySelector(grid)
@@ -16,7 +17,7 @@ class LazyGrid {
 	setAppearance (items) {
 		let delay = 150
 		items.forEach(item => {
-			setTimeout(() => item.classList.add(this.options.loadedClass), delay)
+			setTimeout(() => item.classList.add(this.loadedClass), delay)
 			delay += 100
 		})
 	}
