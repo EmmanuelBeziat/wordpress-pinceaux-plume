@@ -42,7 +42,7 @@
 
 		<?php if (get_field('content')) : ?>
 		<div class="post-content">
-			<h2 class="heading-size-2">À propos…</h2>
+			<h2 class="heading-size-4">À propos…</h2>
 			<?= get_field('content') ?>
 		</div>
 		<?php endif ?>
