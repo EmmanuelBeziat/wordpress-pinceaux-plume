@@ -60,7 +60,9 @@
 		plume_the_post_meta(get_the_ID(), 'single-bottom');
 
 		// Share
-		get_template_part('template-parts/share');
+		if (get_theme_mod('post_share')) :
+			get_template_part('template-parts/share');
+		endif;
 
 		// Navigation
 		if (is_single()) :
