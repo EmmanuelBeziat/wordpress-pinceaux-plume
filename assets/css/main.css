@@ -907,15 +907,10 @@ input[type="search"]:focus {
 
 .site {
 	min-height: 100vh;
-	overflow-x: hidden;
-	display: grid;
-	grid-template-columns: minmax(25rem, 40vw) auto;
 }
 
 .main {
 	box-shadow: 0 0 20px rgba(0, 0, 0, .25);
-	max-height: 100vh;
-	overflow-y: auto;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1893,6 +1888,15 @@ button.search-untoggle {
 @media (min-width: 1200px) {
 
 	/* Element Base -------------------------- */
+	.site {
+		overflow-x: hidden;
+		display: grid;
+		grid-template-columns: minmax(25rem, 40vw) auto;
+	}
+
+	.main {
+		box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+	}
 
 	/* TITLES */
 
