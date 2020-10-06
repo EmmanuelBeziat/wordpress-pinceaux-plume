@@ -34,7 +34,7 @@ class Share {
 		const shareBlock = this.postShare.querySelector('.share-auto')
 		if (!shareBlock) return
 
-		const shareButton = this.shareBlock.querySelector('button')
+		const shareButton = shareBlock.querySelector('button')
 		if (!shareButton) return
 
 		shareBlock.removeAttribute('hidden')
@@ -48,7 +48,7 @@ class Share {
 		const shareBlock = this.postShare.querySelector('.share-manual')
 		if (!shareBlock) return
 
-		const shareButtons = this.shareBlock.querySelectorAll('button')
+		const shareButtons = shareBlock.querySelectorAll('button')
 		if (!shareButtons.length) return
 
 		shareBlock.removeAttribute('hidden')
