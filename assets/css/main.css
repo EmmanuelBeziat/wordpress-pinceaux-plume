@@ -981,6 +981,18 @@ input[type="search"]:focus {
 	flex-shrink: 0;
 }
 
+body.search .main .search-submit {
+	transition: .25s ease-in-out;
+}
+
+body.search .main .search-submit {
+	background: var(--color-link-hover);
+}
+
+body.search .main .search-submit svg {
+	fill: var(--color-bg);
+}
+
 /* Cover Modals ------------------------------ */
 
 .cover-modal {
