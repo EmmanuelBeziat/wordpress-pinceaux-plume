@@ -34,8 +34,6 @@
 				endwhile; ?>
 			</div>
 
-			<?php get_search_form(['label' => 'Rechercher encore']); ?>
-
 			<?php else : ?>
 			<div class="no-search-results-form">
 				<p>Aucun résultat. Vous pouvez effectuer une nouvelle recherche.</p>
