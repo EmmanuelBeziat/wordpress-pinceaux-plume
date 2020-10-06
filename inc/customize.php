@@ -30,6 +30,11 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
     'capability' => $capability
   ]);
 
+  $manager->add_setting('post_comments', [
+    'default' => '',
+    'capability' => $capability
+  ]);
+
   // Control
   $manager->add_control(new WP_Customize_Image_Control($manager, 'header_background', [
     'section' => 'plume_header',
@@ -44,6 +49,12 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
 
   $manager->add_control('post_share', [
     'label' => 'Afficher la section de partage',
+    'type' => 'checkbox',
+    'section' => 'plume_post'
+  ]);
+
+  $manager->add_control('post_comments', [
+    'label' => 'Afficher les commentaires',
     'type' => 'checkbox',
     'section' => 'plume_post'
   ]);
