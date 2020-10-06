@@ -52,9 +52,11 @@ class Share {
 		if (!shareButtons.length) return
 
 		shareBlock.removeAttribute('hidden')
-		shareButtons.forEach('click', event => {
-			event.preventDefault()
-			this.shareManual(event.target.dataset.name)
+		shareButtons.forEach(button => {
+			button.addEventListener('click', event => {
+				event.preventDefault()
+				this.shareManual(event.target.dataset.name)
+			})
 		})
 	}
 
