@@ -25,7 +25,7 @@ $plume_aria_label = ! empty($args['label']) ? 'aria-label="' . esc_attr($args['l
 		<input type="search" id="<?php echo esc_attr($plume_unique_id); ?>" class="search-field" placeholder="Recherche…" value="<?php echo get_search_query(); ?>" name="s">
 	</label>
 	<button type="submit" class="search-submit">
-		<?php plume_the_theme_svg('search'); ?>
+		<?php plume_the_theme_svg('search', 'ui', '#ffffff'); ?>
 		<span class="screen-reader-text">Recherche</span>
 	</button>
 </form>
