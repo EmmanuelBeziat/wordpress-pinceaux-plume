@@ -347,3 +347,10 @@ remove_action('wp_head', 'wlwmanifest_link');
 function debug ($value) { ?>
 <pre style="margin: 1rem 0; padding: 1rem;background: #e4e4e4;border:1px solid: #ccc;"><code><?php var_dump($value); ?></code></pre>
 <?php }
+
+function plume_customize_register ($wp_customize) {
+  //All our sections, settings, and controls will be added here
+  $wp_customize->remove_panel('nav_menus');
+  $wp_customize->remove_section('custom_css');
+}
+add_action('customize_register', 'plume_customize_register', 50);
