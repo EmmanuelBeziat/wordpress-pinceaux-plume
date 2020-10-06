@@ -1541,6 +1541,9 @@ button.search-untoggle {
 /*	12. Comments
 /* -------------------------------------------------------------------------- */
 
+.comments-wrapper {
+	margin-bottom: 4rem;
+}
 
 /* Comment Headers ----------------------------- */
 
@@ -1562,6 +1565,11 @@ button.search-untoggle {
 .comment-respond input[type="email"],
 .comment-respond textarea {
 	padding: 1.25em 1.8em
+}
+
+.comment-respond input[type="submit"],
+.comment-respond button[type="submit"] {
+	font-size: 1.25rem;
 }
 
 
