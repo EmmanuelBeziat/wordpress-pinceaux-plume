@@ -25,11 +25,15 @@
 				<h1 class="heading-size-3 section-header-title page-title">Résultats de recherche pour : « <span class="search-query"><?php echo get_search_query() ?> »</span></h1>
 			</header>
 
+			<?php get_search_form(['label' => 'Rechercher encore']); ?>
+
 			<?php if (have_posts()) : ?>
 			<div class="hp-grid">
 				<?php while (have_posts()) : the_post();
 					get_template_part('template-parts/painting', get_post_type());
-				endwhile; ?>
+				endwhile;
+
+				get_search_form(['label' => 'Rechercher encore']); ?>
 			</div>
 			<?php else : ?>
 			<div class="no-search-results-form">
@@ -37,7 +41,6 @@
 			</div>
 			<?php endif; ?>
 
-			<?php get_search_form(['label' => 'Rechercher encore']); ?>
 		</div>
 	</section>
 
