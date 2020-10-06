@@ -29,16 +29,16 @@ if ($comments) {	?>
 			<h2 class="comment-reply-title">
 			<?php
 			if (! have_comments()) {
-				_e('Leave a comment', 'plume');
+				_e('Laissez un commentaire');
 			} elseif (1 === $comments_number) {
 				/* translators: %s: Post title. */
-				printf(_x('One reply on &ldquo;%s&rdquo;', 'comments title', 'plume'), get_the_title());
+				printf(_x('Une réponse sur &ldquo;%s&rdquo;', 'comments title', 'plume'), get_the_title());
 			} else {
 				printf(
 					/* translators: 1: Number of comments, 2: Post title. */
 					_nx(
-						'%1$s reply on &ldquo;%2$s&rdquo;',
-						'%1$s replies on &ldquo;%2$s&rdquo;',
+						'%1$s réponse sur &ldquo;%2$s&rdquo;',
+						'%1$s réponses sur &ldquo;%2$s&rdquo;',
 						$comments_number,
 						'comments title',
 						'plume'
@@ -55,24 +55,19 @@ if ($comments) {	?>
 
 		<div class="comments-inner">
 
-			<?php
-			wp_list_comments(
-				array(
-					'walker'      => new Plume_Walker_Comment(),
-					'avatar_size' => 120,
-					'style'       => 'div',
-				)
-			);
+			<?php wp_list_comments([
+				'walker'      => new Plume_Walker_Comment(),
+				'avatar_size' => 120,
+				'style'       => 'div',
+			]);
 
-			$comment_pagination = paginate_comments_links(
-				array(
-					'echo'      => false,
-					'end_size'  => 0,
-					'mid_size'  => 0,
-					'next_text' => __('Newer Comments', 'plume') . ' <span aria-hidden="true">&rarr;</span>',
-					'prev_text' => '<span aria-hidden="true">&larr;</span> ' . __('Older Comments', 'plume'),
-				)
-			);
+			$comment_pagination = paginate_comments_links([
+				'echo'      => false,
+				'end_size'  => 0,
+				'mid_size'  => 0,
+				'next_text' => 'Plus récents <span aria-hidden="true">&rarr;</span>',
+				'prev_text' => '<span aria-hidden="true">&larr;</span> Plus ancients',
+			]);
 
 			if ($comment_pagination) {
 				$pagination_classes = '';
@@ -117,7 +112,7 @@ elseif (is_single()) {
 	}
 	?>
 	<div class="comment-respond" id="respond">
-		<p class="comments-closed"><?php _e('Comments are closed.', 'plume'); ?></p>
+		<p class="comments-closed">Les commentaires de ce tableau sont fermés</p>
 	</div>
 	<?php
 }

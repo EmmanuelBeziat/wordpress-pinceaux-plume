@@ -1524,6 +1524,8 @@ button.search-untoggle {
 
 .paintings figure img {
 	max-width: 100%;
+	display: block;
+	margin: auto;
 }
 
 .post-date {
@@ -1547,6 +1549,21 @@ button.search-untoggle {
 
 /* COMMENT HEADER */
 
+.comment-respond label,
+.comment-respond input[type="text"],
+.comment-respond input[type="url"],
+.comment-respond input[type="email"],
+.comment-respond textarea {
+	font-size: 1.25rem;
+}
+
+.comment-respond input[type="text"],
+.comment-respond input[type="url"],
+.comment-respond input[type="email"],
+.comment-respond textarea {
+	padding: 1.25em 1.8em
+}
+
 
 /* Comments Pagination ---------------------------- */
 
@@ -1564,6 +1581,11 @@ button.search-untoggle {
 
 /*	13. Site Pagination
 /* -------------------------------------------------------------------------- */
+
+.pagination-single-inner {
+	display: flex;
+	justify-content: space-between;
+}
 
 
 /* -------------------------------------------------------------------------- */
