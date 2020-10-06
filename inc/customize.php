@@ -14,7 +14,7 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
   $manager->add_setting('header_search', [
     'default' => '',
     'capability' => 'edit_theme_options'
-  ])
+  ]);
 
   $manager->add_control(new WP_Customize_Image_Control($manager, 'header_background', [
     'section' => 'plume_header',
@@ -25,5 +25,5 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
     'label' => 'Afficher le champ de recherche'
     'type' => 'checkbox',
     'section' => 'plume_header'
-  ])
+  ]);
 });
