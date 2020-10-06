@@ -1535,6 +1535,24 @@ button.search-untoggle {
 	font-family: var(--font-title);
 }
 
+.post-share .button {
+	display: flex;
+	padding: .75rem 1.25rem;
+	align-items: center;
+	font-size: 1rem;
+	transition: .25s ease-in-out;
+}
+
+.post-share .button:hover {
+	text-decoration: none;
+	background: var(--color-link-hover);
+}
+
+.post-share .share-auto .button svg {
+	margin-right: 1rem;
+	fill: var(--color-bg);
+}
+
 
 /* -------------------------------------------------------------------------- */
 
