@@ -22,7 +22,7 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
   ]));
 
   $manager->add_control('header_search', [
-    'label' => 'Afficher le champ de recherche'
+    'label' => 'Afficher le champ de recherche',
     'type' => 'checkbox',
     'section' => 'plume_header'
   ]);
