@@ -307,8 +307,8 @@ function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
 	switch ($plume_columns){
 		case 'plume_thumb':
 		if (get_field('picture', $plume_id)) {
-			var_dump(get_field('picture', $plume_id));
-			echo get_field('picture', $plume_id);
+			var_dump(get_field('picture', $plume_id)['sizes']['plume-admin-post-featured-image']);
+			echo '<img src="' . get_field('picture', $plume_id)['sizes']['plume-admin-post-featured-image'] . '" alt>';
 		}
 		break;
 	}
