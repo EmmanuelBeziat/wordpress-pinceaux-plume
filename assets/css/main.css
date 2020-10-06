@@ -1548,7 +1548,7 @@ button.search-untoggle {
 	background: var(--color-link-hover);
 }
 
-.post-share .share-auto .button svg {
+.post-share .button svg {
 	margin-right: 1rem;
 	fill: var(--color-bg);
 }
