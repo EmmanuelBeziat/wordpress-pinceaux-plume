@@ -1621,6 +1621,10 @@ button.search-untoggle {
 	justify-content: space-between;
 }
 
+.pagination-single-inner .next-post {
+	margin-left: auto;
+}
+
 
 /* -------------------------------------------------------------------------- */
 
