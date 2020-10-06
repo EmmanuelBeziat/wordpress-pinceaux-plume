@@ -31,10 +31,11 @@
 			<div class="hp-grid">
 				<?php while (have_posts()) : the_post();
 					get_template_part('template-parts/painting', get_post_type());
-				endwhile;
-
-				get_search_form(['label' => 'Rechercher encore']); ?>
+				endwhile; ?>
 			</div>
+
+			<?php get_search_form(['label' => 'Rechercher encore']); ?>
+
 			<?php else : ?>
 			<div class="no-search-results-form">
 				<p>Aucun résultat. Vous pouvez effectuer une nouvelle recherche.</p>
