@@ -860,6 +860,7 @@ input[type="submit"] {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+	white-space: normal;
 	transition: opacity 0.15s linear;
 }
 
@@ -907,6 +908,7 @@ input[type="search"]:focus {
 
 .site {
 	min-height: 100vh;
+	display: grid;
 }
 
 .main {
@@ -1041,8 +1043,8 @@ body.search .main .search-submit svg {
 
 .header-inner {
 	background: #fff;
-	padding: 2.5rem;
-	margin: 2rem auto auto;
+	padding: 1.5rem;
+	margin: 2rem auto;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .15);
 	max-width: 25rem;
 	text-align: center;
@@ -1890,7 +1892,6 @@ button.search-untoggle {
 	/* Element Base -------------------------- */
 	.site {
 		overflow-x: hidden;
-		display: grid;
 		grid-template-columns: minmax(25rem, 40vw) auto;
 	}
 
@@ -1905,6 +1906,11 @@ button.search-untoggle {
 	/* Site Header --------------------------- */
 	.site-title {
 		font-size: 2.8rem;
+	}
+
+	.header-inner {
+		margin: 2rem auto auto;
+		padding: 2.5rem;
 	}
 
 	/* PRIMARY MENU */
