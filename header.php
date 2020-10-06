@@ -44,9 +44,11 @@
 
 					</div>
 
+					<?php if (get_theme_mod('header_search')) : ?>
 					<div class="header-search">
 						<?php get_search_form(['label' => 'Recherche…']);	?>
 					</div>
+					<?php endif ?>
 
 					<div class="header-credits">
 						<p class="header-copyright no-margin">&copy;
