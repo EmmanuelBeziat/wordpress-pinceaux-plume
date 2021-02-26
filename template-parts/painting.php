@@ -14,7 +14,7 @@
   <div class="hp-paint__image">
     <?php if (get_field('picture')) : ?>
       <picture>
-        <source srcset="<?= convert_to_webp(get_field('picture')['sizes']['plume-painting-home']) ?>" type="image/webp">
+        <source srcset="<?= get_field('picture')['sizes']['plume-painting-home'] ?>.webp" type="image/webp">
         <source srcset="<?= get_field('picture')['sizes']['plume-painting-home'] ?>">
         <img src="<?= get_field('picture')['sizes']['plume-painting-home'] ?>" loading="lazy" alt="<?= get_field('picture')['alt'] ?>">
       </picture>
