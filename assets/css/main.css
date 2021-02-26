@@ -1626,6 +1626,11 @@ button.search-untoggle {
 /*	13. Site Pagination
 /* -------------------------------------------------------------------------- */
 
+.pagination-single {
+	padding-bottom: 2rem;
+}
+
+
 .pagination-single-inner {
 	display: flex;
 	justify-content: space-between;
