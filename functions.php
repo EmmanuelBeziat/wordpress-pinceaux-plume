@@ -353,3 +353,7 @@ function plume_customize_register ($wp_customize) {
   $wp_customize->remove_section('custom_css');
 }
 add_action('customize_register', 'plume_customize_register', 50);
+
+function convert_to_webp ($string) {
+	return preg_replace('/\.(jpg|png)$/', '.webp', $string);
+}
