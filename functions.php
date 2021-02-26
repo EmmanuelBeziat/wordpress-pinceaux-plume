@@ -33,8 +33,17 @@ function plume_theme_support() {
 
 	add_image_size('plume-painting-home', 480, 480, ['center', 'center']);
 	add_image_size('plume-painting-single', 800, 1200);
-	add_image_size('plume-painting-single-background', 1200, 480, ['center', 'center']);
+	// add_image_size('plume-painting-single-background', 1200, 480, ['center', 'center']);
 	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);
+
+	// This will remove the default image sizes and the medium_large size.
+	function prefix_remove_default_images($sizes) {
+		unset($sizes['medium']); // 300px
+		unset($sizes['large']); // 1024px
+		unset($sizes['medium_large']); // 768px
+		return $sizes;
+	}
+	add_filter('intermediate_image_sizes_advanced', 'prefix_remove_default_images');
 
 	/*
 	 * Let WordPress manage the document title.
