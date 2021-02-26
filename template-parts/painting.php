@@ -13,13 +13,16 @@
 <a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
   <div class="hp-paint__image">
     <?php if (get_field('picture')) : ?>
-      <?php debug(get_field('picture')) ?>
-      <img src="<?= get_field('picture')['sizes']['plume-painting-home'] ?>" alt="<?= get_field('picture')['alt'] ?>">
+      <picture>
+        <source srcset="<?= str_replace(get_field('picture')['sizes']['plume-painting-home'], ['jpg', 'png'], 'webp') ?>" type="image/webp">
+        <source srcset="<?= get_field('picture')['sizes']['plume-painting-home'] ?>">
+        <img src="<?= get_field('picture')['sizes']['plume-painting-home'] ?>" loading="lazy" alt="<?= get_field('picture')['alt'] ?>">
+      </picture>
     <?php else : ?>
       <picture>
         <source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.webp' ?>" type="image/webp">
-        <source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" type="image/webp">
-        <img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" alt>
+        <source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>">
+        <img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" loading="lazy" alt>
       </picture>
     <?php endif ?>
   </div>

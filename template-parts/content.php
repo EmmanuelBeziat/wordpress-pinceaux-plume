@@ -34,9 +34,19 @@
 
 	<div class="container post-inner">
 		<figure class="post-picture">
-			<?php if (get_field('picture')) : ?>
-				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" alt="<?= get_field('picture')['alt'] ?>">
-			<?php endif ?>
+		<?php if (get_field('picture')) : ?>
+			<picture>
+				<source srcset="<?= str_replace(get_field('picture')['sizes']['plume-painting-single'], ['jpg', 'png'], 'webp') ?>" type="image/webp">
+				<source srcset="<?= get_field('picture')['sizes']['plume-painting-single'] ?>">
+				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" loading="lazy" alt="<?= get_field('picture')['alt'] ?>">
+			</picture>
+		<?php else : ?>
+			<picture>
+				<source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.webp' ?>" type="image/webp">
+				<source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>">
+				<img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" loading="lazy" alt>
+			</picture>
+		<?php endif ?>
 		</figure>
 
 		<?php if (get_field('content')) : ?>
