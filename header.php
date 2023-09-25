@@ -57,12 +57,12 @@
 					<?php endif ?>
 
 					<div class="header-credits">
-						<p class="header-copyright no-margin">&copy;
+						<p class="header-copyright no-margin">Chantal B. &copy;
 							<?= date_i18n(
 								/* translators: Copyright date format, see https://www.php.net/date */
 								_x('Y', 'copyright date format', 'plume')
 							);
-							?> <?= bloginfo('name'); ?>
+							?> <?= bloginfo('name') ?>
 						</p>
 					</div>
 				</div>
