@@ -10,7 +10,7 @@
 
 ?>
 
-<a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>">
+<a href="<?php echo get_permalink() ?>" <?php post_class('hp-paint hp-grid-item') ?> id="post-<?php the_ID(); ?>" aria-label="Voir « <?= get_the_title() ?> ">
   <div class="hp-paint__image">
     <?php if (get_field('picture')) : ?>
       <picture>

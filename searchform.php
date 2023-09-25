@@ -20,7 +20,7 @@ $plume_unique_id = plume_unique_id('search-form-');
 $plume_aria_label = ! empty($args['label']) ? 'aria-label="' . esc_attr($args['label']) . '"' : '';
 ?>
 <form role="search" <?php echo $plume_aria_label; ?> method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-	<label class="" for="<?php echo esc_attr($plume_unique_id); ?>">
+	<label for="<?php echo esc_attr($plume_unique_id); ?>">
 		<span class="screen-reader-text">Rechercher pour…</span>
 		<input type="search" id="<?php echo esc_attr($plume_unique_id); ?>" class="search-field" placeholder="Recherche…" value="<?php echo get_search_query(); ?>" name="s">
 	</label>
