@@ -10,19 +10,24 @@
  */
 
 ?><!doctype html>
-
-<html class="no-js" <?php language_attributes(); ?>>
-
+<html class="no-js" <?php language_attributes() ?>>
 	<head>
-
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<meta name="description" content="<?php bloginfo('description') ?>">
 
 		<link rel="profile" href="https://gmpg.org/xfn/11">
+		<link rel="apple-touch-icon" sizes="180x180" href="<?= get_template_directory_uri() ?>/assets/img/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon-16x16.png">
+		<link rel="manifest" href="<?= get_template_directory_uri() ?>/assets/img/favicons/site.webmanifest">
+		<link rel="mask-icon" href="<?= get_template_directory_uri() ?>/assets/img/favicons/safari-pinned-tab.svg" color="#d35066">
+		<link rel="shortcut icon" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#d35066">
+		<meta name="msapplication-config" content="<?= get_template_directory_uri() ?>/assets/img/favicons/browserconfig.xml">
+		<meta name="theme-color" content="#dfdfdf">
 
 		<?php wp_head(); ?>
-
 		<style>
 			<?php if (get_theme_mod('header_background')) : ?> .header { background-image: url(<?= get_theme_mod('header_background') ?>) } <?php endif ?>
 		</style>
