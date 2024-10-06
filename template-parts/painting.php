@@ -16,7 +16,7 @@
       <picture>
         <source srcset="<?= esc_url($picture['sizes']['plume-painting-home']) ?>.webp" type="image/webp">
         <source srcset="<?= esc_url($picture['sizes']['plume-painting-home']) ?>">
-        <img src="<?= esc_url($picture['sizes']['plume-painting-home']) ?>" loading="lazy" alt="<?= esc_attr(['alt']) ?>">
+        <img src="<?= esc_url($picture['sizes']['plume-painting-home']) ?>" loading="lazy" alt="<?= esc_attr($picture['alt']) ?>">
       </picture>
     <?php else : ?>
       <picture>
