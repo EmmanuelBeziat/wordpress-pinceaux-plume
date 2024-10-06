@@ -28,21 +28,16 @@
  * @param object $comment Comment data.
  * @return bool
  */
-function plume_is_comment_by_post_author($comment = null) {
-
+function plume_is_comment_by_post_author ($comment = null) {
 	if (is_object($comment) && $comment->user_id > 0) {
-
 		$user = get_userdata($comment->user_id);
 		$post = get_post($comment->comment_post_ID);
 
 		if (! empty($user) && ! empty($post)) {
-
 			return $comment->user_id === $post->post_author;
-
 		}
 	}
 	return false;
-
 }
 
 /**
@@ -54,11 +49,9 @@ function plume_is_comment_by_post_author($comment = null) {
  * @param string $link Link to the top of the page.
  * @return string Link to the top of the page.
  */
-function plume_filter_comment_reply_link($link) {
-
+function plume_filter_comment_reply_link ($link) {
 	$link = str_replace('class=\'', 'class=\'do-not-scroll ', $link);
 	return $link;
-
 }
 
 add_filter('comment_reply_link', 'plume_filter_comment_reply_link');
@@ -75,10 +68,8 @@ add_filter('comment_reply_link', 'plume_filter_comment_reply_link');
  * @param int    $post_id  The ID of the post for which the post meta should be output.
  * @param string $location Which post meta location to output – single or preview.
  */
-function plume_the_post_meta($post_id = null, $location = 'single-top') {
-
+function plume_the_post_meta ($post_id = null, $location = 'single-top') {
 	echo plume_get_post_meta($post_id, $location); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in plume_get_post_meta().
-
 }
 
 /**
@@ -88,7 +79,7 @@ function plume_the_post_meta($post_id = null, $location = 'single-top') {
  * @param int    $post_id Post ID.
  * @param string $text    Anchor text.
  */
-function plume_edit_post_link($link, $post_id, $text) {
+function plume_edit_post_link ($link, $post_id, $text) {
 	if (is_admin()) {
 		return $link;
 	}
@@ -114,7 +105,7 @@ add_filter('edit_post_link', 'plume_edit_post_link', 10, 3);
  * @param int    $post_id The ID of the post.
  * @param string $location The location where the meta is shown.
  */
-function plume_get_post_meta($post_id = null, $location = 'single-top') {
+function plume_get_post_meta ($post_id = null, $location = 'single-top') {
 
 	// Require post ID.
 	if (! $post_id) {
@@ -169,7 +160,8 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 		$post_meta_wrapper_classes = ' post-meta-single post-meta-single-top';
 
-	} elseif ('single-bottom' === $location) {
+	}
+	elseif ('single-bottom' === $location) {
 
 		/**
 		 * Filters post tags visibility.
@@ -204,13 +196,10 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 		setup_postdata($the_post);
 
 		ob_start();
-
 		?>
 
 		<div class="post-meta-wrapper<?php echo esc_attr($post_meta_wrapper_classes); ?>">
-
 			<ul class="post-meta<?php echo esc_attr($post_meta_classes); ?>">
-
 				<?php
 
 				/**
@@ -230,9 +219,8 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 				// Author.
 				if (post_type_supports(get_post_type($post_id), 'author') && in_array('author', $post_meta, true)) {
+					$has_meta = true; ?>
 
-					$has_meta = true;
-					?>
 					<li class="post-author meta-wrapper">
 						<span class="meta-icon">
 							<span class="screen-reader-text"><?php _e('Post author', 'plume'); ?></span>
@@ -249,14 +237,11 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 						</span>
 					</li>
 					<?php
-
 				}
 
 				// Post date.
 				if (in_array('post-date', $post_meta, true)) {
-
-					$has_meta = true;
-					?>
+					$has_meta = true; ?>
 					<li class="post-date meta-wrapper">
 						<span class="meta-icon">
 							<span class="screen-reader-text"><?php _e('Post date', 'plume'); ?></span>
@@ -272,9 +257,7 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 				// Categories.
 				if (in_array('categories', $post_meta, true) && has_category()) {
-
-					$has_meta = true;
-					?>
+					$has_meta = true; ?>
 					<li class="post-categories meta-wrapper">
 						<span class="meta-icon">
 							<span class="screen-reader-text"><?php _e('Categories', 'plume'); ?></span>
@@ -290,9 +273,7 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 				// Tags.
 				if (in_array('tags', $post_meta, true) && has_tag()) {
-
-					$has_meta = true;
-					?>
+					$has_meta = true; ?>
 					<li class="post-tags meta-wrapper">
 						<span class="meta-icon">
 							<span class="screen-reader-text"><?php _e('Tags', 'plume'); ?></span>
@@ -308,9 +289,7 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 				// Comments link.
 				if (in_array('comments', $post_meta, true) && ! post_password_required() && (comments_open() || get_comments_number())) {
-
-					$has_meta = true;
-					?>
+					$has_meta = true; ?>
 					<li class="post-comment-link meta-wrapper">
 						<span class="meta-icon">
 							<?php plume_the_theme_svg('comment'); ?>
@@ -325,9 +304,7 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 				// Sticky.
 				if (in_array('sticky', $post_meta, true) && is_sticky()) {
-
-					$has_meta = true;
-					?>
+					$has_meta = true; ?>
 					<li class="post-sticky meta-wrapper">
 						<span class="meta-icon">
 							<?php plume_the_theme_svg('bookmark'); ?>
@@ -354,11 +331,9 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 				 *                          Accepts 'single-top' or 'single-bottom'.
 				 */
 				do_action('plume_end_of_post_meta_list', $post_id, $post_meta, $location);
-
 				?>
 
 			</ul><!-- .post-meta -->
-
 		</div><!-- .post-meta-wrapper -->
 
 		<?php
@@ -369,12 +344,9 @@ function plume_get_post_meta($post_id = null, $location = 'single-top') {
 
 		// If there is meta to output, return it.
 		if ($has_meta && $meta_output) {
-
 			return $meta_output;
-
 		}
 	}
-
 }
 
 /**
@@ -414,7 +386,6 @@ function plume_filter_wp_list_pages_item_classes($css_class, $page, $depth, $arg
 	}
 
 	return $css_class;
-
 }
 
 add_filter('page_css_class', 'plume_filter_wp_list_pages_item_classes', 10, 5);
@@ -444,23 +415,22 @@ function plume_add_sub_toggles_to_main_menu($args, $item, $depth) {
 
 			// Add the sub menu toggle.
 			$args->after .= '<button type="button" class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint($toggle_duration) . '" aria-expanded="false"><span class="screen-reader-text">' . __('Show sub menu', 'plume') . '</span>' . plume_get_theme_svg('chevron-down') . '</button>';
-
 		}
 
 		// Close the wrapper.
 		$args->after .= '</div><!-- .ancestor-wrapper -->';
 
 		// Add sub menu icons to the primary menu without toggles.
-	} elseif ('primary' === $args->theme_location) {
+	}
+	elseif ('primary' === $args->theme_location) {
 		if (in_array('menu-item-has-children', $item->classes, true)) {
 			$args->after = '<span class="icon"></span>';
-		} else {
+		}
+		else {
 			$args->after = '';
 		}
 	}
-
 	return $args;
-
 }
 
 add_filter('nav_menu_item_args', 'plume_add_sub_toggles_to_main_menu', 10, 3);
@@ -483,7 +453,6 @@ function plume_nav_menu_social_icons($item_output, $item, $depth, $args) {
 		}
 		$item_output = str_replace($args->link_after, '</span>' . $svg, $item_output);
 	}
-
 	return $item_output;
 }
 
@@ -499,11 +468,9 @@ add_filter('walker_nav_menu_start_el', 'plume_nav_menu_social_icons', 10, 4);
  * If we're missing JavaScript support, the HTML element will have a 'no-js' class.
  */
 function plume_no_js_class() {
-
 	?>
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 	<?php
-
 }
 
 add_action('wp_head', 'plume_no_js_class');

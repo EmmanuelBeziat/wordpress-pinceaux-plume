@@ -7,7 +7,7 @@
  * @since Plume 1.0
  */
 
-if (! function_exists('plume_the_theme_svg')) {
+if (!function_exists('plume_the_theme_svg')) {
 	/**
 	 * Output and Get Theme SVG.
 	 * Output and get the SVG markup for an icon in the Plume_SVG_Icons class.
@@ -21,7 +21,7 @@ if (! function_exists('plume_the_theme_svg')) {
 	}
 }
 
-if (! function_exists('plume_get_theme_svg')) {
+if (!function_exists('plume_get_theme_svg')) {
 
 	/**
 	 * Get information about the SVG icon.
@@ -62,7 +62,7 @@ if (! function_exists('plume_get_theme_svg')) {
 			)
 		);
 
-		if (! $svg) {
+		if (!$svg) {
 			return false;
 		}
 		return $svg;

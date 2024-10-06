@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Plume
- * @since Plume 1.0
+ * @since Plume 1.2
  */
 
 /**
@@ -365,4 +365,19 @@ add_action('customize_register', 'plume_customize_register', 50);
 
 function convert_to_webp ($string) {
 	return preg_replace('/\.(jpg|png)$/', '.webp', $string);
+}
+
+function render_post_link ($post, $state) {
+	if (!$post) return;
+
+	$class = $state === 'prev' ? 'previous-post' : 'next-post';
+	$arrow = $state === 'prev' ? '&larr;' : '&rarr';
+	$title = wp_kses_post(get_the_title($prev_post->ID));
+	$url = esc_url(get_permalink($post->ID));
+	?>
+	<a class=<?= $class; ?>" href="<?= $url; ?>">
+		<span class="arrow" aria-hidden="true"><?= $arrow; ?></span>
+		<span class="title"><span class="title-inner"><?= $title; ?></span></span>
+	</a>
+	<?php
 }

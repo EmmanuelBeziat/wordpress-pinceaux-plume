@@ -28,12 +28,14 @@ if ($comments) {	?>
 		<div class="comments-header">
 			<h2 class="comment-reply-title">
 			<?php
-			if (! have_comments()) {
+			if (!have_comments()) {
 				_e('Laissez un commentaire');
-			} elseif (1 === $comments_number) {
+			}
+			elseif (1 === $comments_number) {
 				/* translators: %s: Post title. */
 				printf(_x('Une réponse sur &ldquo;%s&rdquo;', 'comments title', 'plume'), get_the_title());
-			} else {
+			}
+			else {
 				printf(
 					/* translators: 1: Number of comments, 2: Post title. */
 					_nx(
@@ -50,11 +52,9 @@ if ($comments) {	?>
 
 			?>
 			</h2>
-
 		</div>
 
 		<div class="comments-inner">
-
 			<?php wp_list_comments([
 				'walker'      => new Plume_Walker_Comment(),
 				'avatar_size' => 120,
@@ -81,7 +81,6 @@ if ($comments) {	?>
 				<nav class="comments-pagination pagination<?php echo $pagination_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e('Comments', 'plume'); ?>">
 					<?php echo wp_kses_post($comment_pagination); ?>
 				</nav>
-
 				<?php
 			}
 			?>

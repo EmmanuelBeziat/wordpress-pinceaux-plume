@@ -4,42 +4,29 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @since Twenty Twenty 1.2
  */
 
 $next_post = get_next_post();
 $prev_post = get_previous_post();
 
 if ($next_post || $prev_post) {
-
 	$pagination_classes = '';
 
 	if (!$next_post) {
 		$pagination_classes = ' only-one only-prev';
-	} elseif (!$prev_post) {
+	}
+	elseif (!$prev_post) {
 		$pagination_classes = ' only-one only-next';
 	}
-
 	?>
 
-	<nav class="pagination-single section-inner<?php echo esc_attr($pagination_classes); ?>" aria-label="Post" role="navigation">
-
+	<nav class="pagination-single section-inner<?= esc_attr($pagination_classes); ?>" aria-label="Post" role="navigation">
 		<hr class="styled-separator is-style-wide" aria-hidden="true">
 
 		<div class="pagination-single-inner">
-			<?php if ($prev_post) : ?>
-				<a class="previous-post" href="<?php echo esc_url(get_permalink($prev_post->ID)); ?>">
-					<span class="arrow" aria-hidden="true">&larr;</span>
-					<span class="title"><span class="title-inner"><?php echo wp_kses_post(get_the_title($prev_post->ID)); ?></span></span>
-				</a>
-			<?php endif;
-
-			if ($next_post) : ?>
-				<a class="next-post" href="<?php echo esc_url(get_permalink($next_post->ID)); ?>">
-					<span class="title"><span class="title-inner"><?php echo wp_kses_post(get_the_title($next_post->ID)); ?></span></span>
-					<span class="arrow" aria-hidden="true">&rarr;</span>
-				</a>
-			<?php endif ?>
+			<?php render_post_link($prev_post, 'prev'); ?>
+			<?php render_post_link($next_post, 'next'); ?>
 		</div>
 	</nav>
 
