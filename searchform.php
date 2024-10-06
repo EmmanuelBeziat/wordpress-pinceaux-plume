@@ -8,7 +8,7 @@
  *
  * @package WordPress
  * @subpackage Plume
- * @since Plume 1.0
+ * @since Plume 1.2
  */
 
 /*
@@ -17,12 +17,12 @@
  */
 $plume_unique_id = plume_unique_id('search-form-');
 
-$plume_aria_label = ! empty($args['label']) ? 'aria-label="' . esc_attr($args['label']) . '"' : '';
+$plume_aria_label = !empty($args['label']) ? 'aria-label="' . esc_attr($args['label']) . '"' : '';
 ?>
-<form role="search" <?php echo $plume_aria_label; ?> method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-	<label for="<?php echo esc_attr($plume_unique_id); ?>">
+<form role="search" <?= $plume_aria_label; ?> method="get" class="search-form" action="<?= esc_url(home_url('/')); ?>">
+	<label for="<?= esc_attr($plume_unique_id); ?>">
 		<span class="screen-reader-text">Rechercher pour…</span>
-		<input type="search" id="<?php echo esc_attr($plume_unique_id); ?>" class="search-field" placeholder="Recherche…" value="<?php echo get_search_query(); ?>" name="s">
+		<input type="search" id="<?= esc_attr($plume_unique_id); ?>" class="search-field" placeholder="Recherche…" value="<?= get_search_query(); ?>" name="s">
 	</label>
 	<button type="submit" class="search-submit">
 		<?php plume_the_theme_svg('search'); ?>

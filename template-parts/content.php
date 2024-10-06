@@ -8,7 +8,7 @@
  *
  * @package WordPress
  * @subpackage Plume
- * @since Plume 1.0
+ * @since Plume 1.2
  */
 ?>
 
@@ -16,16 +16,16 @@
 	<header class="post-header">
 		<div class="container">
 			<h1 class="post-title"><?php the_title() ?></h1>
-			<?php if (get_field('date')) : ?>
-				<span class="post-date"><?= get_field('date') ?></span>
+			<?php if ($date = get_field('date')) : ?>
+				<span class="post-date"><?= esc_html($date) ?></span>
 			<?php endif ?>
 
-			<?php if (get_field('paint-type')) : ?>
-				<span class="paint__type"><?= get_field('paint-type') ?></span>
+			<?php if ($paint_type = get_field('paint-type')) : ?>
+				<span class="paint__type"><?= esc_html($paint_type) ?></span>
 			<?php endif ?>
 
-			<?php if (get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
-				<span class="paint__dimensions"><?= get_field('dimensions')['width'] ?>×<?= get_field('dimensions')['height'] ?> cm</span>
+			<?php if ($dimensions = get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
+				<span class="paint__dimensions"><?= esc_html($dimensions['width']) ?>×<?= esc_html($dimensions['height']) ?> cm</span>
 			<?php endif ?>
 
 			<?php edit_post_link() ?>
@@ -34,25 +34,25 @@
 
 	<div class="container post-inner">
 		<figure class="post-picture">
-		<?php if (get_field('picture')) : ?>
+		<?php if ($picture = get_field('picture')) : ?>
 			<picture>
-				<source srcset="<?= get_field('picture')['sizes']['plume-painting-single'] ?>.webp" type="image/webp">
-				<source srcset="<?= get_field('picture')['sizes']['plume-painting-single'] ?>">
-				<img src="<?= get_field('picture')['sizes']['plume-painting-single'] ?>" loading="lazy" alt="<?= get_field('picture')['alt'] ?>">
+				<source srcset="<?= esc_url($picture['sizes']['plume-painting-single']) ?>.webp" type="image/webp">
+				<source srcset="<?= esc_url($picture['sizes']['plume-painting-single']) ?>">
+				<img src="<?= esc_url($picture['sizes']['plume-painting-single']) ?>" loading="lazy" alt="<?= esc_attr($picture['alt']) ?>">
 			</picture>
 		<?php else : ?>
 			<picture>
-				<source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.webp' ?>" type="image/webp">
-				<source srcset="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>">
-				<img src="<?= get_template_directory_uri() . '/img/thumbnail-default.png' ?>" loading="lazy" alt>
+				<source srcset="<?= esc_url(get_template_directory_uri() . '/img/thumbnail-default.webp') ?>" type="image/webp">
+				<source srcset="<?= esc_url(get_template_directory_uri() . '/img/thumbnail-default.png') ?>">
+				<img src="<?= esc_url(get_template_directory_uri() . '/img/thumbnail-default.png') ?>" loading="lazy" alt>
 			</picture>
 		<?php endif ?>
 		</figure>
 
-		<?php if (get_field('content')) : ?>
+		<?php if ($content = get_field('content')) : ?>
 		<div class="post-content">
 			<h2 class="heading-size-4">À propos…</h2>
-			<?= get_field('content') ?>
+			<?= wp_kses_post($content) ?>
 		</div>
 		<?php endif ?>
 	</div>

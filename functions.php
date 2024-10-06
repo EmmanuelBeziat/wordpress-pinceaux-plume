@@ -344,7 +344,6 @@ function plume_admin_bar_render() {
 }
 add_action('wp_before_admin_bar_render', 'plume_admin_bar_render');
 
-
 // Manage Post and Page Admin Panel Columns
 add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
 add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
@@ -375,7 +374,7 @@ function render_post_link ($post, $state) {
 	$title = wp_kses_post(get_the_title($prev_post->ID));
 	$url = esc_url(get_permalink($post->ID));
 	?>
-	<a class=<?= $class; ?>" href="<?= $url; ?>">
+	<a class="<?= $class; ?>" href="<?= $url; ?>">
 		<span class="arrow" aria-hidden="true"><?= $arrow; ?></span>
 		<span class="title"><span class="title-inner"><?= $title; ?></span></span>
 	</a>
