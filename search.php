@@ -22,7 +22,7 @@
 	<section class="hp-paints section section-search">
 		<div class="container">
 			<header class="section-header">
-				<h1 class="heading-size-3 section-header-title page-title">Résultats de recherche pour : « <span class="search-query"><?php echo get_search_query() ?> »</span></h1>
+				<h1 class="heading-size-3 section-header-title page-title">Résultats de recherche pour : « <span class="search-query"><?= get_search_query() ?> »</span></h1>
 			</header>
 
 			<?php get_search_form(['label' => 'Rechercher encore']); ?>

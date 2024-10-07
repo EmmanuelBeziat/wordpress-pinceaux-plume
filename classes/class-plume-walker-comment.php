@@ -33,7 +33,7 @@ if (! class_exists('Plume_Walker_Comment')) {
 			$tag = ('div' === $args['style']) ? 'div' : 'li';
 
 			?>
-			<<?php echo $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($this->has_children ? 'parent' : '', $comment); ?>>
+			<<?= $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($this->has_children ? 'parent' : '', $comment); ?>>
 				<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 					<footer class="comment-meta">
 						<div class="comment-author vcard">
@@ -63,13 +63,13 @@ if (! class_exists('Plume_Walker_Comment')) {
 						</div><!-- .comment-author -->
 
 						<div class="comment-metadata">
-							<a href="<?php echo esc_url(get_comment_link($comment, $args)); ?>">
+							<a href="<?= esc_url(get_comment_link($comment, $args)); ?>">
 								<?php
 								/* translators: 1: Comment date, 2: Comment time. */
 								$comment_timestamp = sprintf(__('%1$s at %2$s', 'plume'), get_comment_date('', $comment), get_comment_time());
 								?>
-								<time datetime="<?php comment_time('c'); ?>" title="<?php echo esc_attr($comment_timestamp); ?>">
-									<?php echo esc_html($comment_timestamp); ?>
+								<time datetime="<?php comment_time('c'); ?>" title="<?= esc_attr($comment_timestamp); ?>">
+									<?= esc_html($comment_timestamp); ?>
 								</time>
 							</a>
 							<?php

@@ -198,8 +198,8 @@ function plume_get_post_meta ($post_id = null, $location = 'single-top') {
 		ob_start();
 		?>
 
-		<div class="post-meta-wrapper<?php echo esc_attr($post_meta_wrapper_classes); ?>">
-			<ul class="post-meta<?php echo esc_attr($post_meta_classes); ?>">
+		<div class="post-meta-wrapper<?= esc_attr($post_meta_wrapper_classes); ?>">
+			<ul class="post-meta<?= esc_attr($post_meta_classes); ?>">
 				<?php
 
 				/**
