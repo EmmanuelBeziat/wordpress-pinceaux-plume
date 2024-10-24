@@ -39,7 +39,7 @@
       <span class="hp-paint__type"><?= esc_html($paintType) ?></span>
     <?php endif ?>
 
-    <?php if ($dimension = get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
+    <?php if ($dimensions = get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
       <span class="hp-paint__dimensions"><?= esc_html($dimensions['width']) ?>×<?= esc_html($dimensions['height']) ?> cm</span>
     <?php endif ?>
 
