@@ -325,9 +325,16 @@ function plume_custom_rss ($qv) {
 add_filter('request', 'plume_custom_rss');
 
 // Add the column
-function plume_add_post_admin_thumbnail_column ($plume_columns){
-	$plume_columns['plume_thumb'] = __('Featured Image');
-	return $plume_columns;
+function plume_add_post_admin_thumbnail_column ($columns) {
+	$new_columns = [
+		'cb' => $columns['cb'],
+		'plume_thumb' => 'Tableau',
+		'title' => $columns['title'],
+		'date' => $columns['date'],
+		'paint_type' => 'Type de peinture'
+	];
+
+	return $new_columns;
 }
 
 // Add the posts and pages columns filter. They both use the same function.
@@ -335,13 +342,17 @@ add_filter('manage_posts_columns', 'plume_add_post_admin_thumbnail_column', 2);
 add_filter('manage_pages_columns', 'plume_add_post_admin_thumbnail_column', 2);
 
 // Get featured-thumbnail size post thumbnail and display it
-function plume_show_post_thumbnail_column ($plume_columns, $plume_id){
-	switch ($plume_columns){
+function plume_show_post_thumbnail_column ($columns, $post_id) {
+	switch ($columns) {
 		case 'plume_thumb':
-		if (get_field('picture', $plume_id)) {
-			echo '<img src="' . get_field('picture', $plume_id)['sizes']['plume-admin-post-featured-image'] . '" alt>';
-		}
-		break;
+			if (get_field('picture', $post_id)) {
+				echo '<img src="' . get_field('picture', $post_id)['sizes']['plume-admin-post-featured-image'] . '" alt>';
+			}
+			break;
+		case 'paint-type':
+			$paint_type = get_field('paint-type', $post_id);
+			echo $paint_type ? esc_html($paint_type) : '-';
+			break;
 	}
 }
 
