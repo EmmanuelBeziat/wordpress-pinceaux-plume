@@ -331,11 +331,19 @@ function plume_add_post_admin_thumbnail_column ($columns) {
 		'plume_thumb' => 'Tableau',
 		'title' => $columns['title'],
 		'date' => $columns['date'],
-		'paint_type' => 'Type de peinture'
+		'paint-type' => 'Type de peinture'
 	];
 
 	return $new_columns;
 }
+
+function plume_admin_column_styles() {
+	echo '<style>
+		.column-plume_thumb { width: 60px; }
+		.column-paint_type { width: 140px; }
+	</style>';
+}
+add_action('admin_head', 'plume_admin_column_styles');
 
 // Add the posts and pages columns filter. They both use the same function.
 add_filter('manage_posts_columns', 'plume_add_post_admin_thumbnail_column', 2);
