@@ -17,15 +17,12 @@
 		<meta name="description" content="<?php bloginfo('description') ?>">
 
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-		<link rel="apple-touch-icon" sizes="180x180" href="<?= get_template_directory_uri() ?>/assets/img/favicons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon-16x16.png">
-		<link rel="manifest" href="<?= get_template_directory_uri() ?>/assets/img/favicons/site.webmanifest">
-		<link rel="mask-icon" href="<?= get_template_directory_uri() ?>/assets/img/favicons/safari-pinned-tab.svg" color="#d35066">
+		<link rel="icon" type="image/png" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/svg+xml" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon.svg">
 		<link rel="shortcut icon" href="<?= get_template_directory_uri() ?>/assets/img/favicons/favicon.ico">
-		<meta name="msapplication-TileColor" content="#d35066">
-		<meta name="msapplication-config" content="<?= get_template_directory_uri() ?>/assets/img/favicons/browserconfig.xml">
-		<meta name="theme-color" content="#dfdfdf">
+		<link rel="apple-touch-icon" sizes="180x180" href="<?= get_template_directory_uri() ?>/assets/img/favicons/apple-touch-icon.png">
+		<meta name="apple-mobile-web-app-title" content="Pinceaux de Plume">
+		<link rel="manifest" href="<?= get_template_directory_uri() ?>/assets/img/favicons/site.webmanifest">
 
 		<?php wp_head(); ?>
 		<style>
