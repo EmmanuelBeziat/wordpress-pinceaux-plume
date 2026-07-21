@@ -21,3 +21,24 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+# ignore AI / agent tooling artifacts
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+.cursor/
+.cursorrules
+.cursorignore
+.github/copilot-instructions.md
+.aider*
+.codeium/
+.windsurf/
+.windsurfrules
+.continue/
+AGENTS.md
+GEMINI.md
+.gemini/
+.mcp.json
+.roo/
+.cline/
+.claudesync/
