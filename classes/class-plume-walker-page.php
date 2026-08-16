@@ -7,7 +7,7 @@
  * @since Plume 1.0
  */
 
-if (! class_exists('Plume_Walker_Page')) {
+if (!class_exists('Plume_Walker_Page')) {
 	/**
 	 * CUSTOM PAGE WALKER
 	 * A custom walker for pages.
@@ -20,13 +20,13 @@ if (! class_exists('Plume_Walker_Page')) {
 		 * @see Walker::start_el()
 		 * @since 2.1.0
 		 *
-		 * @param string  $output       Used to append additional content. Passed by reference.
-		 * @param WP_Post $page         Page data object.
-		 * @param int     $depth        Optional. Depth of page. Used for padding. Default 0.
-		 * @param array   $args         Optional. Array of arguments. Default empty array.
-		 * @param int     $current_page Optional. Page ID. Default 0.
+		 * @param string $output Used to append additional content. Passed by reference.
+		 * @param WP_Post $page Page data object.
+		 * @param int $depth Optional. Depth of page. Used for padding. Default 0.
+		 * @param array $args Optional. Array of arguments. Default empty array.
+		 * @param int $current_page Optional. Page ID. Default 0.
 		 */
-		public function start_el(&$output, $page, $depth = 0, $args = array(), $current_page = 0) {
+		public function start_el (&$output, $page, $depth = 0, $args = [], $current_page = 0) {
 
 			if (isset($args['item_spacing']) && 'preserve' === $args['item_spacing']) {
 				$t = "\t";
@@ -41,13 +41,13 @@ if (! class_exists('Plume_Walker_Page')) {
 				$indent = '';
 			}
 
-			$css_class = array('page_item', 'page-item-' . $page->ID);
+			$css_class = ['page_item', 'page-item-' . $page->ID];
 
 			if (isset($args['pages_with_children'][ $page->ID ])) {
 				$css_class[] = 'page_item_has_children';
 			}
 
-			if (! empty($current_page)) {
+			if (!empty($current_page)) {
 				$_current_page = get_post($current_page);
 				if ($_current_page && in_array($page->ID, $_current_page->ancestors, true)) {
 					$css_class[] = 'current_page_ancestor';
@@ -71,10 +71,10 @@ if (! class_exists('Plume_Walker_Page')) {
 			}
 
 			$args['link_before'] = empty($args['link_before']) ? '' : $args['link_before'];
-			$args['link_after']  = empty($args['link_after']) ? '' : $args['link_after'];
+			$args['link_after'] = empty($args['link_after']) ? '' : $args['link_after'];
 
-			$atts                 = array();
-			$atts['href']         = get_permalink($page->ID);
+			$atts = [];
+			$atts['href'] = get_permalink($page->ID);
 			$atts['aria-current'] = ($page->ID === $current_page) ? 'page' : '';
 
 			/** This filter is documented in wp-includes/class-walker-page.php */
@@ -82,26 +82,26 @@ if (! class_exists('Plume_Walker_Page')) {
 
 			$attributes = '';
 			foreach ($atts as $attr => $value) {
-				if (! empty($value)) {
-					$value       = ('href' === $attr) ? esc_url($value) : esc_attr($value);
+				if (!empty($value)) {
+					$value = ('href' === $attr) ? esc_url($value) : esc_attr($value);
 					$attributes .= ' ' . $attr . '="' . $value . '"';
 				}
 			}
 
 			$args['list_item_before'] = '';
-			$args['list_item_after']  = '';
+			$args['list_item_after'] = '';
 
 			// Wrap the link in a div and append a sub menu toggle.
 			if (isset($args['show_toggles']) && true === $args['show_toggles']) {
 				// Wrap the menu item link contents in a div, used for positioning.
 				$args['list_item_before'] = '<div class="ancestor-wrapper">';
-				$args['list_item_after']  = '';
+				$args['list_item_after'] = '';
 
 				// Add a toggle to items with children.
 				if (isset($args['pages_with_children'][ $page->ID ])) {
 
 					$toggle_target_string = '.menu-modal .page-item-' . $page->ID . ' > ul';
-					$toggle_duration      = plume_toggle_duration();
+					$toggle_duration = plume_toggle_duration();
 
 					// Add the sub menu toggle.
 					$args['list_item_after'] .= '<button type="button" class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint($toggle_duration) . '" aria-expanded="false"><span class="screen-reader-text">' . __('Show sub menu', 'plume') . '</span>' . plume_get_theme_svg('chevron-down') . '</button>';
@@ -131,7 +131,7 @@ if (! class_exists('Plume_Walker_Page')) {
 				$args['list_item_after']
 			);
 
-			if (! empty($args['show_date'])) {
+			if (!empty($args['show_date'])) {
 				if ('modified' === $args['show_date']) {
 					$time = $page->post_modified;
 				} else {
@@ -139,7 +139,7 @@ if (! class_exists('Plume_Walker_Page')) {
 				}
 
 				$date_format = empty($args['date_format']) ? '' : $args['date_format'];
-				$output     .= ' ' . mysql2date($date_format, $time);
+				$output .= ' ' . mysql2date($date_format, $time);
 			}
 		}
 	}

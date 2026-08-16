@@ -60,10 +60,10 @@
 	<div class="container">
 		<?php
 		wp_link_pages([
-			'before'      => '<nav class="post-nav-links bg-light-background" aria-label="Page"><span class="label">Pages</span>',
-			'after'       => '</nav>',
+			'before' => '<nav class="post-nav-links bg-light-background" aria-label="Page"><span class="label">Pages</span>',
+			'after' => '</nav>',
 			'link_before' => '<span class="page-number">',
-			'link_after'  => '</span>',
+			'link_after' => '</span>',
 		]);
 
 		// Single bottom post meta.

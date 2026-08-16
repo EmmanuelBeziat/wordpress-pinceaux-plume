@@ -17,7 +17,7 @@ if (post_password_required()) {
 	return;
 }
 
-if ($comments) {	?>
+if ($comments) { ?>
 
 	<hr class="styled-separator is-style-wide" aria-hidden="true" />
 
@@ -55,15 +55,15 @@ if ($comments) {	?>
 
 		<div class="comments-inner">
 			<?php wp_list_comments([
-				'walker'      => new Plume_Walker_Comment(),
+				'walker' => new Plume_Walker_Comment(),
 				'avatar_size' => 120,
-				'style'       => 'div',
+				'style' => 'div',
 			]);
 
 			$comment_pagination = paginate_comments_links([
-				'echo'      => false,
-				'end_size'  => 0,
-				'mid_size'  => 0,
+				'echo' => false,
+				'end_size' => 0,
+				'mid_size' => 0,
 				'next_text' => 'Plus récents <span aria-hidden="true">&rarr;</span>',
 				'prev_text' => '<span aria-hidden="true">&larr;</span> Plus ancients',
 			]);

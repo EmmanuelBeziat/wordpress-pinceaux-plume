@@ -16,7 +16,7 @@
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function plume_theme_support() {
+function plume_theme_support () {
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support('automatic-feed-links');
@@ -37,7 +37,7 @@ function plume_theme_support() {
 	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);
 
 	// This will remove the default image sizes and the medium_large size.
-	function prefix_remove_default_images($sizes) {
+	function prefix_remove_default_images ($sizes) {
 		unset($sizes['medium']); // 300px
 		unset($sizes['large']); // 1024px
 		unset($sizes['medium_large']); // 768px
@@ -81,7 +81,7 @@ function plume_theme_support() {
 	 * by the theme.
 	 */
 	$loader = new Plume_Script_Loader();
-	add_filter('script_loader_tag', array($loader, 'filter_script_loader_tag'), 10, 2);
+	add_filter('script_loader_tag', [$loader, 'filter_script_loader_tag'], 10, 2);
 
 }
 add_action('after_setup_theme', 'plume_theme_support');
@@ -104,11 +104,11 @@ require get_template_directory() . '/inc/customize.php';
 /**
  * Register and Enqueue Styles.
  */
-function plume_register_styles() {
+function plume_register_styles () {
 
 	$theme_version = wp_get_theme()->get('Version');
 
-  wp_enqueue_style('plume-style', get_template_directory_uri() . '/assets/css/main.min.css', array(), $theme_version);
+	wp_enqueue_style('plume-style', get_template_directory_uri() . '/assets/css/main.min.css', [], $theme_version);
 	wp_enqueue_style('plume-print-style', get_template_directory_uri() . '/assets/css/print.min.css', null, $theme_version, 'print');
 }
 
@@ -117,7 +117,7 @@ add_action('wp_enqueue_scripts', 'plume_register_styles');
 /**
  * Register and Enqueue Scripts.
  */
-function plume_register_scripts() {
+function plume_register_scripts () {
 
 	$theme_version = wp_get_theme()->get('Version');
 
@@ -125,7 +125,7 @@ function plume_register_scripts() {
 		wp_enqueue_script('comment-reply');
 	}
 
-	wp_enqueue_script('plume-js', get_template_directory_uri() . '/assets/js/main.min.js', array(), $theme_version, false);
+	wp_enqueue_script('plume-js', get_template_directory_uri() . '/assets/js/main.min.js', [], $theme_version, false);
 	wp_script_add_data('plume-js', 'defer', true);
 }
 
@@ -134,11 +134,11 @@ add_action('wp_enqueue_scripts', 'plume_register_scripts');
 /**
  * Register navigation menus uses wp_nav_menu in five places.
  */
-function plume_menus() {
+function plume_menus () {
 
 	$locations = [
-		'primary'  => __('Menu principal', 'plume'),
-		'footer'   => __('Menu pied de page', 'plume'),
+		'primary' => __('Menu principal', 'plume'),
+		'footer' => __('Menu pied de page', 'plume'),
 	];
 
 	register_nav_menus($locations);
@@ -150,7 +150,7 @@ add_action('init', 'plume_menus');
 /**
  * Include a skip to content link at the top of the page so that users can bypass the menu.
  */
-function plume_skip_link() {
+function plume_skip_link () {
 	echo '<a class="skip-link screen-reader-text" href="#site-content">' . __('Skip to the content', 'plume') . '</a>';
 }
 add_action('wp_body_open', 'plume_skip_link', 5);
@@ -160,25 +160,25 @@ add_action('wp_body_open', 'plume_skip_link', 5);
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function plume_sidebar_registration() {
+function plume_sidebar_registration () {
 
 	// Arguments used in all register_sidebar() calls.
-	$shared_args = array(
-		'before_title'  => '<h2 class="widget-title subheading heading-size-3">',
-		'after_title'   => '</h2>',
+	$shared_args = [
+		'before_title' => '<h2 class="widget-title subheading heading-size-3">',
+		'after_title' => '</h2>',
 		'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
-		'after_widget'  => '</div></div>',
-	);
+		'after_widget' => '</div></div>',
+	];
 
 	// Footer #1.
 	register_sidebar(
 		array_merge(
 			$shared_args,
-			array(
-				'name'        => __('Footer #1', 'plume'),
-				'id'          => 'sidebar-1',
+			[
+				'name' => __('Footer #1', 'plume'),
+				'id' => 'sidebar-1',
 				'description' => __('Widgets in this area will be displayed in the first column in the footer.', 'plume'),
-			)
+			]
 		)
 	);
 
@@ -186,11 +186,11 @@ function plume_sidebar_registration() {
 	register_sidebar(
 		array_merge(
 			$shared_args,
-			array(
-				'name'        => __('Footer #2', 'plume'),
-				'id'          => 'sidebar-2',
+			[
+				'name' => __('Footer #2', 'plume'),
+				'id' => 'sidebar-2',
 				'description' => __('Widgets in this area will be displayed in the second column in the footer.', 'plume'),
-			)
+			]
 		)
 	);
 
@@ -200,22 +200,22 @@ function plume_sidebar_registration() {
 /**
  * Enqueue supplemental block editor styles.
  */
-function plume_block_editor_styles() {
+function plume_block_editor_styles () {
 	// Enqueue the editor styles.
-	wp_enqueue_style('plume-block-editor-styles', get_theme_file_uri('/assets/css/editor-style-block.css'), array(), wp_get_theme()->get('Version'), 'all');
+	wp_enqueue_style('plume-block-editor-styles', get_theme_file_uri('/assets/css/editor-style-block.css'), [], wp_get_theme()->get('Version'), 'all');
 
 	// Add inline style from the Customizer.
 	// wp_add_inline_style('plume-block-editor-styles', plume_get_customizer_css('block-editor'));
 
 	// Enqueue the editor script.
-	wp_enqueue_script('plume-block-editor-script', get_theme_file_uri('/assets/js/editor-script-block.js'), array('wp-blocks', 'wp-dom'), wp_get_theme()->get('Version'), true);
+	wp_enqueue_script('plume-block-editor-script', get_theme_file_uri('/assets/js/editor-script-block.js'), ['wp-blocks', 'wp-dom'], wp_get_theme()->get('Version'), true);
 }
 add_action('enqueue_block_editor_assets', 'plume_block_editor_styles', 1, 1);
 
 /**
  * Enqueue classic editor styles.
  */
-function plume_classic_editor_styles() {
+function plume_classic_editor_styles () {
 	$classic_editor_styles = ['/assets/css/editor-style-classic.css'];
 
 	add_editor_style($classic_editor_styles);
@@ -229,11 +229,11 @@ add_action('init', 'plume_classic_editor_styles');
  * @param array $mce_init TinyMCE styles.
  * @return array TinyMCE styles.
  */
-/* function plume_add_classic_editor_customizer_styles($mce_init) {
+/* function plume_add_classic_editor_customizer_styles ($mce_init) {
 
 	$styles = plume_get_customizer_css('classic-editor');
 
-	if (! isset($mce_init['content_style'])) {
+	if (!isset($mce_init['content_style'])) {
 		$mce_init['content_style'] = $styles . ' ';
 	} else {
 		$mce_init['content_style'] .= ' ' . $styles . ' ';
@@ -250,7 +250,7 @@ add_filter('tiny_mce_before_init', 'plume_add_classic_editor_customizer_styles')
  * @param string $html The default output HTML for the more tag.
  * @return string
  */
-function plume_read_more_tag($html) {
+function plume_read_more_tag ($html) {
 	return preg_replace('/<a(.*)>(.*)<\/a>/iU', sprintf('<div class="read-more-button-wrap"><a$1><span class="faux-button">$2</span> <span class="screen-reader-text">"%1$s"</span></a></div>', get_the_title(get_the_ID())), $html);
 }
 
@@ -337,7 +337,7 @@ function plume_add_post_admin_thumbnail_column ($columns) {
 	return $new_columns;
 }
 
-function plume_admin_column_styles() {
+function plume_admin_column_styles () {
 	echo '<style>
 		.column-plume_thumb { width: 60px; }
 		.column-paint_type { width: 140px; }
@@ -373,14 +373,14 @@ function plume_remove_admin_menu () {
 add_action('admin_menu', 'plume_remove_admin_menu');
 // Removes from post and pages
 
-function remove_comment_support() {
+function remove_comment_support () {
 	remove_post_type_support('post', 'comments');
 	remove_post_type_support('page', 'comments');
 }
 add_action('init', 'remove_comment_support', 100);
 // Removes from admin bar
 
-function plume_admin_bar_render() {
+function plume_admin_bar_render () {
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('comments');
 }
@@ -398,9 +398,9 @@ function debug ($value) { ?>
 <?php }
 
 function plume_customize_register ($wp_customize) {
-  //All our sections, settings, and controls will be added here
-  $wp_customize->remove_panel('nav_menus');
-  $wp_customize->remove_section('custom_css');
+	//All our sections, settings, and controls will be added here
+	$wp_customize->remove_panel('nav_menus');
+	$wp_customize->remove_section('custom_css');
 }
 add_action('customize_register', 'plume_customize_register', 50);
 

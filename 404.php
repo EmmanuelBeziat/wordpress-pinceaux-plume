@@ -17,7 +17,7 @@ get_header();
 
 		<div class="intro-text"><p>La page que vous recherchez n’existe pas. Elle a peut-être été supprimée ou déplacée.</p></div>
 
-		<?php	get_search_form(['label' => 'Page introuvable']);	?>
+		<?php get_search_form(['label' => 'Page introuvable']); ?>
 	</div>
 
 </main>

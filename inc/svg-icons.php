@@ -16,7 +16,7 @@ if (!function_exists('plume_the_theme_svg')) {
 	 * @param string $group The group the icon belongs to.
 	 * @param string $color Color code.
 	 */
-	function plume_the_theme_svg($svg_name, $group = 'ui', $color = '') {
+	function plume_the_theme_svg ($svg_name, $group = 'ui', $color = '') {
 		echo plume_get_theme_svg($svg_name, $group, $color); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in plume_get_theme_svg().
 	}
 }
@@ -30,36 +30,36 @@ if (!function_exists('plume_get_theme_svg')) {
 	 * @param string $group The group the icon belongs to.
 	 * @param string $color Color code.
 	 */
-	function plume_get_theme_svg($svg_name, $group = 'ui', $color = '') {
+	function plume_get_theme_svg ($svg_name, $group = 'ui', $color = '') {
 
 		// Make sure that only our allowed tags and attributes are included.
 		$svg = wp_kses(
 			Plume_SVG_Icons::get_svg($svg_name, $group, $color),
-			array(
-				'svg'     => array(
-					'class'       => true,
-					'xmlns'       => true,
-					'width'       => true,
-					'height'      => true,
-					'viewbox'     => true,
+			[
+				'svg' => [
+					'class' => true,
+					'xmlns' => true,
+					'width' => true,
+					'height' => true,
+					'viewbox' => true,
 					'aria-hidden' => true,
-					'role'        => true,
-					'focusable'   => true,
-				),
-				'path'    => array(
-					'fill'      => true,
+					'role' => true,
+					'focusable' => true,
+				],
+				'path' => [
+					'fill' => true,
 					'fill-rule' => true,
-					'd'         => true,
+					'd' => true,
 					'transform' => true,
-				),
-				'polygon' => array(
-					'fill'      => true,
+				],
+				'polygon' => [
+					'fill' => true,
 					'fill-rule' => true,
-					'points'    => true,
+					'points' => true,
 					'transform' => true,
 					'focusable' => true,
-				),
-			)
+				],
+			]
 		);
 
 		if (!$svg) {

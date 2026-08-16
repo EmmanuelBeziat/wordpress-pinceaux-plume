@@ -49,7 +49,7 @@
 
 					<?php if (get_theme_mod('header_search')) : ?>
 					<div class="header-search">
-						<?php get_search_form(['label' => 'Recherche…']);	?>
+						<?php get_search_form(['label' => 'Recherche…']); ?>
 					</div>
 					<?php endif ?>
 

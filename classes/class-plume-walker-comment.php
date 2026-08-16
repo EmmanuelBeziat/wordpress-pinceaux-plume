@@ -7,7 +7,7 @@
  * @since Plume 1.0
  */
 
-if (! class_exists('Plume_Walker_Comment')) {
+if (!class_exists('Plume_Walker_Comment')) {
 	/**
 	 * CUSTOM COMMENT WALKER
 	 * A custom walker for comments, based on the walker in Twenty Nineteen.
@@ -25,10 +25,10 @@ if (! class_exists('Plume_Walker_Comment')) {
 		 * @see https://developer.wordpress.org/reference/functions/get_edit_comment_link/
 		 *
 		 * @param WP_Comment $comment Comment to display.
-		 * @param int        $depth   Depth of the current comment.
-		 * @param array      $args    An array of arguments.
+		 * @param int $depth Depth of the current comment.
+		 * @param array $args An array of arguments.
 		 */
-		protected function html5_comment($comment, $depth, $args) {
+		protected function html5_comment ($comment, $depth, $args) {
 
 			$tag = ('div' === $args['style']) ? 'div' : 'li';
 
@@ -39,8 +39,8 @@ if (! class_exists('Plume_Walker_Comment')) {
 						<div class="comment-author vcard">
 							<?php
 							$comment_author_url = get_comment_author_url($comment);
-							$comment_author     = get_comment_author($comment);
-							$avatar             = get_avatar($comment, $args['avatar_size']);
+							$comment_author = get_comment_author($comment);
+							$avatar = get_avatar($comment, $args['avatar_size']);
 							if (0 !== $args['avatar_size']) {
 								if (empty($comment_author_url)) {
 									echo wp_kses_post($avatar);
@@ -56,7 +56,7 @@ if (! class_exists('Plume_Walker_Comment')) {
 								__('says:', 'plume')
 							);
 
-							if (! empty($comment_author_url)) {
+							if (!empty($comment_author_url)) {
 								echo '</a>';
 							}
 							?>
@@ -102,13 +102,13 @@ if (! class_exists('Plume_Walker_Comment')) {
 					$comment_reply_link = get_comment_reply_link(
 						array_merge(
 							$args,
-							array(
+							[
 								'add_below' => 'div-comment',
-								'depth'     => $depth,
+								'depth' => $depth,
 								'max_depth' => $args['max_depth'],
-								'before'    => '<span class="comment-reply">',
-								'after'     => '</span>',
-							)
+								'before' => '<span class="comment-reply">',
+								'after' => '</span>',
+							]
 						)
 					);
 
