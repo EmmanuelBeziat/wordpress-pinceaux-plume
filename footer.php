@@ -30,13 +30,13 @@
 						<span class="to-the-top-long">
 							<?php
 							/* translators: %s: HTML character for up arrow. */
-							printf(__('To the top %s', 'plume'), '<span class="arrow" aria-hidden="true">&uarr;</span>');
+							printf(esc_html__('Haut de page %s', 'plume'), '<span class="arrow" aria-hidden="true">&uarr;</span>');
 							?>
 						</span><!-- .to-the-top-long -->
 						<span class="to-the-top-short">
 							<?php
 							/* translators: %s: HTML character for up arrow. */
-							printf(__('Up %s', 'plume'), '<span class="arrow" aria-hidden="true">&uarr;</span>');
+							printf(esc_html__('Haut %s', 'plume'), '<span class="arrow" aria-hidden="true">&uarr;</span>');
 							?>
 						</span>
 					</a>

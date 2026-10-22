@@ -33,17 +33,7 @@ function plume_theme_support () {
 
 	add_image_size('plume-painting-home', 480, 480, ['center', 'center']);
 	add_image_size('plume-painting-single', 800, 1200);
-	// add_image_size('plume-painting-single-background', 1200, 480, ['center', 'center']);
 	add_image_size('plume-admin-post-featured-image', 48, 48, ['center', 'center']);
-
-	// This will remove the default image sizes and the medium_large size.
-	function prefix_remove_default_images ($sizes) {
-		unset($sizes['medium']); // 300px
-		unset($sizes['large']); // 1024px
-		unset($sizes['medium_large']); // 768px
-		return $sizes;
-	}
-	add_filter('intermediate_image_sizes_advanced', 'prefix_remove_default_images');
 
 	/*
 	 * Let WordPress manage the document title.
@@ -76,15 +66,35 @@ function plume_theme_support () {
 	// Add theme support for selective refresh for widgets.
 	add_theme_support('customize-selective-refresh-widgets');
 
-	/*
-	 * Adds `async` and `defer` support for scripts registered or enqueued
-	 * by the theme.
-	 */
-	$loader = new Plume_Script_Loader();
-	add_filter('script_loader_tag', [$loader, 'filter_script_loader_tag'], 10, 2);
-
 }
 add_action('after_setup_theme', 'plume_theme_support');
+
+/**
+ * Removes the default image sizes and the medium_large size.
+ *
+ * @param array $sizes Image sizes.
+ * @return array
+ */
+function plume_remove_default_image_sizes ($sizes) {
+	unset($sizes['medium']); // 300px
+	unset($sizes['large']); // 1024px
+	unset($sizes['medium_large']); // 768px
+	return $sizes;
+}
+add_filter('intermediate_image_sizes_advanced', 'plume_remove_default_image_sizes');
+
+/**
+ * Saves generated JPEG and PNG image sizes as WebP.
+ *
+ * @param array $formats Source mime type => output mime type mappings.
+ * @return array
+ */
+function plume_output_webp ($formats) {
+	$formats['image/jpeg'] = 'image/webp';
+	$formats['image/png'] = 'image/webp';
+	return $formats;
+}
+add_filter('image_editor_output_format', 'plume_output_webp');
 
 /**
  * REQUIRED FILES
@@ -93,13 +103,8 @@ add_action('after_setup_theme', 'plume_theme_support');
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/classes/class-plume-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
-// require get_template_directory() . '/classes/class-plume-walker-comment.php';
-// require get_template_directory() . '/classes/class-plume-walker-page.php';
-require get_template_directory() . '/classes/class-plume-script-loader.php';
+require get_template_directory() . '/classes/class-plume-walker-comment.php';
 require get_template_directory() . '/inc/customize.php';
-
-// Custom CSS.
-// require get_template_directory() . '/inc/custom-css.php';
 
 /**
  * Register and Enqueue Styles.
@@ -109,7 +114,7 @@ function plume_register_styles () {
 	$theme_version = wp_get_theme()->get('Version');
 
 	wp_enqueue_style('plume-style', get_template_directory_uri() . '/assets/css/main.min.css', [], $theme_version);
-	wp_enqueue_style('plume-print-style', get_template_directory_uri() . '/assets/css/print.min.css', null, $theme_version, 'print');
+	wp_enqueue_style('plume-print-style', get_template_directory_uri() . '/assets/css/print.min.css', [], $theme_version, 'print');
 }
 
 add_action('wp_enqueue_scripts', 'plume_register_styles');
@@ -125,77 +130,18 @@ function plume_register_scripts () {
 		wp_enqueue_script('comment-reply');
 	}
 
-	wp_enqueue_script('plume-js', get_template_directory_uri() . '/assets/js/main.min.js', [], $theme_version, false);
-	wp_script_add_data('plume-js', 'defer', true);
+	wp_enqueue_script('plume-js', get_template_directory_uri() . '/assets/js/main.min.js', [], $theme_version, ['strategy' => 'defer']);
 }
 
 add_action('wp_enqueue_scripts', 'plume_register_scripts');
 
 /**
- * Register navigation menus uses wp_nav_menu in five places.
- */
-function plume_menus () {
-
-	$locations = [
-		'primary' => __('Menu principal', 'plume'),
-		'footer' => __('Menu pied de page', 'plume'),
-	];
-
-	register_nav_menus($locations);
-}
-
-add_action('init', 'plume_menus');
-
-
-/**
  * Include a skip to content link at the top of the page so that users can bypass the menu.
  */
 function plume_skip_link () {
-	echo '<a class="skip-link screen-reader-text" href="#site-content">' . __('Skip to the content', 'plume') . '</a>';
+	echo '<a class="skip-link screen-reader-text" href="#site-content">' . esc_html__('Aller au contenu', 'plume') . '</a>';
 }
 add_action('wp_body_open', 'plume_skip_link', 5);
-
-/**
- * Register widget areas.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function plume_sidebar_registration () {
-
-	// Arguments used in all register_sidebar() calls.
-	$shared_args = [
-		'before_title' => '<h2 class="widget-title subheading heading-size-3">',
-		'after_title' => '</h2>',
-		'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
-		'after_widget' => '</div></div>',
-	];
-
-	// Footer #1.
-	register_sidebar(
-		array_merge(
-			$shared_args,
-			[
-				'name' => __('Footer #1', 'plume'),
-				'id' => 'sidebar-1',
-				'description' => __('Widgets in this area will be displayed in the first column in the footer.', 'plume'),
-			]
-		)
-	);
-
-	// Footer #2.
-	register_sidebar(
-		array_merge(
-			$shared_args,
-			[
-				'name' => __('Footer #2', 'plume'),
-				'id' => 'sidebar-2',
-				'description' => __('Widgets in this area will be displayed in the second column in the footer.', 'plume'),
-			]
-		)
-	);
-
-}
-// add_action('widgets_init', 'plume_sidebar_registration');
 
 /**
  * Enqueue supplemental block editor styles.
@@ -204,57 +150,10 @@ function plume_block_editor_styles () {
 	// Enqueue the editor styles.
 	wp_enqueue_style('plume-block-editor-styles', get_theme_file_uri('/assets/css/editor-style-block.css'), [], wp_get_theme()->get('Version'), 'all');
 
-	// Add inline style from the Customizer.
-	// wp_add_inline_style('plume-block-editor-styles', plume_get_customizer_css('block-editor'));
-
 	// Enqueue the editor script.
 	wp_enqueue_script('plume-block-editor-script', get_theme_file_uri('/assets/js/editor-script-block.js'), ['wp-blocks', 'wp-dom'], wp_get_theme()->get('Version'), true);
 }
 add_action('enqueue_block_editor_assets', 'plume_block_editor_styles', 1, 1);
-
-/**
- * Enqueue classic editor styles.
- */
-function plume_classic_editor_styles () {
-	$classic_editor_styles = ['/assets/css/editor-style-classic.css'];
-
-	add_editor_style($classic_editor_styles);
-}
-add_action('init', 'plume_classic_editor_styles');
-
-/**
- * Output Customizer settings in the classic editor.
- * Adds styles to the head of the TinyMCE iframe. Kudos to @Otto42 for the original solution.
- *
- * @param array $mce_init TinyMCE styles.
- * @return array TinyMCE styles.
- */
-/* function plume_add_classic_editor_customizer_styles ($mce_init) {
-
-	$styles = plume_get_customizer_css('classic-editor');
-
-	if (!isset($mce_init['content_style'])) {
-		$mce_init['content_style'] = $styles . ' ';
-	} else {
-		$mce_init['content_style'] .= ' ' . $styles . ' ';
-	}
-
-	return $mce_init;
-
-}
-add_filter('tiny_mce_before_init', 'plume_add_classic_editor_customizer_styles'); */
-
-/**
- * Overwrite default more tag with styling and screen reader markup.
- *
- * @param string $html The default output HTML for the more tag.
- * @return string
- */
-function plume_read_more_tag ($html) {
-	return preg_replace('/<a(.*)>(.*)<\/a>/iU', sprintf('<div class="read-more-button-wrap"><a$1><span class="faux-button">$2</span> <span class="screen-reader-text">"%1$s"</span></a></div>', get_the_title(get_the_ID())), $html);
-}
-
-add_filter('the_content_more_link', 'plume_read_more_tag');
 
 function plume_create_post_types () {
 	register_post_type('paintings', [
@@ -291,7 +190,7 @@ function plume_create_post_types () {
 			'item_updated' => 'Tableau mis à jour',
 		],
 		'taxonomies' => ['paintings_category'],
-		'supports' => ['title', 'editor', 'thumbnail', 'revisions' => false, 'comments'],
+		'supports' => ['title', 'editor', 'thumbnail', 'comments'],
 		'description' => 'Permet d’ajouter des tableaux',
 		'public' => true,
 		'menu_icon' => 'dashicons-format-gallery'
@@ -340,21 +239,20 @@ function plume_add_post_admin_thumbnail_column ($columns) {
 function plume_admin_column_styles () {
 	echo '<style>
 		.column-plume_thumb { width: 60px; }
-		.column-paint_type { width: 140px; }
+		.column-paint-type { width: 140px; }
 	</style>';
 }
 add_action('admin_head', 'plume_admin_column_styles');
 
-// Add the posts and pages columns filter. They both use the same function.
-add_filter('manage_posts_columns', 'plume_add_post_admin_thumbnail_column', 2);
-add_filter('manage_pages_columns', 'plume_add_post_admin_thumbnail_column', 2);
+add_filter('manage_paintings_posts_columns', 'plume_add_post_admin_thumbnail_column');
 
 // Get featured-thumbnail size post thumbnail and display it
 function plume_show_post_thumbnail_column ($columns, $post_id) {
 	switch ($columns) {
 		case 'plume_thumb':
-			if (get_field('picture', $post_id)) {
-				echo '<img src="' . get_field('picture', $post_id)['sizes']['plume-admin-post-featured-image'] . '" alt>';
+			$picture = get_field('picture', $post_id);
+			if (!empty($picture['sizes']['plume-admin-post-featured-image'])) {
+				echo '<img src="' . esc_url($picture['sizes']['plume-admin-post-featured-image']) . '" alt>';
 			}
 			break;
 		case 'paint-type':
@@ -373,11 +271,11 @@ function plume_remove_admin_menu () {
 add_action('admin_menu', 'plume_remove_admin_menu');
 // Removes from post and pages
 
-function remove_comment_support () {
+function plume_remove_comment_support () {
 	remove_post_type_support('post', 'comments');
 	remove_post_type_support('page', 'comments');
 }
-add_action('init', 'remove_comment_support', 100);
+add_action('init', 'plume_remove_comment_support', 100);
 // Removes from admin bar
 
 function plume_admin_bar_render () {
@@ -386,16 +284,10 @@ function plume_admin_bar_render () {
 }
 add_action('wp_before_admin_bar_render', 'plume_admin_bar_render');
 
-// Manage Post and Page Admin Panel Columns
-add_action('manage_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
-add_action('manage_pages_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
+add_action('manage_paintings_posts_custom_column', 'plume_show_post_thumbnail_column', 5, 2);
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
-
-function debug ($value) { ?>
-<pre style="margin: 1rem 0; padding: 1rem;background: #e4e4e4;border:1px solid: #ccc;"><code><?php var_dump($value); ?></code></pre>
-<?php }
 
 function plume_customize_register ($wp_customize) {
 	//All our sections, settings, and controls will be added here
@@ -404,16 +296,12 @@ function plume_customize_register ($wp_customize) {
 }
 add_action('customize_register', 'plume_customize_register', 50);
 
-function convert_to_webp ($string) {
-	return preg_replace('/\.(jpg|png)$/', '.webp', $string);
-}
-
-function render_post_link ($post, $state) {
+function plume_render_post_link ($post, $state) {
 	if (!$post) return;
 
 	$class = $state === 'prev' ? 'previous-post' : 'next-post';
-	$arrow = $state === 'prev' ? '&larr;' : '&rarr';
-	$title = wp_kses_post(get_the_title($prev_post->ID));
+	$arrow = $state === 'prev' ? '&larr;' : '&rarr;';
+	$title = wp_kses_post(get_the_title($post->ID));
 	$url = esc_url(get_permalink($post->ID));
 	?>
 	<a class="<?= $class; ?>" href="<?= $url; ?>">

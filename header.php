@@ -26,21 +26,22 @@
 
 		<?php wp_head(); ?>
 		<style>
-			<?php if (get_theme_mod('header_background')) : ?> .header { background-image: url(<?= get_theme_mod('header_background') ?>) } <?php endif ?>
+			<?php if (get_theme_mod('header_background')) : ?> .header { background-image: url(<?= esc_url(get_theme_mod('header_background')) ?>) } <?php endif ?>
 		</style>
 	</head>
 
 	<body <?php body_class(); ?>>
+		<?php wp_body_open(); ?>
 		<div class="site">
 			<header id="site-header" class="header" role="banner">
 				<div class="header-inner">
 
 					<div class="header-titles">
-						<h1 class="site-title"><a href="<?= esc_url(home_url('/')); ?>" rel="home"><?= get_bloginfo('name') ?></a></h1>
+						<h1 class="site-title"><a href="<?= esc_url(home_url('/')); ?>" rel="home"><?= esc_html(get_bloginfo('name')) ?></a></h1>
 					</div>
 
 					<div class="header-desc">
-						<p><?= get_bloginfo('description') ?></p>
+						<p><?= esc_html(get_bloginfo('description')) ?></p>
 					</div>
 
 					<div class="header-navigation-wrapper">
@@ -59,11 +60,8 @@
 								/* translators: Copyright date format, see https://www.php.net/date */
 								_x('Y', 'copyright date format', 'plume')
 							);
-							?> <?= bloginfo('name') ?>
+							?> <?php bloginfo('name') ?>
 						</p>
 					</div>
 				</div>
-
-				<?php // get_template_part('template-parts/modal-search') ?>
-				<?php // get_template_part('template-parts/modal-menu') ?>
 			</header>

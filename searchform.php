@@ -15,7 +15,7 @@
  * Generate a unique ID for each form and a string containing an aria-label
  * if one was passed to get_search_form() in the args array.
  */
-$plume_unique_id = plume_unique_id('search-form-');
+$plume_unique_id = wp_unique_id('search-form-');
 
 $plume_aria_label = !empty($args['label']) ? 'aria-label="' . esc_attr($args['label']) . '"' : '';
 ?>

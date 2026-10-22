@@ -3,8 +3,8 @@
  * Displays the next and previous post navigation in single posts.
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.2
+ * @subpackage Plume
+ * @since Plume 1.0
  */
 
 $next_post = get_next_post();
@@ -21,12 +21,12 @@ if ($next_post || $prev_post) {
 	}
 	?>
 
-	<nav class="pagination-single section-inner<?= esc_attr($pagination_classes); ?>" aria-label="Post" role="navigation">
+	<nav class="pagination-single section-inner<?= esc_attr($pagination_classes); ?>" aria-label="Tableaux">
 		<hr class="styled-separator is-style-wide" aria-hidden="true">
 
 		<div class="pagination-single-inner">
-			<?php render_post_link($prev_post, 'prev'); ?>
-			<?php render_post_link($next_post, 'next'); ?>
+			<?php plume_render_post_link($prev_post, 'prev'); ?>
+			<?php plume_render_post_link($next_post, 'next'); ?>
 		</div>
 	</nav>
 

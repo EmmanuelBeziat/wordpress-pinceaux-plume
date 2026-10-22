@@ -8,14 +8,14 @@
 	<div class="share-manual" hidden>
 		<?php
 		$socials = [
-			'x' => 'X',
-			'facebook' => 'Facebook',
-			'link' => 'Copier l’URL'
+			'x' => ['X', 'social'],
+			'facebook' => ['Facebook', 'social'],
+			'link' => ['Copier l’URL', 'ui']
 		];
 
-		foreach ($socials as $name => $label) : ?>
+		foreach ($socials as $name => [$label, $group]) : ?>
 		<button type="button" class="button" data-name="<?= esc_attr($name) ?>" aria-label="Partager sur <?= esc_html($label) ?>">
-			<?php plume_the_theme_svg($name, 'social') ?> <?= esc_html($label) ?>
+			<?php plume_the_theme_svg($name, $group) ?> <?= esc_html($label) ?>
 		</button>
 		<?php endforeach; ?>
 	</div>

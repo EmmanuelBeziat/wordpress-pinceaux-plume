@@ -3,7 +3,7 @@
 // Settings
 $capability = 'edit_theme_options';
 
-add_action('customize_register', function (WP_Customize_Manager $manager) {
+add_action('customize_register', function (WP_Customize_Manager $manager) use ($capability) {
 	// Sections
 	$manager->add_section('plume_header', [
 		'title' => 'En-tête'
@@ -16,23 +16,26 @@ add_action('customize_register', function (WP_Customize_Manager $manager) {
 	// Settings
 	$manager->add_setting('header_background', [
 		'default' => '',
-		'capability' => $capability
-		// 'sanitize_callback' => saniti
+		'capability' => $capability,
+		'sanitize_callback' => 'esc_url_raw'
 	]);
 
 	$manager->add_setting('header_search', [
 		'default' => '',
-		'capability' => $capability
+		'capability' => $capability,
+		'sanitize_callback' => 'rest_sanitize_boolean'
 	]);
 
 	$manager->add_setting('post_share', [
 		'default' => '',
-		'capability' => $capability
+		'capability' => $capability,
+		'sanitize_callback' => 'rest_sanitize_boolean'
 	]);
 
 	$manager->add_setting('post_comments', [
 		'default' => '',
-		'capability' => $capability
+		'capability' => $capability,
+		'sanitize_callback' => 'rest_sanitize_boolean'
 	]);
 
 	// Control

@@ -24,8 +24,8 @@
 				<span class="paint__type"><?= esc_html($paint_type) ?></span>
 			<?php endif ?>
 
-			<?php if ($dimensions = get_field('dimensions') && get_field('dimensions')['width'] != '0') : ?>
-				<span class="paint__dimensions"><?= esc_html($dimensions['width']) ?>×<?= esc_html($dimensions['height']) ?> cm</span>
+			<?php if ($dimensions = plume_get_painting_dimensions()) : ?>
+				<span class="paint__dimensions"><?= esc_html($dimensions) ?></span>
 			<?php endif ?>
 
 			<?php edit_post_link() ?>
@@ -34,19 +34,7 @@
 
 	<div class="container post-inner">
 		<figure class="post-picture">
-		<?php if ($picture = get_field('picture')) : ?>
-			<picture>
-				<source srcset="<?= esc_url($picture['sizes']['plume-painting-single']) ?>.webp" type="image/webp">
-				<source srcset="<?= esc_url($picture['sizes']['plume-painting-single']) ?>">
-				<img src="<?= esc_url($picture['sizes']['plume-painting-single']) ?>" loading="lazy" alt="<?= esc_attr($picture['alt']) ?>">
-			</picture>
-		<?php else : ?>
-			<picture>
-				<source srcset="<?= esc_url(get_template_directory_uri() . '/img/thumbnail-default.webp') ?>" type="image/webp">
-				<source srcset="<?= esc_url(get_template_directory_uri() . '/img/thumbnail-default.png') ?>">
-				<img src="<?= esc_url(get_template_directory_uri() . '/img/thumbnail-default.png') ?>" loading="lazy" alt>
-			</picture>
-		<?php endif ?>
+			<?php plume_the_painting_picture('plume-painting-single') ?>
 		</figure>
 
 		<?php if ($content = get_field('content')) : ?>
@@ -65,9 +53,6 @@
 			'link_before' => '<span class="page-number">',
 			'link_after' => '</span>',
 		]);
-
-		// Single bottom post meta.
-		plume_the_post_meta(get_the_ID(), 'single-bottom');
 
 		// Share
 		if (get_theme_mod('post_share')) :

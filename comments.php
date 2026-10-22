@@ -28,7 +28,7 @@ if ($comments) { ?>
 			<h2 class="comment-reply-title">
 			<?php
 			if (!have_comments()) {
-				_e('Laissez un commentaire');
+				esc_html_e('Laissez un commentaire', 'plume');
 			}
 			elseif (1 === $comments_number) {
 				/* translators: %s: Post title. */
@@ -65,7 +65,7 @@ if ($comments) { ?>
 				'end_size' => 0,
 				'mid_size' => 0,
 				'next_text' => 'Plus récents <span aria-hidden="true">&rarr;</span>',
-				'prev_text' => '<span aria-hidden="true">&larr;</span> Plus ancients',
+				'prev_text' => '<span aria-hidden="true">&larr;</span> Plus anciens',
 			]);
 
 			if ($comment_pagination) {
@@ -77,7 +77,7 @@ if ($comments) { ?>
 				}
 				?>
 
-				<nav class="comments-pagination pagination<?= $pagination_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e('Comments', 'plume'); ?>">
+				<nav class="comments-pagination pagination<?= $pagination_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e('Commentaires', 'plume'); ?>">
 					<?= wp_kses_post($comment_pagination); ?>
 				</nav>
 				<?php
